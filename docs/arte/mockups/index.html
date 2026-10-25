@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALCORIA — Mockup visual del «mucho más bonito»</title>
+<style>
+  :root{
+    /* Paleta UI — docs/arte/00_ESTILO.md §2 */
+    --bg0:#12141c; --bg1:#1b1e2b; --tx:#e8e4d8;
+    --oro:#c8a24a; --peligro:#d1615a; --borde:#2c3044;
+    /* Paleta mundo — ceniza / óxido / sebo / piedra / hierro */
+    --ceniza:#8b8b90; --oxido:#a35437; --sebo:#d8cdb4;
+    --piedra:#6d7684; --hierro:#23252b; --verde:#5c6b4a; --ocre:#a08a5a;
+    --ambar:#d98e3a; --sangre:#a33d33;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;
+    --sans:system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg0);color:var(--tx);font-family:var(--sans);line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+
+  /* ===== Cabecera ===== */
+  header{padding:46px 20px 26px;text-align:center;border-bottom:1px solid var(--borde);
+    background:linear-gradient(180deg,#0e1017 0%,var(--bg0) 100%)}
+  .kicker{letter-spacing:.35em;font-size:11px;color:var(--oro);text-transform:uppercase}
+  h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);font-weight:600;margin:8px 0 2px;letter-spacing:.02em}
+  h1 em{color:var(--oro);font-style:normal}
+  .sub{color:#b9b2a0;font-size:15px}
+  .badge{display:inline-block;margin-top:14px;padding:6px 16px;border:1px solid var(--oro);
+    border-radius:999px;color:var(--oro);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .intro{max-width:760px;margin:26px auto 0;font-size:14.5px;color:#c9c2b2}
+  .intro b{color:var(--tx)}
+
+  /* ===== Secciones de escena ===== */
+  section.escena{margin-top:56px}
+  .esc-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .num{font-family:var(--serif);color:var(--oro);font-size:15px;letter-spacing:.2em}
+  h2{font-family:var(--serif);font-size:26px;font-weight:600}
+  .esc-sub{color:#a9a291;font-size:13.5px;margin-bottom:14px;max-width:820px}
+  .esc-sub code{color:var(--sebo);background:var(--bg1);border:1px solid var(--borde);
+    border-radius:4px;padding:1px 6px;font-size:12.5px}
+
+  .stage{position:relative;border:1px solid var(--borde);border-radius:12px;overflow:hidden;
+    background:var(--bg1);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .hudbar{position:absolute;z-index:40;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+  .chip{background:rgba(18,20,28,.82);border:1px solid var(--borde);border-radius:8px;
+    padding:5px 11px;font-size:12px;color:var(--tx);backdrop-filter:blur(3px)}
+  .chip b{color:var(--oro)}
+  .chip .peligro{color:var(--peligro)}
+
+  .barra{width:170px}
+  .barra .lbl{display:flex;justify-content:space-between;font-size:10.5px;color:#b9b2a0;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+  .track{height:9px;background:#0d0f16;border:1px solid var(--borde);border-radius:99px;overflow:hidden}
+  .fill{height:100%;border-radius:99px;transition:width .25s}
+  .fill.vida{background:linear-gradient(90deg,#7a2f28,var(--peligro))}
+  .fill.aliento{background:linear-gradient(90deg,#7d6428,var(--oro))}
+
+  .btn{cursor:pointer;background:rgba(18,20,28,.85);border:1px solid var(--oro);color:var(--oro);
+    border-radius:8px;padding:7px 14px;font-size:12.5px;letter-spacing:.06em;font-family:var(--sans);
+    transition:all .15s}
+  .btn:hover{background:var(--oro);color:#12141c}
+  .btn.gris{border-color:var(--borde);color:#b9b2a0}
+  .btn.gris:hover{background:#2c3044;color:var(--tx)}
+  .btn.peligro-btn{border-color:var(--peligro);color:var(--peligro)}
+  .btn.peligro-btn:hover{background:var(--peligro);color:#12141c}
+  .stage.pausado *{animation-play-state:paused!important}
+  .nota-esc{margin-top:12px;font-size:12.5px;color:#8f887a}
+  .nota-esc b{color:var(--sebo)}
+
+  /* ===== Escena 1: MAPA ===== */
+  #mapa .stage{height:480px;cursor:crosshair}
+  .capa{position:absolute;inset:0;pointer-events:none;transition:transform .12s ease-out}
+  .cielo{background:linear-gradient(180deg,var(--cielo-a) 0%,var(--cielo-b) 62%,var(--cielo-c) 100%);
+    transition:background .4s}
+  .orbe{position:absolute;width:52px;height:52px;border-radius:50%;
+    background:radial-gradient(circle at 38% 35%,#fff3d6,var(--orbe-c) 62%,rgba(0,0,0,0) 72%);
+    box-shadow:0 0 46px 14px var(--orbe-glow);left:var(--orbe-x);top:var(--orbe-y);transition:all .5s}
+  .estrellas{opacity:var(--estrellas,0);transition:opacity .5s;
+    background-image:radial-gradient(1.4px 1.4px at 12% 18%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.2px 1.2px at 28% 8%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.6px 1.6px at 44% 24%,#f5efd9 55%,transparent 60%),
+      radial-gradient(1.1px 1.1px at 61% 12%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.5px 1.5px at 74% 20%,#f5efd9 55%,transparent 60%),
+      radial-gradient(1.2px 1.2px at 86% 9%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.3px 1.3px at 92% 28%,#f5efd9 55%,transparent 60%),
+      radial-gradient(1.1px 1.1px at 7% 34%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.4px 1.4px at 52% 5%,#e8e4d8 55%,transparent 60%),
+      radial-gradient(1.2px 1.2px at 68% 33%,#e8e4d8 55%,transparent 60%)}
+  .montanas,.colinas,.bosque{position:absolute;left:-4%;width:108%}
+  .montanas{bottom:24%} .colinas{bottom:12%} .bosque{bottom:4%}
+  .niebla{position:absolute;bottom:10%;left:0;right:0;height:34%;
+    background:linear-gradient(180deg,rgba(0,0,0,0),var(--niebla-c) 55%,var(--niebla-c));
+    filter:blur(2px);transition:background .4s}
+  .ruta-svg{position:absolute;inset:0;width:100%;height:100%}
+  .ruta-svg path{stroke:var(--sebo);stroke-width:1.6;stroke-dasharray:7 7;opacity:.55;fill:none;
+    stroke-linecap:round;animation:rutaFluye 26s linear infinite}
+  @keyframes rutaFluye{to{stroke-dashoffset:-560}}
+
+  .sitio{position:absolute;transform:translate(-50%,-100%);text-align:center;z-index:20}
+  .sitio .icono{width:34px;height:34px;margin:0 auto;filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+  .sitio .nombre{margin-top:3px;font-size:10.5px;letter-spacing:.06em;color:var(--tx);
+    background:rgba(18,20,28,.78);border:1px solid var(--borde);border-radius:6px;
+    padding:2px 7px;white-space:nowrap}
+  .sitio .ventana-glow{position:absolute;inset:0;opacity:var(--glor,0);transition:opacity .5s}
+  .sitio.ciudad .icono{color:var(--sebo)} .sitio.aldea .icono{color:var(--sebo)}
+  .sitio.cruce .icono{color:var(--ocre)}
+  .sitio.activo .nombre{border-color:var(--oro);color:var(--oro)}
+  .heroe-marcador{position:absolute;z-index:25;width:16px;height:16px;transform:translate(-50%,-50%) rotate(45deg);
+    background:var(--oro);border:2px solid #12141c;box-shadow:0 0 14px 3px rgba(200,162,74,.65);
+    offset-path:path('M120,332 C220,300 300,318 396,296 C500,272 560,286 664,252 C740,228 810,238 900,214');
+    offset-rotate:0deg;animation:camina 22s linear infinite alternate}
+  @keyframes camina{from{offset-distance:2%}to{offset-distance:96%}}
+  .dias-chip{position:absolute;z-index:30;top:14px;left:14px}
+  .control-hora{position:absolute;z-index:30;bottom:14px;left:50%;transform:translateX(-50%);
+    display:flex;gap:12px;align-items:center;background:rgba(18,20,28,.82);
+    border:1px solid var(--borde);border-radius:10px;padding:8px 16px;backdrop-filter:blur(3px)}
+  .control-hora label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#b9b2a0}
+  input[type=range]{width:220px;accent-color:var(--oro)}
+  .hora-val{font-size:12px;color:var(--oro);min-width:70px}
+
+  /* ===== Escena 2: BATALLA 1.ª PERSONA ===== */
+  #batalla .stage{height:500px}
+  .bat-cielo{background:linear-gradient(180deg,#7c8ba0 0%,#c7a97c 55%,#8a7a58 100%)}
+  .bat-suelo{position:absolute;left:-6%;bottom:0;width:112%;height:46%;
+    background:linear-gradient(180deg,var(--suelo-a) 0%,var(--suelo-b) 100%)}
+  .bat-suelo::after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(100deg,rgba(0,0,0,.07) 0 3px,transparent 3px 26px)}
+  .linea{position:absolute;bottom:30%;display:flex;gap:0;align-items:flex-end}
+  .linea.enemiga{left:-30px;animation:avanza 34s linear infinite;--c-tropa:#6e3a26}
+  .linea.aliada{right:-24px;flex-direction:row-reverse;opacity:.96;--c-tropa:#8a7458}
+  @keyframes avanza{from{transform:translateX(0) } to{transform:translateX(150px)}}
+  .tropa{width:26px;height:64px;margin-left:-6px;transform-origin:bottom center;
+    animation:treme 2.6s ease-in-out infinite}
+  .tropa:nth-child(2n){animation-delay:-1.1s;height:58px}
+  .tropa:nth-child(3n){animation-delay:-1.9s;height:70px}
+  .tropa:nth-child(5n){animation-delay:-.6s}
+  .linea.aliada .tropa{animation-duration:3.1s}
+  @keyframes treme{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-1.5px) rotate(-1deg)}
+    60%{transform:translateY(1px) rotate(1deg)}}
+  .tropa path,.tropa rect,.tropa circle{fill:var(--c-tropa)}
+  .bat-niebla{position:absolute;bottom:26%;left:0;right:0;height:26%;
+    background:linear-gradient(180deg,rgba(0,0,0,0),rgba(190,175,145,.55));filter:blur(3px)}
+  .polvo{position:absolute;inset:0;opacity:.5;mix-blend-mode:screen;
+    background:radial-gradient(2px 2px at 18% 62%,rgba(232,228,216,.5) 40%,transparent 55%),
+      radial-gradient(2px 2px at 37% 48%,rgba(232,228,216,.4) 40%,transparent 55%),
+      radial-gradient(2.4px 2.4px at 58% 58%,rgba(232,228,216,.35) 40%,transparent 55%),
+      radial-gradient(2px 2px at 76% 44%,rgba(232,228,216,.4) 40%,transparent 55%),
+      radial-gradient(2px 2px at 90% 60%,rgba(232,228,216,.3) 40%,transparent 55%);
+    animation:polvoFlota 9s ease-in-out infinite alternate}
+  @keyframes polvoFlota{from{transform:translate(0,0)}to{transform:translate(-26px,-10px)}}
+  .manos{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:min(560px,88%);
+    z-index:35;filter:drop-shadow(0 -4px 18px rgba(0,0,0,.55))}
+  .manos.golpea{animation:golpe .5s ease-out}
+  @keyframes golpe{0%{transform:translateX(-50%) translateY(0)}30%{transform:translateX(-50%) translateY(14px) rotate(2deg)}
+    100%{transform:translateX(-50%) translateY(0)}}
+  .vineta{position:absolute;inset:0;z-index:30;pointer-events:none;
+    box-shadow:inset 0 0 130px 42px rgba(10,11,16,.62)}
+  .flotante{position:absolute;z-index:45;font-family:var(--serif);font-weight:700;
+    pointer-events:none;animation:flota 1.25s ease-out forwards;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+  .flotante.dano{color:var(--peligro);font-size:30px}
+  .flotante.bloq{color:var(--oro);font-size:24px}
+  .flotante.crit{color:#ff7a6b;font-size:36px}
+  @keyframes flota{0%{opacity:0;transform:translate(-50%,6px) scale(.8)}14%{opacity:1}
+    100%{opacity:0;transform:translate(-50%,-74px) scale(1.12)}}
+  .pausa-velo{position:absolute;inset:0;z-index:44;background:rgba(13,15,22,.55);
+    display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px}
+  .pausa-velo.on{display:flex}
+  .pausa-velo .titulo{font-family:var(--serif);font-size:24px;color:var(--oro);letter-spacing:.18em}
+  .pausa-velo .mini{font-size:12px;color:#c9c2b2;max-width:420px;text-align:center}
+  #batalla .hudbar.arriba{top:14px;left:14px;right:14px;justify-content:space-between}
+  #batalla .hudbar.abajo{bottom:14px;left:50%;transform:translateX(-50%);gap:8px}
+  .registro{position:absolute;z-index:40;top:64px;right:14px;max-width:300px;font-size:11.5px;
+    color:#c9c2b2;background:rgba(18,20,28,.8);border:1px solid var(--borde);border-radius:8px;
+    padding:8px 12px;display:none}
+  .registro.on{display:block}
+  .registro b{color:var(--oro)} .registro .mal{color:var(--peligro)}
+
+  /* ===== Escena 3: SITIO VIVO ===== */
+  #sitio .stage{height:470px}
+  .sit-cielo{background:linear-gradient(180deg,#8298ad 0%,#d4b283 58%,#a58c62 100%)}
+  .sit-sol{position:absolute;right:16%;top:16%;width:64px;height:64px;border-radius:50%;
+    background:radial-gradient(circle at 40% 36%,#fff3d6,#e3b76a 66%,rgba(0,0,0,0) 74%);
+    box-shadow:0 0 60px 20px rgba(227,183,106,.5)}
+  .sit-colinas{position:absolute;bottom:34%;left:-4%;width:108%}
+  .piso{position:absolute;left:-6%;bottom:0;width:112%;height:38%;
+    background:linear-gradient(180deg,#7d7558 0%,#57513c 100%)}
+  .casario{position:absolute;bottom:31%;left:50%;transform:translateX(-50%);display:flex;
+    align-items:flex-end;gap:0;z-index:12}
+  .casa{position:relative;width:86px;height:70px;margin-right:-14px;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+  .casa.chica{width:64px;height:52px;margin-bottom:4px}
+  .casa.grande{width:104px;height:86px}
+  .ventana{position:absolute;width:9px;height:11px;border-radius:2px 2px 0 0;background:#3a3a40;
+    top:34px;left:24px}
+  .ventana.dos{left:52px}
+  .ventana.luz{fill:var(--ambar);filter:drop-shadow(0 0 5px rgba(217,142,58,.85));
+    animation:parpadeo 5s ease-in-out infinite}
+  @keyframes parpadeo{0%,100%{opacity:1}50%{opacity:.55}}
+  .torre{position:absolute;bottom:31%;z-index:14;width:40px;height:130px;
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.4))}
+  .torre .cuerpo{position:absolute;bottom:0;width:100%;height:104px;
+    background:linear-gradient(90deg,#565a63 0%,#7d828c 45%,#5b5f68 100%);border-radius:3px 3px 0 0}
+  .torre .almena{position:absolute;top:22px;width:100%;height:10px;display:flex;justify-content:space-between}
+  .torre .almena i{display:block;width:8px;height:10px;background:#6e737d}
+  .torre .banda{position:absolute;top:36px;left:6px;right:6px;height:5px;background:#3c3f47}
+  .torre .fuego{position:absolute;top:0;left:50%;transform:translateX(-50%);width:14px;height:14px;
+    border-radius:50% 50% 42% 42%;background:radial-gradient(circle at 42% 36%,#ffd98a,var(--ambar) 70%);
+    box-shadow:0 0 16px 5px rgba(217,142,58,.55);animation:fuego 1.6s ease-in-out infinite}
+  @keyframes fuego{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.22)}}
+  .slot-libre{position:absolute;bottom:31%;z-index:13;width:34px;height:110px;
+    border:2px dashed rgba(200,162,74,.55);border-radius:4px;display:flex;align-items:center;
+    justify-content:center;color:rgba(200,162,74,.8);font-size:10px;letter-spacing:.1em;
+    writing-mode:vertical-rl;text-orientation:mixed}
+  .estandarte{position:absolute;bottom:31.5%;z-index:15;width:26px;height:64px}
+  .estandarte .asta{position:absolute;left:11px;bottom:0;width:3px;height:56px;background:#3b3529}
+  .estandarte .tela{position:absolute;left:14px;top:0;width:26px;height:17px;
+    background:linear-gradient(180deg,var(--oxido),#6e3a26);
+    clip-path:polygon(0 0,100% 0,100% 100%,0 100%,26% 50%);
+    transform-origin:top left;animation:ondea 3.4s ease-in-out infinite}
+  @keyframes ondea{0%,100%{transform:skewY(0deg) scaleX(1)}50%{transform:skewY(-3deg) scaleX(.94)}}
+  .aldeano{position:absolute;bottom:22%;z-index:16;width:13px;height:26px;opacity:.92}
+  .aldeano path,.aldeano rect,.aldeano circle{fill:var(--sebo)}
+  .aldeano.a1{animation:caminaX 26s linear infinite}
+  .aldeano.a2{animation:caminaX 34s linear infinite reverse;bottom:20%}
+  .aldeano.a3{animation:caminaX 30s linear infinite;bottom:24%;animation-delay:-14s}
+  @keyframes caminaX{from{left:-4%}to{left:102%}}
+  .humo{position:absolute;bottom:66%;z-index:11;width:8px;height:8px;border-radius:50%;
+    background:rgba(200,192,170,.5);filter:blur(3px);animation:sube 7s linear infinite}
+  @keyframes sube{0%{opacity:0;transform:translate(0,0) scale(.6)}18%{opacity:.85}
+    100%{opacity:0;transform:translate(14px,-84px) scale(2.1)}}
+  #sitio .hudbar.arriba{top:14px;left:14px;right:14px;justify-content:space-between}
+
+  /* ===== Arte conceptual ===== */
+  .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:16px}
+  .cadr{border:1px solid var(--borde);border-radius:12px;overflow:hidden;background:var(--bg1)}
+  .cadr img{width:100%;display:block;aspect-ratio:1344/768;object-fit:cover}
+  .cadr .pie{padding:10px 14px;font-size:12.5px;color:#b9b2a0}
+  .cadr .pie b{color:var(--tx);display:block;font-family:var(--serif);font-size:14.5px;margin-bottom:2px}
+
+  /* ===== Tabla de decisiones ===== */
+  .tabla{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+  .tabla th,.tabla td{border:1px solid var(--borde);padding:8px 12px;text-align:left;vertical-align:top}
+  .tabla th{background:var(--bg1);color:var(--oro);font-weight:600;letter-spacing:.06em}
+  .tabla td b{color:var(--sebo)}
+
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--borde);
+    font-size:12px;color:#8f887a;text-align:center}
+  footer b{color:var(--sebo)}
+
+  @media (max-width:720px){
+    .barra{width:120px}
+    .registro{display:none !important}
+    #mapa .stage{height:400px} #batalla .stage{height:420px} #sitio .stage{height:400px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Estandarte de Ceniza · Prueba visual</div>
+  <h1>VALCORIA <em>— Deuda de Sangre</em></h1>
+  <div class="sub">Cómo quedará el «mucho más bonito» · estilo de <b>docs/arte/00_ESTILO.md</b></div>
+  <div class="badge">Mockup interactivo — no es el juego todavía</div>
+  <p class="intro">Esto es una <b>muestra visual</b>, no una versión jugable: tres escenas hechas
+  para que veas la dirección antes de construir nada de verdad. Todo sigue lo ya decidido:
+  <b>luz oblicua de tarde, niebla al fondo, paleta ceniza/óxido/sebo</b> con oro y sangre como
+  acentos escasos, y el HUD en tono apagado (<code>#12141c</code> + oro <code>#c8a24a</code>). Mueve el ratón sobre
+  las escenas y usa los controles: están vivas.</p>
+</header>
+
+<div class="wrap">
+
+<!-- ============ ESCENA 1: MAPA ============ -->
+<section class="escena" id="mapa">
+  <div class="esc-head"><span class="num">ESCENA 1</span><h2>El mapa del mundo — paralaje y día/noche</h2></div>
+  <p class="esc-sub">Los <b>6 sitios de la demo</b> en La Marca del Sur, unidos por el camino real.
+  Arrastra el control de hora: la luz cambia de <b>amanecer → tarde → noche</b> (al caer la noche
+  se encienden los sitios con fuego ámbar). Mueve el ratón encima: las capas se separan en paralaje.</p>
+
+  <div class="stage" id="stage-mapa">
+    <div class="capa cielo" data-prof="6"></div>
+    <div class="capa" data-prof="6"><div class="orbe"></div></div>
+    <div class="capa" data-prof="6"><div class="estrellas"></div></div>
+    <div class="capa" data-prof="14">
+      <svg class="montanas" viewBox="0 0 1080 160" preserveAspectRatio="none" style="filter:brightness(var(--terreno-brillo,1))">
+        <polygon points="0,160 90,70 170,120 260,40 350,130 430,80 520,140 610,55 700,125 790,85 880,145 960,95 1080,150 1080,160" fill="#66707e" opacity=".85"/>
+        <polygon points="0,160 140,110 240,140 330,95 470,150 560,105 690,148 810,115 930,152 1080,130 1080,160" fill="#565f6c" opacity=".9"/>
+      </svg>
+    </div>
+    <div class="capa" data-prof="24">
+      <svg class="colinas" viewBox="0 0 1080 110" preserveAspectRatio="none" style="filter:brightness(var(--terreno-brillo,1))">
+        <path d="M0,110 C120,55 260,80 380,60 C520,38 640,78 780,58 C900,42 990,70 1080,50 L1080,110 Z" fill="#4c5644"/>
+        <path d="M0,110 C160,80 300,96 460,80 C620,64 760,92 900,78 C980,70 1040,80 1080,74 L1080,110 Z" fill="#414b3a"/>
+      </svg>
+    </div>
+    <div class="capa" data-prof="38">
+      <svg class="bosque" viewBox="0 0 1080 80" preserveAspectRatio="none" style="filter:brightness(var(--terreno-brillo,1))">
+        <g fill="#37402f">
+          <polygon points="20,80 34,38 48,80"/><polygon points="60,80 76,28 92,80"/><polygon points="130,80 142,44 154,80"/>
+          <polygon points="300,80 316,30 332,80"/><polygon points="352,80 364,46 376,80"/>
+          <polygon points="560,80 576,26 592,80"/><polygon points="610,80 622,48 634,80"/>
+          <polygon points="840,80 856,32 872,80"/><polygon points="890,80 902,50 914,80"/>
+          <polygon points="1000,80 1014,40 1028,80"/>
+        </g>
+      </svg>
+    </div>
+    <div class="capa" data-prof="46"><div class="niebla"></div></div>
+    <div class="capa" data-prof="55">
+      <svg class="ruta-svg" viewBox="0 0 1080 480" preserveAspectRatio="none">
+        <path d="M110,330 C180,326 240,320 300,318 C370,316 440,306 505,300 C575,294 640,292 700,286 C765,280 830,262 880,250 C915,241 950,228 975,220"/>
+        <g>
+          <rect x="-6.5" y="-6.5" width="13" height="13" fill="#c8a24a" stroke="#12141c" stroke-width="2"/>
+          <animateMotion dur="24s" repeatCount="indefinite" rotate="0"
+            path="M110,330 C180,326 240,320 300,318 C370,316 440,306 505,300 C575,294 640,292 700,286 C765,280 830,262 880,250 C915,241 950,228 975,220"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sitio ciudad activo" style="left:10.2%;top:68.8%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M3 21V10h3V7h2v3h2V7h2v3h2V7h2v3h2V7h2v3h3v11H3z" fill="currentColor"/></svg>
+      <div class="nombre">Patio del Cadalso</div>
+    </div>
+    <div class="sitio aldea" style="left:27.8%;top:66.3%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M4 20v-8l8-6 8 6v8h-6v-5h-4v5H4z" fill="currentColor"/></svg>
+      <div class="nombre">Vega Quemada</div>
+    </div>
+    <div class="sitio aldea" style="left:46.8%;top:62.5%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M4 20v-8l8-6 8 6v8h-6v-5h-4v5H4z" fill="currentColor"/></svg>
+      <div class="nombre">Casar de la Nava</div>
+    </div>
+    <div class="sitio aldea" style="left:64.8%;top:59.6%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M4 20v-8l8-6 8 6v8h-6v-5h-4v5H4z" fill="currentColor"/></svg>
+      <div class="nombre">Herreruela</div>
+    </div>
+    <div class="sitio cruce" style="left:81.5%;top:52.1%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M11 3h2v18h-2z M13 5h7l-2 3 2 3h-7z" fill="currentColor"/></svg>
+      <div class="nombre">Cruce de las Dos Sendas</div>
+    </div>
+    <div class="sitio cruce" style="left:90.3%;top:45.8%">
+      <svg class="icono" viewBox="0 0 24 24"><path d="M11 3h2v18h-2z M13 5h7l-2 3 2 3h-7z" fill="currentColor"/></svg>
+      <div class="nombre">Posada de la Deuda Blanca</div>
+    </div>
+
+    <div class="chip dias-chip">Día 12 · <b>tarde</b> · La Marca del Sur · viaje 1,5 s/día (máx 9 s)</div>
+    <div class="control-hora">
+      <label>Hora del día</label>
+      <input type="range" id="hora" min="0" max="2" step="0.01" value="1">
+      <span class="hora-val" id="hora-val">tarde</span>
+    </div>
+  </div>
+  <p class="nota-esc"><b>De detrás de la escena:</b> el mundo real será el mismo grafo de sectores
+  de BoC (herencia directa, dossier <code>04_MAPA_MUNDIAL</code>) renderizado en WebGL con luz de
+  tarde, niebla a 60 m y nombres de sitio al pasar. La demo entera vive en esta zona.</p>
+</section>
+
+<!-- ============ ESCENA 2: BATALLA ============ -->
+<section class="escena" id="batalla">
+  <div class="esc-head"><span class="num">ESCENA 2</span><h2>Batalla en 1.ª persona — el HUD y el bloqueo nuevo</h2></div>
+  <p class="esc-sub">Vista del héroe: tu banda (marrón/crema) contra la enemiga (óxido/hierro).
+  Pulsa <b>Recibir golpe</b> y <b>Bloquear</b> para ver las reglas ya decididas en acción:
+  la fórmula de daño de BoC se conserva, pero el bloqueo ya no anula — <b>mitiga 60 % y cuesta 10 de aliento</b>.</p>
+
+  <div class="stage" id="stage-batalla">
+    <div class="capa bat-cielo"></div>
+    <div class="capa" data-prof="10">
+      <svg viewBox="0 0 1080 130" preserveAspectRatio="none" style="position:absolute;bottom:44%;width:108%;left:-4%;opacity:.7">
+        <polygon points="0,130 120,60 240,105 360,45 480,110 600,70 720,118 840,60 960,105 1080,80 1080,130" fill="#7a8494" opacity=".55"/>
+      </svg>
+    </div>
+    <div class="capa" data-prof="20"><div class="bat-suelo"></div></div>
+
+    <div class="capa" data-prof="30">
+      <div class="linea enemiga">
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="2" y="16" width="6" height="14" rx="2"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="2" y="16" width="6" height="14" rx="2"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+      </div>
+    </div>
+    <div class="capa" data-prof="34">
+      <div class="linea aliada">
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="2" y="16" width="6" height="14" rx="2"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="2" y="16" width="6" height="14" rx="2"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+        <svg class="tropa" viewBox="0 0 26 64"><circle cx="13" cy="7" r="4"/><path d="M9 12h8l2 18H7l2-18z"/><rect x="22.5" y="2" width="1.6" height="50"/><rect x="9" y="42" width="3.4" height="20"/><rect x="13.6" y="42" width="3.4" height="20"/></svg>
+      </div>
+    </div>
+    <div class="capa" data-prof="40"><div class="bat-niebla"></div><div class="polvo"></div></div>
+
+    <svg class="manos" id="manos" viewBox="0 0 560 240">
+      <defs><linearGradient id="acero" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b9bfc7"/><stop offset="1" stop-color="#6f757e"/></linearGradient></defs>
+      <circle cx="70" cy="335" r="175" fill="#57422f" stroke="#2f2a20" stroke-width="10"/>
+      <circle cx="70" cy="248" r="14" fill="#c8a24a" stroke="#2f2a20" stroke-width="3"/>
+      <polygon points="477,240 453,240 446,132 451,58 464,22 477,58 482,132" fill="url(#acero)" stroke="#3f444c" stroke-width="1.5"/>
+      <rect x="428" y="124" width="72" height="11" rx="5" fill="#c8a24a" stroke="#2f2a20" stroke-width="1.5"/>
+      <rect x="432" y="133" width="60" height="64" rx="20" fill="#4a3a2b" transform="rotate(-8 462 165)"/>
+      <rect x="440" y="188" width="44" height="52" rx="14" fill="#3d2f22" transform="rotate(-8 462 214)"/>
+    </svg>
+    <div class="vineta"></div>
+
+    <div class="hudbar arriba">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div class="barra chip"><div class="lbl"><span>Vida</span><span id="vida-txt">100 / 100</span></div>
+          <div class="track"><div class="fill vida" id="vida-fill" style="width:100%"></div></div></div>
+        <div class="barra chip"><div class="lbl"><span>Aliento</span><span id="alen-txt">100 / 100 · +4/s</span></div>
+          <div class="track"><div class="fill aliento" id="alen-fill" style="width:100%"></div></div></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="chip">Banda <b>5+5</b> · Capitán <b>Bram</b></div>
+        <div class="chip">Orden: <b>Mantener</b></div>
+      </div>
+    </div>
+    <div class="registro" id="registro"></div>
+
+    <div class="hudbar abajo">
+      <button class="btn peligro-btn" id="btn-golpe">Recibir golpe</button>
+      <button class="btn" id="btn-bloqueo">Bloquear (−60 %)</button>
+      <button class="btn gris" id="btn-pausa">Pausa táctica</button>
+    </div>
+
+    <div class="pausa-velo" id="pausa-velo">
+      <div class="titulo">PAUSA TÁCTICA</div>
+      <div class="mini">El tiempo se detiene y das órdenes con calma: cambiar formación (20 huecos),
+      marcar objetivo al capitán o beber un trago. En la Crónica quedará escrito lo que ordenes aquí.</div>
+      <button class="btn" id="btn-seguir">Seguir luchando</button>
+    </div>
+  </div>
+  <p class="nota-esc"><b>Las reglas que estás probando (decididas en Fase B):</b>
+  daño = <code>atk_ef − 2×def</code>, suelo 25 %, crítico ×1,0–1,5, varianza ±10 % —
+  herencia literal de BoC (<code>13_CODIGO_NATIVO</code>). Bloqueo: tirada
+  <code>(bloqueo − antibloqueo)/100</code>; si sale, el golpe entra al <b>40 %</b> y pagas
+  <b>10 de aliento</b>; sin aliento, la guardia se rompe y el golpe entra completo.
+  El aliento regenera 4/s en combate (canon: 100).</p>
+</section>
+<!-- ============ ESCENA 3: SITIO VIVO ============ -->
+<section class="escena" id="sitio">
+  <div class="esc-head"><span class="num">ESCENA 3</span><h2>Un sitio vivo — Vega Quemada con sus torres</h2></div>
+  <p class="esc-sub">Cada sitio tiene vista propia con gente andando, humo, estandartes y las
+  <b>torres de la decisión de Fase B</b>: en la demo se construyen torres puras (hasta 3/2 por
+  sitio); la obra grande estilo AoE-lite llega <b>después</b> de la demo.</p>
+
+  <div class="stage" id="stage-sitio">
+    <div class="capa sit-cielo"></div>
+    <div class="capa" data-prof="8"><div class="sit-sol"></div></div>
+    <div class="capa" data-prof="16">
+      <svg class="sit-colinas" viewBox="0 0 1080 100" preserveAspectRatio="none">
+        <path d="M0,100 C140,42 300,66 460,50 C620,34 780,64 920,46 C990,38 1040,50 1080,42 L1080,100 Z" fill="#6a6a4f"/>
+        <path d="M0,100 C180,74 360,86 540,74 C720,62 900,82 1080,68 L1080,100 Z" fill="#5b5b43"/>
+      </svg>
+    </div>
+    <div class="capa" data-prof="28"><div class="piso"></div></div>
+
+    <div class="capa" data-prof="40">
+      <div class="humo" style="left:41%"></div>
+      <div class="humo" style="left:57%;animation-delay:-3.2s"></div>
+
+      <svg class="casa chica" style="position:absolute;bottom:31%;left:14%" viewBox="0 0 64 52">
+        <polygon points="4,22 32,4 60,22" fill="#6e5f42"/><rect x="8" y="22" width="48" height="30" fill="#8a7358"/>
+        <rect x="26" y="36" width="12" height="16" fill="#3d3226"/>
+      </svg>
+      <svg class="casa" style="position:absolute;bottom:30.5%;left:30%" viewBox="0 0 86 70">
+        <polygon points="6,28 43,6 80,28" fill="#6e5f42"/><rect x="12" y="28" width="62" height="42" fill="#937a5c"/>
+        <rect class="ventana" x="24" y="36" width="9" height="11" fill="#3a3a40"/>
+        <rect class="ventana luz" x="52" y="36" width="9" height="11" fill="#d98e3a"/>
+        <rect x="38" y="44" width="13" height="26" fill="#3d3226"/>
+      </svg>
+
+      <div class="torre" style="left:52.5%">
+        <div class="cuerpo"><div class="almena"><i></i><i></i><i></i><i></i></div><div class="banda"></div></div>
+        <div class="fuego"></div>
+      </div>
+
+      <div class="casario">
+        <svg class="casa grande" viewBox="0 0 104 86">
+          <polygon points="8,34 52,6 96,34" fill="#7a6a4a"/><rect x="14" y="34" width="76" height="52" fill="#9b8262"/>
+          <rect class="ventana" x="26" y="44" width="10" height="12" fill="#3a3a40"/>
+          <rect class="ventana" x="68" y="44" width="10" height="12" fill="#3a3a40"/>
+          <rect x="44" y="52" width="16" height="34" fill="#3d3226"/>
+        </svg>
+        <svg class="casa" viewBox="0 0 86 70">
+          <polygon points="6,28 43,6 80,28" fill="#6e5f42"/><rect x="12" y="28" width="62" height="42" fill="#8f7657"/>
+          <rect class="ventana luz" x="24" y="36" width="9" height="11" fill="#d98e3a"/>
+          <rect class="ventana" x="52" y="36" width="9" height="11" fill="#3a3a40"/>
+          <rect x="38" y="44" width="13" height="26" fill="#3d3226"/>
+        </svg>
+        <svg class="casa chica" viewBox="0 0 64 52">
+          <polygon points="4,22 32,4 60,22" fill="#6e5f42"/><rect x="8" y="22" width="48" height="30" fill="#8a7358"/>
+          <rect class="ventana" x="28" y="30" width="9" height="10" fill="#3a3a40"/>
+        </svg>
+      </div>
+
+      <div class="torre" style="left:64.5%">
+        <div class="cuerpo"><div class="almena"><i></i><i></i><i></i><i></i></div><div class="banda"></div></div>
+        <div class="fuego" style="animation-delay:-.7s"></div>
+      </div>
+      <div class="slot-libre" style="left:70.5%">hueco libre</div>
+
+      <div class="estandarte" style="left:26%"><div class="asta"></div><div class="tela"></div></div>
+      <div class="estandarte" style="left:61%"><div class="asta"></div><div class="tela"></div></div>
+
+      <svg class="aldeano a1" viewBox="0 0 13 26"><circle cx="6.5" cy="4" r="2.6"/><path d="M4 8h5l1 9H3l1-9z"/><rect x="3.6" y="17" width="2.4" height="9"/><rect x="7" y="17" width="2.4" height="9"/></svg>
+      <svg class="aldeano a2" viewBox="0 0 13 26"><circle cx="6.5" cy="4" r="2.6"/><path d="M4 8h5l1 9H3l1-9z"/><rect x="3.6" y="17" width="2.4" height="9"/><rect x="7" y="17" width="2.4" height="9"/></svg>
+      <svg class="aldeano a3" viewBox="0 0 13 26"><circle cx="6.5" cy="4" r="2.6"/><path d="M4 8h5l1 9H3l1-9z"/><rect x="3.6" y="17" width="2.4" height="9"/><rect x="7" y="17" width="2.4" height="9"/></svg>
+    </div>
+
+    <div class="hudbar arriba">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="chip">Aldea · Prosperidad <b>62</b></div>
+        <div class="chip">Defensa <b>45</b> <span class="peligro">+8 torres</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="chip">Torres: <b>2 / 3</b></div>
+        <div class="chip">«El viejo que se fugó con el peaje»</div>
+      </div>
+    </div>
+  </div>
+  <p class="nota-esc"><b>De detrás de la escena:</b> herencia de BoC — prosperidad y defensa por
+  sitio, inversión en pilares, torres en huecos (<code>05_POBLADOS_Y_CONSTRUCCION</code>) —
+  más lo nuevo de Valcoria: cada sitio con su <b>deuda viva</b> (el chip de la derecha), PNJ que
+  te recuerdan y liquidación explicada de cada moneda. Post-demo: el hueco libre se convierte en
+  obra AoE-lite (granja/mercado/muralla).</p>
+</section>
+
+<!-- ============ ARTE CONCEPTUAL ============ -->
+<section class="escena" id="concepto">
+  <div class="esc-head"><span class="num">OBJETIVO</span><h2>Arte conceptual — la barra a la que tiramos</h2></div>
+  <p class="esc-sub">Tres lienzos generados como referencia demeta: esto es el <b>tono</b> que las
+  escenas anteriores apuntan a conseguir con low-poly + luz, niebla y paleta (fotografía de
+  película medieval, referencia «El Señor de los Anillos»).</p>
+  <div class="galeria">
+    <div class="cadr"><img src="img/batalla_fp.png" alt="Batalla en primera persona">
+      <div class="pie"><b>Batalla en 1.ª persona</b>Tu mano, tu escudo, la línea enemiga en óxido
+      saliendo de la niebla. Luz de tarde y polvo en el aire.</div></div>
+    <div class="cadr"><img src="img/sitio_vivo.png" alt="Sitio vivo">
+      <div class="pie"><b>El sitio vivo</b>Un poblado cansado, no roto: madera, barro, estandartes
+      gastados y torres de guardia al atardecer.</div></div>
+    <div class="cadr"><img src="img/mapa_mundo.png" alt="Mapa del mundo">
+      <div class="pie"><b>El mundo por sectores</b>Valles con niebla, el camino real y los sitios
+      marcados con su bandera: el grafo de BoC, pintado como película.</div></div>
+  </div>
+</section>
+
+<!-- ============ DECISIONES ============ -->
+<section class="escena" id="decisiones">
+  <div class="esc-head"><span class="num">DETRÁS</span><h2>Qué decisión vives en cada escena</h2></div>
+  <table class="tabla">
+    <tr><th>Escena</th><th>Lo que pruebas</th><th>De dónde sale</th></tr>
+    <tr><td><b>Mapa</b></td><td>Sectores + grafo de sitios, paralaje, día/noche, 6 sitios de la demo</td>
+      <td>BoC (5×5 TMX + 209 nodos) mejorado · <code>04_MAPA_MUNDIAL</code></td></tr>
+    <tr><td><b>Batalla</b></td><td>Fórmula de daño de BoC intacta + <b>bloqueo que mitiga 60 %</b> y cuesta 10 de aliento; pausa táctica</td>
+      <td>Fila 11 de la tabla de Fase B (decisión 2026-10-26) · <code>13_CODIGO_NATIVO</code></td></tr>
+    <tr><td><b>Sitio</b></td><td><b>Torres puras en la demo</b> (2/3 construidas); prosperidad/defensa; deuda viva del sitio</td>
+      <td>Fila 4 de la tabla de Fase B: demo torres, post-demo AoE-lite</td></tr>
+    <tr><td><b>Todas</b></td><td>Paleta ceniza/óxido/sebo, luz de tarde, niebla 60 m, HUD apagado con oro escaso</td>
+      <td><code>docs/arte/00_ESTILO.md</code> (aprobado por el dueño)</td></tr>
+  </table>
+</section>
+
+<footer>
+  <b>VALCORIA — Deuda de Sangre</b> · «Estandarte de Ceniza» · mockup visual del 2026-10-26 ·
+  no jugable, sin motor: solo muestra la dirección. Reglas y cifras: canónicas del repo
+  (aliento 100 · 4/s, torres 3/2, bloqueo −60 %, niebla 60 m). Todo lo extraído de Blade of
+  Conquest queda guardado en <code>docs/ingenieria_inversa/</code>.
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+(function(){
+  "use strict";
+  var lerp=function(a,b,t){return a+(b-a)*t;};
+  function hex(c){var n=parseInt(c.slice(1),16);return[n>>16&255,n>>8&255,n&255];}
+  function mix(c1,c2,t){var a=hex(c1),b=hex(c2);
+    return"rgb("+Math.round(lerp(a[0],b[0],t))+","+Math.round(lerp(a[1],b[1],t))+","+Math.round(lerp(a[2],b[2],t))+")";}
+  function clamp(t){return Math.max(0,Math.min(1,t));}
+
+  /* ===== ESCENA 1: MAPA — día/noche + paralaje ===== */
+  var PALS=[
+    {n:"amanecer",a:"#55617a",b:"#d9a86e",c:"#b08a5e",oc:"#ffdf9e",og:"rgba(255,214,140,.45)",ox:"12%",oy:"64%",nb:"#b9a98a",br:".92",es:0},
+    {n:"tarde",a:"#6e86a0",b:"#d9b273",c:"#a58c62",oc:"#ffe9c0",og:"rgba(240,196,120,.5)",ox:"72%",oy:"24%",nb:"#c4b294",br:"1",es:0},
+    {n:"noche",a:"#0d1020",b:"#1c2333",c:"#232c3d",oc:"#dfe5ee",og:"rgba(190,205,235,.3)",ox:"82%",oy:"14%",nb:"#1a2030",br:".55",es:1}
+  ];
+  var stMap=document.getElementById("stage-mapa"),
+      hora=document.getElementById("hora"),
+      horaVal=document.getElementById("hora-val");
+  function aplicaHora(t){
+    var i=t<1?0:1, t2=t<1?t:t-1, A=PALS[i], B=PALS[i+1], s=stMap.style;
+    s.setProperty("--cielo-a",mix(A.a,B.a,t2));
+    s.setProperty("--cielo-b",mix(A.b,B.b,t2));
+    s.setProperty("--cielo-c",mix(A.c,B.c,t2));
+    s.setProperty("--orbe-c",mix(A.oc,B.oc,t2));
+    s.setProperty("--orbe-glow",t2<.5?A.og:B.og);
+    s.setProperty("--orbe-x",lerp(parseFloat(A.ox),parseFloat(B.ox),t2)+"%");
+    s.setProperty("--orbe-y",lerp(parseFloat(A.oy),parseFloat(B.oy),t2)+"%");
+    s.setProperty("--niebla-c",mix(A.nb,B.nb,t2));
+    s.setProperty("--terreno-brillo",lerp(parseFloat(A.br),parseFloat(B.br),t2));
+    s.setProperty("--estrellas",lerp(A.es,B.es,t2));
+    var nom=t<.5?"amanecer":(t<1.5?"tarde":"noche");
+    horaVal.textContent=nom;
+    var chip=stMap.querySelector(".dias-chip b");
+    if(chip)chip.textContent=nom;
+    stMap.querySelectorAll(".sitio").forEach(function(el){
+      el.classList.toggle("activo",t>1.55);
+    });
+  }
+  aplicaHora(1);
+  hora.addEventListener("input",function(){aplicaHora(parseFloat(hora.value));});
+
+  /* paralaje común */
+  document.querySelectorAll(".stage").forEach(function(st){
+    st.addEventListener("mousemove",function(e){
+      var r=st.getBoundingClientRect(),
+          dx=(e.clientX-r.left)/r.width-.5,
+          dy=(e.clientY-r.top)/r.height-.5;
+      st.querySelectorAll(".capa[data-prof]").forEach(function(c){
+        var p=parseFloat(c.dataset.prof)||0;
+        c.style.transform="translate("+(-dx*p)+"px,"+(-dy*p*.5)+"px)";
+      });
+    });
+    st.addEventListener("mouseleave",function(){
+      st.querySelectorAll(".capa").forEach(function(c){c.style.transform="";});
+    });
+  });
+
+  /* ===== ESCENA 2: BATALLA — fórmulas de Fase B ===== */
+  var vida=100, aliento=100,
+      ATQ=35.2, DEF_NETA=8, SUELO=.25, BLOQUEO=40, ANTIBLOQUEO=10,
+      vidaF=document.getElementById("vida-fill"), vidaT=document.getElementById("vida-txt"),
+      alenF=document.getElementById("alen-fill"), alenT=document.getElementById("alen-txt"),
+      reg=document.getElementById("registro"), stageB=document.getElementById("stage-batalla"),
+      manos=document.getElementById("manos");
+  function pinta(){
+    vidaF.style.width=Math.max(0,vida)+"%";
+    alenF.style.width=Math.max(0,aliento)+"%";
+    vidaT.textContent=Math.round(Math.max(0,vida))+" / 100";
+    alenT.textContent=Math.round(aliento)+" / 100 · +4/s";
+  }
+  function log(msg,cls){
+    reg.classList.add("on");
+    reg.innerHTML='<div'+(cls?' class="'+cls+'"':'')+'>'+msg+'</div>'+reg.innerHTML;
+    while(reg.children.length>4)reg.removeChild(reg.lastChild);
+  }
+  function flotante(txt,cls){
+    var f=document.createElement("div");
+    f.className="flotante "+cls; f.textContent=txt;
+    f.style.left=(44+Math.random()*14)+"%"; f.style.top=(34+Math.random()*10)+"%";
+    stageB.appendChild(f); setTimeout(function(){f.remove();},1300);
+  }
+  function golpeEntra(){
+    var d=ATQ-2*DEF_NETA, crit=Math.random()<.12, msg="";
+    if(crit)d*=1+Math.random()*.5;
+    d=Math.max(d,ATQ*SUELO);
+    d*=.9+Math.random()*.2;
+    return{d:d,crit:crit,msg:"atk_ef "+ATQ.toFixed(1)+" − 2×"+DEF_NETA+" = "+(ATQ-2*DEF_NETA).toFixed(1)+
+      (crit?" · ¡CRÍTICO!":"")+" · suelo 25 % · var ±10 %"};
+  }
+  document.getElementById("btn-golpe").addEventListener("click",function(){
+    var g=golpeEntra();
+    vida-=g.d; manos.classList.remove("golpea"); void manos.offsetWidth; manos.classList.add("golpea");
+    flotante("−"+Math.round(g.d),g.crit?"crit":"dano");
+    log("Golpe recibido: <b class='mal'>−"+Math.round(g.d)+"</b> · "+g.msg,"");
+    if(vida<=0){log("<b>Has caído.</b> La banda te recoge y el día sigue — sin muerte permanente del mundo (Kenshi se suaviza).","");
+      vida=100; setTimeout(pinta,900);}
+    pinta();
+  });
+  document.getElementById("btn-bloqueo").addEventListener("click",function(){
+    var g=golpeEntra(), p=(BLOQUEO-ANTIBLOQUEO)/100;
+    if(aliento<10){
+      vida-=g.d;
+      flotante("¡GUARDIA ROTA! −"+Math.round(g.d),"crit");
+      log("Sin aliento para bloquear: el golpe entra <b class='mal'>completo</b> (−"+Math.round(g.d)+") y tambaleas 1 s.","");
+    } else if(Math.random()<p){
+      var d2=g.d*.4; aliento-=10; vida-=d2;
+      flotante("BLOQUEADO −"+Math.round(d2)+" (−60 %)","bloq");
+      log("¡Bloqueado! Tirada ("+BLOQUEO+"−"+ANTIBLOQUEO+")/100 = <b>"+Math.round(p*100)+" %</b> → sale. "
+        +"Entra <b>"+Math.round(d2)+"</b> en vez de "+Math.round(g.d)+" · pagas 10 de aliento.","");
+    } else {
+      vida-=g.d;
+      flotante("−"+Math.round(g.d),g.crit?"crit":"dano");
+      log("Tirada de bloqueo fallida ("+Math.round(p*100)+" %): golpe completo <b class='mal'>−"+Math.round(g.d)+"</b>. "+g.msg,"");
+    }
+    pinta();
+  });
+  document.getElementById("btn-pausa").addEventListener("click",function(){
+    stageB.classList.add("pausado");
+    document.getElementById("pausa-velo").classList.add("on");
+  });
+  document.getElementById("btn-seguir").addEventListener("click",function(){
+    stageB.classList.remove("pausado");
+    document.getElementById("pausa-velo").classList.remove("on");
+  });
+  setInterval(function(){ if(aliento<100){aliento=Math.min(100,aliento+2); pinta();} },500);
+  pinta();
+})();
+</script>
+</body>
+</html>
