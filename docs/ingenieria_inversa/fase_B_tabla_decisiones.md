@@ -4,7 +4,8 @@
 > Valcoria ↔ referencias** y dejar en una tabla qué tomamos de cada uno.
 > Basada en: inventario de Fase A (`fase_A_inventario_referencias.md`), anatomía BoC
 > (dossiers 00–11 de esta carpeta) y las 98 fichas del repo.
-> **Cada fila con 💬 es una decisión que el dueño debe confirmar.**
+> **Estado: tabla CERRADA.** Decisiones tomadas el 2026-10-26 por el agente con
+> delegación expresa del dueño («Decide tú»). Nada queda pendiente de confirmación.
 
 ## 1. El esqueleto: Blade of Conquest, sistema por sistema
 
@@ -13,14 +14,14 @@
 | 1 | Mundo por sectores (5×5 TMX + grafo de 209 nodos) | **Revive mejorado** | misma estructura de sectores+grafo, render WebGL con paralaje/día-noche/nombres, niebla de guerra | `04_MAPA_MUNDIAL.md` §7 |
 | 2 | 88 sitios de 9 tipos, jerarquía aldea→castillo (`belong`) | **Revive igual mejorado** | misma taxonomía en JSON; vistas de sitio con vida | `05_POBLADOS_Y_CONSTRUCCION.md` §5 |
 | 3 | Prosperidad + defensa por sitio, inversión en 3 pilares | **Revive igual mejorado** | mismos dos números + memoria de eventos y liquidación explicada | `05` §5, `10_ECONOMIA` §5 |
-| 4 | Construcción: solo torres en huecos (3/2) | 💬 **Decisión abierta** | (a) conservar torres como construcción ligera; (b) ampliar a capa "obra" estilo AoE-lite; (c) nada de construcción | abajo §3 |
+| 4 | Construcción: solo torres en huecos (3/2) | ✅ **Decidido: (a)+(b) en dos tiempos** | **Demo: torres puras** (fidelidad BoC: invertir oro en hasta 3/2 torres por sitio; coste mínimo). **Post-demo: capa "obra" estilo AoE-lite** (2–3 edificios por sitio que mueven prosperidad/defensa). Construcción libre por tile: **nunca** | abajo §3 |
 | 5 | 23 tropas, árbol `pre_unit`, `base + growth×nv` | **Revive igual mejorado** | mismo árbol y fórmula, JSON versionado, veteranía por actos | `06_UNIDADES_TROPAS.md` §5 |
 | 6 | 32 skills (4 escuelas, ramas 5+5+3, prerrequisitos OR) | **Revive transformado** | mismos árboles con recurso **aliento** (no mana) y desbloqueos narrativos | `07_HABILIDADES_TALENTOS.md` §4 |
 | 7 | 17 talentos por atributo | **Revive igual mejorado** | mismos perfiles ligados a Deuda y capitanes | `05` §2 |
 | 8 | Personajes con STR/AGI/INT, lealtad 75–100, honor | **Revive transformado** | mismos stats + **capitanes con memoria** (lazos, rencores, deudas) | `08_PERSONAJES_Y_REINOS.md` §4 |
 | 9 | Reinos con rey/vasallos/sitios en `init_datas` | **Revive igual mejorado** | mismo arranque declarativo JSON | `06` |
 | 10 | Batalla: formaciones 20 huecos, órdenes, héroe controlado, auto-batalla | **Revive mejorado** | idéntico esqueleto + vista 1.ª persona, pausa táctica, informe de Crónica | `09_BATALLA.md` §5 |
-| 11 | Fórmula de daño `atk_ef −2×def`, suelo 25 %, crit ×1,0–1,5, var ±10 %, bloqueo anula | **Revive con ajuste** | misma fórmula con bloqueo que mitiga y penetración explícita, constantes publicadas | `13_CODIGO_NATIVO.md` §1, §7 |
+| 11 | Fórmula de daño `atk_ef −2×def`, suelo 25 %, crit ×1,0–1,5, var ±10 %, bloqueo anula | ✅ **Revive con ajuste (decidido)** | misma fórmula; **el bloqueo deja de anular: mitiga 60 %** (el golpe bloqueado entra al 40 %), cuesta **10 de aliento** por golpe bloqueado y sin aliento la guardia se rompe (golpe completo + 1 s de tambaleo); penetración explícita y constantes publicadas | abajo §4 |
 | 12 | Bandas errantes: respawn `rs_time`, patrulla, botín anidado | **Revive igual mejorado** | igual + cabecillas con nombre y memoria | `11_ENEMIGOS_Y_RESPAWN.md` §3 |
 | 13 | Economía: botín 2 niveles, mercados por probabilidad, presupuesto semanal por personaje | **Revive mejorado** | mismos flujos + precios vivos + liquidación explicada; **sin IAP** | `10_ECONOMIA_Y_COMERCIO.md` §5 |
 | 14 | Guardado clave-valor plano + puntos de guardado | **Revive transformado** | esquema versionado `SAVE_VERSION=1`, autosave, Crónica dentro del save | `12_GUARDADO.md` §2 |
@@ -63,11 +64,33 @@ El pitch original hablaba de "niveles de construcción estilo Age of Empires", p
 | (b) AoE-lite | añadir 2–3 edificios por sitio (granja/mercado/muralla) con efectos en prosperidad/defensa | medio | ✔ para **post-demo** (encaja con prosperidad/defensa ya existentes) |
 | (c) AoE completo | construcción libre por tile | alto | ✘ contradice la escala móvil y la visión actual |
 
-**Recomendación registrada**: (a) en la demo, (b) como evolución natural documentada en
-`docs/sistemas/` cuando la demo esté verde. Pendiente de la palabra del dueño.
+**DECIDIDO (2026-10-26, con delegación del dueño)**: **(a) torres puras en la demo**;
+**(b) AoE-lite post-demo** (encaja con prosperidad/defensa que ya existen, se documentará
+en `docs/sistemas/` cuando la demo esté verde); **(c) descartado** (contradice la escala
+móvil y la visión actual).
 
-## 4. Próximos pasos
+## 4. Decisión cerrada: bloqueo — deja de anular, mitiga 60 %
 
-1. El dueño valida esta tabla (sobre todo filas 4, 11 y §3).
-2. Con la validación, Fase D: guías "cómo se construye cada cosa, pero mejor" en
-   `docs/nueva_ingenieria/` y push final.
+En BoC el bloqueo era una lotería todo-o-nada:
+`si tirada(getPropRatio(B.bloqueo − A.antibloqueo)) → daño = 0`
+(dossier `13_CODIGO_NATIVO.md` §1). El dueño propuso mitigar y se adopta:
+
+| Aspecto | Regla en Valcoria |
+|---|---|
+| Tirada de bloqueo | igual que BoC: probabilidad = (bloqueo − antibloqueo) / 100 |
+| Golpe bloqueado | entra al **40 %** del daño que habría entrado (tras suelo 25 %, crítico y varianza) |
+| Coste | bloquear consume **10 de aliento** por golpe absorbido |
+| Guardia rota | sin aliento para pagar: el golpe entra **completo** + **1 s** de tambaleo |
+| Por qué así | mata la lotería de BoC y el spam de escudo; ata el bloqueo a la economía de aliento (canon: 100 · regen 4/s combate · 5/s fuera) |
+
+Perillas de balance ajustables en playtest (no dogma): el 60 % de mitigación, el coste
+10 de aliento y el 1 s de tambaleo se afinarán con los tests de `docs/batalla/`.
+
+## 5. Próximos pasos
+
+1. ~~El dueño valida esta tabla~~ **CERRADO (2026-10-26)**: el dueño delegó
+   («Decide tú»); filas 4, 11 y §3 quedan cerradas tal como constan aquí.
+2. Siguiente ronda elegida: **mockups visuales del "mucho más bonito"** — batalla en
+   1.ª persona, vista de sitio vivo y mapa con paralaje/día-noche — antes de escribir
+   la Fase D completa; las guías "cómo se construye cada cosa, pero mejor" van después
+   en `docs/nueva_ingenieria/`.
