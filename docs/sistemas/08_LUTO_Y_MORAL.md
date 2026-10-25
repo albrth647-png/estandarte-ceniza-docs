@@ -54,13 +54,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/luto.json` — `{ luto_dias, techo_moral, efectos }`.
+- **Datos (por crear):** `data/luto.json` — `{ luto_dias, techo_moral, efectos }`.
 - **Tipos:** `Luto` en `js/data/game_types.js`.
 - **Validación:** cruce con `data/economia.json` (coste de funeral) y `../batalla/01_CIFRAS.md`
   (moral) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/luto.js` — aplica luto y moral de campaña; sin DOM ni reloj (día
-  por `save.day`).
-- **Tests:** `tests/luto.test.js`: el luto dura 7 días; sin salarios la moral baja −5/día; la
+  por día de juego).
+- **Tests (por escribir):** `tests/luto.test.js`: el luto dura 7 días; sin salarios la moral baja −5/día; la
   muerte de un capitán pesa doble.
 
 ---

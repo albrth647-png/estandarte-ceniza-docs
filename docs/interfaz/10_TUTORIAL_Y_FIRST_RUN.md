@@ -13,7 +13,7 @@
 ## 1. El principio: 4 reglas
 
 1. **Nunca una pantalla de manual.** Si hay que leer un párrafo para jugar, el diseño ha fallado.
-2. **Una idea por vez**, en **una línea**, **3 s**, por el canal de aviso ya existente
+2. **Una idea por vez**, en **una línea**, **3 s**, por el canal de aviso están previstoste
    (`07_AVISOS_Y_RUMORES.md` §1). Nada de popups con «OK».
 3. **Se enseña en el momento en que importa**: la lección sale **justo antes** de necesitarse, no
    en una lista al principio.
@@ -26,8 +26,8 @@
 
 | # | Pantalla | Qué ve | Qué aprende |
 |---|---|---|---|
-| 1 | Portada | Título + una tecla | Existe (armazón actual) |
-| 2 | Menú | Continuar / nueva partida / opciones | Existe |
+| 1 | Portada | Título + una tecla | Por construir (diseño cerrado) |
+| 2 | Menú | Continuar / nueva partida / opciones | Por construir (diseño cerrado) |
 | 3 | **Crear partida** | Nombre, origen, dificultad | Un toque por casilla; los 3 orígenes explicados en **una línea** (`../sistemas/13_ESTADISTICAS_DEL_HEROE.md`) |
 | 4 | **Prólogo** | La plaza del cadalso (`../historia/03_RECORRIDO.md` §2) | Que el mundo **recuerda** y que **debes** |
 | 5 | **Primer paso** | La palanca se ilumina sola | **Mover** = palanca izquierda (`00_CONTROLES.md`) |
@@ -54,7 +54,7 @@
 | 7 | El aliento | primer Desvío fallido | «Gastas aliento al defenderte: mídelo.» |
 | 8 | La deuda | primera derrota | «Caíste. Te rescatan o trabajas la deuda.» |
 
-- **Son 8, no 30.** Cualquier otra enseñanza se mete **dentro** de una lección existente.
+- **Son 8, no 30.** Cualquier otra enseñanza se mete **dentro** de una de las 8 lecciones.
 - **Orden fijo** en el registro de lecciones, pero **el disparo es por evento**: si el jugador ve
   la lección 6 antes que la 5 (batea antes de cobrar), no se rompe nada.
 
@@ -86,16 +86,16 @@
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/tutoriales.json` — `{ id, orden, disparador, txt_es, txt_en }` con sus **8**
+- **Datos (por crear):** `data/tutoriales.json` — `{ id, orden, disparador, txt_es, txt_en }` con sus **8**
   filas; sin lógica en el JSON.
 - **Tipos:** `Tutorial` en `js/data/game_types.js` (regla 4).
 - **Sistema puro:** `js/systems/tutorial.js` — dada la lista de eventos y las vistas, devuelve la
   lección a mostrar (o `null`); **sin DOM, sin reloj**, el evento entra por parámetro.
 - **Guardado:** `SaveState.tutoriales = { vistas: [], ayuda: "inicio" }` — **aditivo**
-  (**SAVE_VERSION 3**, `../produccion/02_GUARDADO_Y_DATOS.md`); `migrateSave()` lo rellena vacío.
+  (bandera aditiva, `../produccion/02_GUARDADO_Y_DATOS.md`); la migración lo rellena vacío.
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `id` y paridad ES/EN en
   `tools/validate_data.js` (regla 10).
-- **Tests:** `tests/tutorial.test.js`, mínimo 3 casos (normal, borde, error): una lección vista no
+- **Tests (por escribir):** `tests/tutorial.test.js`, mínimo 3 casos (normal, borde, error): una lección vista no
   se repite; dos disparos a la vez encolan una; un evento desconocido no rompe.
 
 ---
@@ -110,7 +110,7 @@
 | Pantalla de manual | **0** |
 | Repeticiones | **8** en «Volver a ver» (1 entrada por lección) |
 | Desactivación | 1 llave en Opciones (3 estados) |
-| `SAVE_VERSION` | **3** (aditivo) |
+| Guardado | versionado aditivo |
 
 ---
 
@@ -121,7 +121,7 @@
 > hablar) sobre las pantallas del armazón actual.
 
 > **Y sigue el juego completo.** Si una fase nueva necesita una enseñanza, **entra en la lista de
-> 8 como otra más** (o se amplía una existente); el canal, la duración de 3 s y la llave de
+> 8 como otra más** (o se amplía una de las 8); el canal, la duración de 3 s y la llave de
 > Opciones **no cambian**. Crecer = más filas en `tutoriales.json`, no un sistema nuevo.
 
 ---

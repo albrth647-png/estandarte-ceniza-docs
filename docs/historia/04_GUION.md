@@ -183,7 +183,7 @@
 | Perdonar o reprochar a Sira | Grieta o refuerzo de la alianza |
 | Los 3 caminos de la asamblea | **Final** y epílogo según Firma |
 
-- **Ninguna decisión bloquea:** siempre hay salida (`01_FASES.md` §1 regla 7).
+- **Ninguna decisión bloquea:** siempre hay salida (`../produccion/01_FASES.md` §1 regla 7).
 
 ---
 
@@ -234,4 +234,4 @@
 - Cómo se cuenta en pantalla → `03_RECORRIDO.md`
 - El mundo y sus textos ambientales → `08_TEXTO_DEL_MUNDO.md`
 - Los encargos de la trama → `../misiones/05_ENCARGOS_DE_LA_HISTORIA.md`
-- El motor que ejecuta los nodos → `js/systems/dialogue.js`
+- El motor que ejecutará los nodos → `js/systems/dialogue.js` (por construir)

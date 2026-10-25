@@ -57,11 +57,11 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/animaciones.json` — `{ id, clip, duracion_ms, bucle, atado_a }`.
+- **Datos (por crear):** `data/animaciones.json` — `{ id, clip, duracion_ms, bucle, atado_a }`.
 - **Tipos:** `Animacion` en `js/data/game_types.js`.
 - **Validación:** el `clip` existe en el `.glb` (cruce con `data/assets.json`) y la duración es
   coherente con `01_CIFRAS.md`; sin eso, falla (`tools/validate_data.js`).
-- **Tests:** `tests/animaciones.test.js`: el ataque no supera la cadencia; andar/correr se mezclan;
+- **Tests (por escribir):** `tests/animaciones.test.js`: el ataque no supera la cadencia; andar/correr se mezclan;
   una animación sin clip rompe la carga.
 
 ---

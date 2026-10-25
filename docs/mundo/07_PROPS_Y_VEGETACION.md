@@ -53,7 +53,7 @@
 - **Instancing** obligatorio para hierba y arbustos.
 - Si una zona se pasa de presupuesto, se recorta **densidad**, nunca distancia de dibujo
   (recortar distancia se nota más).
-- Verificado con `npm run smoke` en 960×683 y 915×555.
+- Verificable con el humo (por implementar) en 960×683 y 960×540.
 
 ---
 

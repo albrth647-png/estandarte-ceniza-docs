@@ -76,14 +76,14 @@
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/encargos_historia.json` — mismo formato que `02_ESTRUCTURA_DE_ENCARGO.md` §1,
+- **Datos (por crear):** `data/encargos_historia.json` — mismo formato que `02_ESTRUCTURA_DE_ENCARGO.md` §1,
   con `plazo_dias: 0` (no caducan) y `cadenas` de la columna.
 - **Tipos:** `EncargoHistoria` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de **banderas** y orden de hitos en
   `tools/validate_data.js`: un hito no puede pedir una bandera que no existe antes.
 - **Sistema puro:** los hitos se resuelven en `js/systems/encargos.js` con las banderas de
   `SaveState`; sin DOM ni reloj.
-- **Tests:** `tests/encargos_historia.test.js`, mínimo 3 casos (normal, borde, error): el orden de
+- **Tests (por escribir):** `tests/encargos_historia.test.js`, mínimo 3 casos (normal, borde, error): el orden de
   los 6 del Acto I es libre; `hist_asamblea` no se ofrece antes de tiempo; ninguna bandera queda
   inalcanzable.
 

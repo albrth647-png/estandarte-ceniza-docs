@@ -3,7 +3,7 @@
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
 > Todo texto visible nace **en ES y EN a la vez** (regla 10 de `../../AGENTS.md`) y pasa por una
-> clave `txt_*` (el motor `js/core/i18n.js` y `t(clave)` ya existen). Aquí están **la voz, el
+> clave `txt_*` (el motor `js/core/i18n.js` y `t(clave)` están previstos). Aquí están **la voz, el
 > tamaño y el estilo** de esos textos.
 
 ---
@@ -40,7 +40,7 @@
 ## 3. Paridad ES/EN (obligatoria)
 
 - Toda clave nace **en `strings_es.json` y `strings_en.json` en el mismo commit**.
-- `npm run validate` falla si falta una pareja (`validateStringsPair`); `npm run qa` no pasa.
+- el validador (por crear) fallará si falta una pareja; el QA no pasará.
 - **El ingles conserva el tono**, no la sintaxis: no se traduce palabra por palabra; se traduce
   **voz**.
 - **Nada de texto fuera de clave:** ni un cartel, ni un error de sistema.
@@ -88,11 +88,11 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/strings_es.json` / `strings_en.json` (paridad). Ya existe la infraestructura.
+- **Datos (por crear):** `data/strings_es.json` / `strings_en.json` (paridad). La infraestructura está por construir.
 - **Tipos:** `Idioma` y `ClaveTexto` en `js/data/game_types.js`.
 - **Validación:** `validateStrings` + `validateStringsPair` en `js/data/schemas.js` y
   `tools/validate_data.js`.
-- **Tests:** `tests/i18n.test.js` (existente) + paridad de claves nuevas.
+- **Tests (por escribir):** `tests/i18n.test.js` (por escribir) + paridad de claves nuevas.
 
 ---
 
@@ -124,4 +124,4 @@
 - Las líneas de la trama → `../historia/04_GUION.md`
 - El texto ambiental → `../historia/08_TEXTO_DEL_MUNDO.md`
 - Cómo se pinta → `02_HUD.md`, `01_PANTALLAS.md`
-- El motor i18n → `js/core/i18n.js`
+- El motor i18n → `js/core/i18n.js` (por construir)

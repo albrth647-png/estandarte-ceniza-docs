@@ -26,7 +26,7 @@
 | Riesgo | Detección | Plan B |
 |---|---|---|
 | **Audio offline no suena en algún móvil** | Humo en dispositivo real | Fallback: silencio total sin error (`../arte/02_AUDIO.md` §1) |
-| **`localStorage` lleno / corrupto** | Test de migración | Respaldo `eb_save.corrupt` + migración aditiva |
+| **`localStorage` lleno / corrupto** | Test de migración | Respaldo `valcoria_save.corrupt` + migración aditiva |
 | **GLB pesados** | Presupuesto de assets | Recorte con `tools/recortar_glb.mjs`; **~90 MB demo** ✅ 2026-10-02 (antes 8 MB) |
 | **Terceros sin licencia** | `validate_data.js` | Ficha obligatoria antes de commit; no entra |
 | **Rutas absolutas rompen la APK** | ESLint + validadores | Solo rutas relativas (`data/…`) |

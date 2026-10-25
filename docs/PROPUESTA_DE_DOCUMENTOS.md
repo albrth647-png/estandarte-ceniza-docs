@@ -108,7 +108,7 @@ Se escribe **de un documento a la vez**, respetando el orden en que los pide cad
 |---|---|
 | `00_TIPOS_DE_ENCARGO.md` | Categorías de encargo (carga, cobro, caza, escolta…) y cuántos tiene el juego. |
 | `01_TABLONES_Y_PORTAVOCES.md` | Dónde se cuelgan, quién los publica y cómo cambia según tu Firma. |
-| `02_ESTRUCTURA_DE_ENCARGO.md` | Fases de todo encargo: oferta → pista → objetivo → cobro; el fallo **nunca bloquea**. |
+| `02_ESTRUCTURA_DE_ENCARGO.md` | 9 campos y 6 objetivos de todo encargo: oferta → objetivo → cobro; el fallo **nunca bloquea**. |
 | `03_CADENAS_Y_RUMORES.md` | Cadenas encadenadas, rumores que abren otros y encargos que nacen de tu memoria. |
 | `04_PAGOS_Y_RECOMPENSAS.md` | Pagos en oro, componenda o servicio; qué cobras por hacerlo de una forma u otra. |
 | `05_ENCARGOS_DE_LA_HISTORIA.md` | Los encargos principales de la historia, ligados a los giros y a los 3 finales. |
@@ -170,7 +170,7 @@ Se escribe **de un documento a la vez**, respetando el orden en que los pide cad
 | `01_ASSETS.md` | Qué hay (10 GLB con ficha) y qué falta conseguir, con licencia de cada pieza. |
 | `02_AUDIO.md` | Sonido **100 % offline**: síntesis Web Audio o ficheros propios/libres con ficha. |
 | `03_ANIMACIONES.md` | Animaciones de héroe, tropas y props, con sus tiempos. |
-| `04_EFECTOS_Y_PARTICULAS.md` | Sangre, polvo, chispas — solo en escenas, nunca en `js/systems/*`. |
+| `04_EFECTOS_Y_PARTICULAS.md` | Sangre, polvo, chispas — solo en escenas, nunca en la simulación (los futuros `js/systems/*`). |
 | `05_ICONOS.md` | Iconos de órdenes, ítems y estados, legibles desde 48 px. |
 
 ## 10. 🏗️ `produccion/` — para que salga vivo y a tiempo (13 documentos)
@@ -205,4 +205,5 @@ Se escribe **de un documento a la vez**, respetando el orden en que los pide cad
    **«Qué entra en la demo (Fase 1)»**.
 2. Las cifras que fija van en su **tabla de cifras**, para que el dueño las apruebe de un vistazo.
 3. Lo que no esté decidido se marca 🟡 **dentro**; no se inventa.
-4. `npm run qa` en verde y se marca ✅ en `PLAN_DOCUMENTOS.md` y en el índice de su carpeta.
+4. Cuando exista el build: `npm run qa` en verde y se marca ✅ en `PLAN_DOCUMENTOS.md` y en
+   el índice de su carpeta.

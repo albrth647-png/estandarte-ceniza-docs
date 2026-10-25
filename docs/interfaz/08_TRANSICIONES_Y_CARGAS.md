@@ -36,7 +36,7 @@
 - Si la preparación **no llega a tiempo**, se dibuja el nodo nuevo **por capas** (suelo → props →
   PNJ) en menos de **1 s**, con el fundido tapando el relleno. **Nunca** un cartel de «cargando».
 - El presupuesto de render (`../arte/00_ESTILO.md`) deja margen para que el cambio no dé tirón.
-- **Medido** con la batería de humo (`npm run smoke`) en 960×683 y 915×555.
+- **A medir** con la batería de humo en 960×683 y 960×540.
 
 ---
 
@@ -54,8 +54,8 @@
 - La preparación de escena vive en el `scene_manager` y el render (`js/render/*`); **no simula**
   (regla 2 de `../../AGENTS.md`).
 - **Tipos:** `Transicion` en `js/data/game_types.js`.
-- **Tests:** `tests/transiciones.test.js`: ninguna transición dura más del tope; un nodo sin
-  preparar no deja la pantalla en negro; el humo sigue verde.
+- **Tests (por escribir):** `tests/transiciones.test.js`: ninguna transición dura más del tope; un nodo sin
+  preparar no deja la pantalla en negro; el humo (por implementar) lo comprobará.
 
 ---
 

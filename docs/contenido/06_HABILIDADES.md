@@ -98,7 +98,7 @@ deudas de combate sabes pagar**. Es corto y se lee de un vistazo (Pilar 6).
   en la escribanía (`../contenido/09_EDIFICIOS_Y_ESTRUCTURAS.md`). Los nodos gastados **no
   devuelven** el punto: recuerdan que cambiaste de oficio de armas.
 - **Todo es aditivo en el guardado:** el reparto vive en `SaveState.juramento`
-  (**SAVE_VERSION 3**, §8); migrar rellena vacío, nunca borra.
+  (aditivo, §8); migrar rellena vacío, nunca borra.
 
 ### 4.3 Las 3 ramas y sus 12 nodos
 
@@ -156,7 +156,7 @@ con oro: el árbol solo **añade** el gasto de puntos, nunca sustituye el nivel.
 
 - **Reglas del requisito:** se comprueba **al repartir** (pantalla del árbol) y **al usar** (en
   batalla); un nodo con el nivel justo pero **sin su padre** sigue bloqueado; el nivel y el punto
-  se gastan **a la vez**. La validación vive en `js/systems/habilidades.js` y en
+  se gastan **a la vez**. La validación vivirá en `js/systems/habilidades.js` y en
   `tools/validate_data.js` (§8).
 - **Las acciones de las tropas no tienen nivel propio:** salen de su **rol** (§5), no del nivel del
   héroe. Las habilidades del **enemigo** no se copian (`01_ENEMIGOS.md` §2).
@@ -215,18 +215,18 @@ de la **orden** vigente.
 
 ## 8. Datos, tipos y validación
 
-- **Datos:** `data/habilidades.json` — `{ id, tipo (heroe/tropa), coste, efecto, aprende_en,
+- **Datos (por crear):** `data/habilidades.json` — `{ id, tipo (heroe/tropa), coste, efecto, aprende_en,
   una_vez }` para el tronco, **más** `{ rama (filo/muro/voz), padre, nivel, pasiva }` para los
   **nodos del árbol** (§4.3). Un solo fichero, dos familias de fila.
 - **Tipos:** `Habilidad` y `NodoArbol` en `js/data/game_types.js` (una sola vez, regla 4).
-- **Guardado:** `SaveState.juramento = { puntos, gastados: [] }` — **aditivo** (**SAVE_VERSION 3**,
-  `../produccion/02_GUARDADO_Y_DATOS.md`); `migrateSave()` rellena vacío, nunca borra.
+- **Guardado:** `SaveState.juramento = { puntos, gastados: [] }` — **aditivo** (aditivo,
+  `../produccion/02_GUARDADO_Y_DATOS.md`); la migración rellena vacío, nunca borra.
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `coste` con el **aliento** de
   `../batalla/01_CIFRAS.md` §3, del `aprende_en`/`nivel` con `NIVEL_MAX` de `save.js` y del
   `padre`/`rama` dentro de sí mismo, en `tools/validate_data.js`. **12 nodos / ≤10 puntos**.
 - **Sistema puro:** `js/systems/habilidades.js` — tronco + coste, efecto y «una vez» del árbol;
   sin DOM, sin reloj, RNG inyectado.
-- **Tests:** `tests/habilidades.test.js`, mínimo 3 casos (normal, borde, error): una habilidad sin
+- **Tests (por escribir):** `tests/habilidades.test.js`, mínimo 3 casos (normal, borde, error): una habilidad sin
   aliento no lanza; el «una vez por batalla» no vuelve; un nodo **sin nivel o sin padre** no se
   compra; el reparto **no pasa** de 10 puntos; **ningún efecto supera el tope de daño**
   (`../batalla/01_CIFRAS.md` §2); `hab_reagrupe`/`arb_voz_4` no superan el tope de reagrupación de
@@ -246,7 +246,7 @@ de la **orden** vigente.
 | Coste de nodo | **1 punto**; nivel mínimo 3 · 15 · 30 · 48 + padre de la rama |
 | Requisito de nivel | **Obligatorio y no se salta con oro** (§4.4) |
 | Acciones de tropa | **3** (bandera · abrir paso · descarga) |
-| Coste en batalla | aliento (100, +5/s) o **1 vez por batalla** |
+| Coste en batalla | aliento (100; regenera **4/s** en combate) o **1 vez por batalla** |
 | Entrenamiento | oro + 1 día · veteranía +2 ataque o +4 vida |
 
 ---

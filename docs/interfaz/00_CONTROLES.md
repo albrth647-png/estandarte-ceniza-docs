@@ -45,7 +45,7 @@
 | **Arrastre** | ≥ 12 px | Mirar (en zona de mirada) o mover (en palanca) |
 | **Arrastre doble** | dos dedos | Reservado: deslizar páginas del Libro Mayor (Fase 2) |
 
-- Un **toque nunca se interpreta como arrastre** ni al revés (umbrales de `js/core/input.js`).
+- Un **toque nunca se interpreta como arrastre** ni al revés (umbrales a fijar en la implementación).
 - **Arrastrar cancela el enfocar** al instante: el jugador siempre manda.
 
 ---
@@ -59,7 +59,7 @@
 | Batalla | Palanca (sigues siendo una unidad) + botones de combate del héroe + barra de órdenes |
 | Post-batalla | Botones grandes, **uno por salida** (nunca un menú anidado) |
 | Mapa / Crónica / Libro | Lista con toque; deslizar arriba/abajo para leer |
-| Menús y opciones | Botones ≥ 48 px; los deslizadores se al soltar (patrón ya existente) |
+| Menús y opciones | Botones ≥ 48 px; los deslizadores se al soltar (patrón están previstoste) |
 
 ---
 
@@ -86,9 +86,9 @@
 
 ## 7. Datos, tipos y validación
 
-- Gestos: `js/core/input.js` (ya existe y está testado) — la escena decide qué hace cada gesto.
-- Las reglas de radio y enfocar: `js/systems/exploracion.js` (puro).
-- Tests: `tests/input.test.js` (existentes) + `tests/exploracion.test.js`.
+- Gestos: `js/core/input.js` (por construir (sin implementar aún)) — la escena decide qué hace cada gesto.
+- Las reglas de radio y enfocar: `js/systems/exploracion.js` (puro, por construir).
+- Tests (por escribir): `tests/input.test.js` + `tests/exploracion.test.js`.
 
 ---
 

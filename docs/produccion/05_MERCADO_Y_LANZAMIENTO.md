@@ -31,7 +31,7 @@
 
 ## 3. Canales (✅ cerrado 2026-10-01)
 
-- **Web:** el juego es estático (`index.html` + `js/` + `data/` + `art/` + `vendor/`), servible
+- **Web:** el juego será estático (`index.html` + `js/` + `data/` + `art/` + `vendor/`), servible
   desde cualquier hosting o **una página propia**.
 - **APK:** empaquetado local (Capacitor), sin servicios en la nube (`08_PLATAFORMAS_Y_MINIMOS.md`).
 - **Tiendas (Google Play…):** ⬜ **fuera de este lanzamiento**; el dueño elige **web + APK** para

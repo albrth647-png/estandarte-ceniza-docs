@@ -70,14 +70,14 @@ Reglas deterministas (mismo guardado = mismas cadenas, RNG inyectado):
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/rumores.json` — `{ id, texto_txt, lugar, abre_encargo, caduca_dias, fuente }`.
+- **Datos (por crear):** `data/rumores.json` — `{ id, texto_txt, lugar, abre_encargo, caduca_dias, fuente }`.
   Las cadenas van en el campo `cadenas` de `data/encargos.json`.
 - **Tipos:** `Rumor` y `Cadena` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `abre_encargo` e ids de cadena en
   `tools/validate_data.js` (una cadena no puede apuntar a un encargo inexistente).
 - **Sistema puro:** `js/systems/rumores.js` — siembra, caduca y encadena; sin DOM, sin reloj (día
-  por `save.day`), RNG inyectado.
-- **Tests:** `tests/rumores.test.js`, mínimo 3 casos (normal, borde, error): un rumor caduca a los
+  por día de juego), RNG inyectado.
+- **Tests (por escribir):** `tests/rumores.test.js`, mínimo 3 casos (normal, borde, error): un rumor caduca a los
   7 días; no se superan 3 cadenas; una cadena sin salida no deja al jugador atrapado.
 
 ---

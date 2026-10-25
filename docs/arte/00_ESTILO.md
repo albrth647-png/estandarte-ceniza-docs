@@ -30,7 +30,7 @@
 
 | Capa | Dónde | Colores |
 |---|---|---|
-| **UI** (DOM) | HUD, menús | Los de `css/ui.css`: fondo `#12141c` / `#1b1e2b`, texto `#e8e4d8`, acento **oro `#c8a24a`**, peligro `#d1615a`, borde `#2c3044` |
+| **UI** (DOM) | HUD, menús | La guía de UI (por escribir): fondo `#12141c` / `#1b1e2b`, texto `#e8e4d8`, acento **oro `#c8a24a`**, peligro `#d1615a`, borde `#2c3044` |
 | **Mundo** (3D) | Sitios, campo | **Ceniza** (gris piedra), **óxido** (rojo hierro), **sebo** (crema), **piedra** (azul-gris), **hierro** (casi negro) |
 | **Acento vivo** | Solo lo importante | **Oro** (dinero/objetivo), **sangre** (daño), **ámbar** (fuego) |
 
@@ -83,16 +83,16 @@
 | Sombra propia | solo héroe y props cercanos |
 | Objetivo | **60 fps** sin caídas al entrar en un sitio |
 
-- **Verificado** con `npm run smoke` en 960×683 y 915×555.
+- **Verificable** con la batería de humo (por implementar) en 960×683 y 960×540.
 
 ---
 
 ## 7. Datos, tipos y validación
 
-- La paleta del mundo vive en `data/estilo.json` (colores `#rrggbb`, convención de datos).
+- La paleta del mundo vivirá en `data/estilo.json` (por crear) (colores `#rrggbb`, convención de datos).
 - **Tipos:** `Paleta` y `TemaVisual` en `js/data/game_types.js`.
 - **Validación:** esquema + comprobación de formato `#rrggbb` en `tools/validate_data.js`.
-- **Tests:** `tests/estilo.test.js`: todo color es `#rrggbb`; el acento es escaso (conteo por
+- **Tests (por escribir):** `tests/estilo.test.js`: todo color es `#rrggbb`; el acento es escaso (conteo por
   escena); no hay color fuera de paleta en la UI.
 
 ---

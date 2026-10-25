@@ -27,7 +27,7 @@
 - **No hay agentes caminando por el mapa** en tiempo real: el mundo se resuelve **por eventos** al
   **avanzar el día** (`../mundo/05_TIEMPO_DEL_MUNDO.md` §3).
 - **Semilla de partida:** mismas decisiones y mismo día → mismo mundo.
-- **Sin reloj real:** `js/systems/mundo_vivo.js` recibe `save.day` y el RNG inyectado (regla 9 de
+- **Sin reloj real:** `js/systems/mundo_vivo.js` recibe el día de juego y el RNG inyectados (regla 9 de
   `../../AGENTS.md`).
 
 ---
@@ -51,12 +51,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/mundo_vivo.json` — `{ evento, ritmo_dias, efecto, condicion }`.
+- **Datos (por crear):** `data/mundo_vivo.json` — `{ evento, ritmo_dias, efecto, condicion }`.
 - **Tipos:** `EventoMundo` en `js/data/game_types.js`.
 - **Validación:** cada `efecto` referencia un sistema existente (precio, encargo, rencor); sin
   referencia, falla (`tools/validate_data.js`).
 - **Sistema puro:** `js/systems/mundo_vivo.js`; sin DOM, sin reloj.
-- **Tests:** `tests/mundo_vivo.test.js`: el mundo avanza solo con el día; la misma semilla repite
+- **Tests (por escribir):** `tests/mundo_vivo.test.js`: el mundo avanza solo con el día; la misma semilla repite
   los eventos; ningún evento deja una deuda sin salida.
 
 ---

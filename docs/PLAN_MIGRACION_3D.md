@@ -1,33 +1,28 @@
-# PLAN_MIGRACION_3D — la capa de dibujo del nuevo juego (fases 0-6)
+# PLAN_MIGRACION_3D — la capa de dibujo del juego (fases 0-6)
 
-**Estado:** ✅ **Plan de construcción (2026-10-02).**
+**Estado:** ✅ **Plan de construcción (2026-10-02; saneado en greenfield 2026-10-25).**
 **No cuenta en los 98 documentos de diseño** (es un plan de trabajo, como `PLAN_DOCUMENTOS.md`).
+**El nombre del fichero se conserva por estabilidad de enlaces:** ya no hay «migración» —
+el juego nace 3D (1.ª persona) y esta capa **se construye desde cero**.
 
-> **Regla que gobierna este documento:** la **simulación no cambia** — `js/systems/*` es puro, sin
-> DOM, sin `fetch`, sin reloj — y **la UI vive en DOM**. Solo cambia **la capa de dibujo**.
-> Coherente con la decisión de `../DECISIONES.md` (2026-09-28): *«Render 2D → 3D con Three.js
-> (ESM local, UI en DOM, simulación intacta); fases 0-6»*.
-
-**Por qué vuelve a existir:** este plan desapareció de `docs/` en la limpieza del 2026-09-30 y
-siguió citado en `../DECISIONES.md` (2 filas) y en `../ANALISIS_COBERTURA_DOCUMENTOS.md` (§ WebGL
-y abstracción de render). Se **reescribe entero** para el juego nuevo, que ya es 3D por naturaleza
-(1.ª persona), y queda enlazado desde `README.md`.
+> **Regla que gobierna este documento:** la **simulación es pura** — `js/systems/*` sin DOM, sin
+> `fetch`, sin reloj — y **la UI vive en DOM**. El 3D es **solo la capa de dibujo**.
 
 ---
 
-## 1. Situación de partida (verificada)
+## 1. Piezas previstas (nada existe todavía)
 
-| Pieza | Estado hoy |
+| Pieza | Estado |
 |---|---|
-| `vendor/three/` (Three.js r186 + GLTFLoader, MIT) | ✅ vendored |
-| `js/render/webgl.js` (diagnóstico + reserva a 2D si WebGL2 falla) | ✅ existe |
-| `js/render/modelos3d.js` (carga y aligerado de GLB) | ✅ existe |
-| `art/` (10 modelos GLB con autor y licencia) | ✅ existe |
-| **Escena única, cámara 1.ª, render por escena** | ⬜ **no existe** |
-| **Colisión y exploración en 3D** | ⬜ **no existe** |
-| **Campo de batalla en 3D** (unidades, pooling) | ⬜ **no existe** |
+| `vendor/three/` (Three.js r186 + GLTFLoader, MIT) | ⬜ **por vendorizar** |
+| `js/render/webgl.js` (diagnóstico + reserva a 2D si WebGL2 falla) | ⬜ **por crear** |
+| `js/render/modelos3d.js` (carga y aligerado de GLB) | ⬜ **por crear** |
+| `art/` (10 modelos GLB de reserva con autor y licencia) | ⬜ **por producir** (fichas en `art/AUTORES.md`, por crear) |
+| **Escena única, cámara 1.ª, render por escena** | ⬜ **por construir** (fase 0) |
+| **Colisión y exploración en 3D** | ⬜ **por construir** (fase 1) |
+| **Campo de batalla en 3D** (unidades, pooling) | ⬜ **por construir** (fase 3) |
 
-Es decir: hay **material y motor**, pero **no hay capa de dibujo de juego**. Esa es la migración.
+Es decir: **no hay motor ni material aún**. Este plan ordena cómo se construyen.
 
 ---
 

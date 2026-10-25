@@ -44,13 +44,13 @@
 
 - `data/terreno.json`: `{ id, nombre_txt, velocidad, visibilidad, encuentro, cobertura }`.
 - Validación: esquema + cruce con `lugares.json` (todo sitio declara su terreno).
-- El cálculo es puro: `js/systems/terreno.js` (velocidad y visibilidad), sin DOM ni reloj.
+- El cálculo es puro: `js/systems/terreno.js` (por construir) (velocidad y visibilidad), sin DOM ni reloj.
 
 ---
 
 ## 4. Qué entra en la demo (Fase 1)
 
-- **Camino real, tierra, roció, bosque espeso y barro** (5 de los 9): cubren los **2 campos**
+- **Camino real, tierra, rocío, bosque espeso y barro** (5 de los 9): cubren los **3 campos**
   de la demo (llanura de camino y bosque/aldea) y el tramo de camino.
 - Vado, roca, arboleda y muralla quedan para el mapa completo (mismo JSON, se añaden filas).
 

@@ -60,7 +60,7 @@ fases). A ellos se suma `../COBERTURA_REQUISITOS.md` (trazabilidad, no de fase).
 | **1.8** | — |
 
 Cada JSON entra con su esquema en `js/data/schemas.js` y su cruce en `tools/validate_data.js`
-(regla 5): **sin validador en verde, no arranca**.
+(regla 5): **sin validador en verde, no se considera cerrado**.
 
 **Fuera de la Fase 1:** `cicatrices`, `luto`, `lealtad`, `mundo_vivo`, `artefactos`, `animales`,
 `codice`, `logros`.
@@ -72,7 +72,7 @@ Cada JSON entra con su esquema en `js/data/schemas.js` y su cruce en `tools/vali
 | Paso | `js/systems/*` (puros: sin DOM, sin `fetch`, sin reloj) | `js/scenes/*` (solo dibujan) | Render |
 |---|---|---|---|
 | **1.1** | `exploracion.js` · `terreno.js` · `props.js` · `edificios.js` | `sc_exploracion.js` | `js/render/escena3d.js` |
-| **1.2** | `memoria.js` · `firma.js` · `pnj.js` | `sc_exploracion.js` + **cola de avisos en `js/scenes/avisos.js`** (no en la escena: está en 451/500, regla 12) | síntesis de aviso (Web Audio) |
+| **1.2** | `memoria.js` · `firma.js` · `pnj.js` | `sc_exploracion.js` + **cola de avisos en `js/scenes/avisos.js`** (aparte de la escena, regla 12 de tope 500 líneas) | síntesis de aviso (Web Audio) |
 | **1.3** | `viaje.js` · `tiempo.js` · `clima.js` · `supervivencia.js` · `rumores.js` | `sc_mundo.js` | — |
 | **1.4** | `campo.js` · `ia.js` · `tropas.js` · `enemigos.js` · `habilidades.js` · `botin.js` · `estandartes.js` · `trampas.js` · `progresion.js` | `sc_batalla.js` | pooling + LOD |
 | **1.5** | `prisioneros.js` · `favores.js` · `cronica.js` · `economia.js` · `pagos.js` · `mercado.js` · `items.js` · `comida.js` · `profesiones.js` · `fabricacion.js` | `sc_postbatalla.js` · `sc_tienda.js` | — |
@@ -80,14 +80,12 @@ Cada JSON entra con su esquema en `js/data/schemas.js` y su cruce en `tools/vali
 | **1.7** | `tutorial.js` · `avisos.js` | `sc_pantallas.js` | audio · animaciones · efectos |
 | **1.8** | — | — | build y firma de APK |
 
-**Guardado:** `SAVE_VERSION` **2 → 3** en 1.2 · **3 → 4** en 1.4 · **4 → 5** en 1.5
-(`02_GUARDADO_Y_DATOS.md`). Cada subida con `migrateSave()` probado (DoD, regla 6).
-> **Lectura (2026-10-02):** `02_GUARDADO` §1 asigna **todos** los campos nuevos a v3 (memoria, Firma,
-> Crónica, prisioneros, juramento, códice, tutoriales y logros), mientras que aquí las versiones se
-> reparten por pasos. **Manda el doc de guardado**: en **1.2 sube a v3 con todos los campos de v3 ya
-> presentes y vacíos** (la migración es aditiva y no cuesta nada), y cada paso posterior **empieza a
-> llenar** los suyos. Así no se cambia el número de ningún campo viejo ni se rehace una migración
-> por sistema.
+**Guardado:** `SAVE_VERSION` **1** desde el paso 1.1; si un paso añade campos al esquema, la
+versión sube de forma **aditiva** (`02_GUARDADO_Y_DATOS.md`). La migración se probará en cada
+subida (DoD, regla 6).
+> **Lectura (greenfield):** el guardado nace en **v1** con el esquema completo de la demo declarado
+> desde el principio (los campos quedan vacíos hasta que su sistema entra). Así ningún campo cambia
+> de número y ninguna migración se rehace; las versiones futuras solo crecen de forma aditiva.
 
 ---
 
@@ -134,7 +132,7 @@ Cada paso cierra con: **`npm run qa` verde + hito jugable + presentación mínim
   personal** no es observable en el mundo hasta que `pnj.json` llegue en **1.3**. Aquí la memoria
   se comprueba **en los tests puros y en la sonda `?debug=1`**, no fingiéndose en pantalla.
 - **Datos:** `memoria.json` con **topes de guardado**.
-- **Código:** `memoria.js`, `firma.js`, `pnj.js` · **`SAVE_VERSION` 2 → 3**.
+- **Código (por construir):** `memoria.js`, `firma.js`, `pnj.js` · guardado: campos de memoria y Firma (aditivo).
 - **Tests:** costuras de 1.2 (RNG solo donde el diseño lo pida: **en memoria y Firma no hay**
   ninguno — los pesos están fijados en tabla, así que no se inventa).
 - **Gate:** cobertura ≥ 90 % en esos módulos · **topes fijados aquí** · presentación mínima
@@ -157,7 +155,7 @@ Cada paso cierra con: **`npm run qa` verde + hito jugable + presentación mínim
   barra de órdenes. **5-6 por bando** (8 en el cierre).
 - **Datos:** los 14 JSON de la fila 1.4.
 - **Código:** `campo`, `ia`, `tropas`, `enemigos`, `habilidades`, `botin`, `estandartes`,
-  `trampas`, `progresion` + `sc_batalla.js` · **`SAVE_VERSION` 3 → 4**.
+  `trampas`, `progresion` + `sc_batalla.js` · guardado: campos de batalla (aditivo).
 - **Tests:** costuras de 1.4 + `campo`, `ia`, `tropas`, `enemigos`, `campos`.
 - **Gate:** pruebas **puras** de la simulación · humo con el campo abierto · **fps medidos**.
 - **Riesgo:** 6 unidades aprietan en móvil → presupuesto de render y campos simples; subir a 8
@@ -169,7 +167,7 @@ Cada paso cierra con: **`npm run qa` verde + hito jugable + presentación mínim
   mundo decide y **no te atasca**; la profesión del origen fabrica sus **3 recetas base**.
 - **Datos:** los 8 JSON de la fila 1.5.
 - **Código:** `prisioneros` (4 salidas + §3.1 cuartos), `favores`, `cronica`, `economia`,
-  `mercado`, `items`, `profesiones`, `fabricacion` · **`SAVE_VERSION` 4 → 5**.
+  `mercado`, `items`, `profesiones`, `fabricacion` · guardado: campos de economía (aditivo).
 - **Tests:** costuras de 1.5 + `prisioneros`, `favores`, `cronica`, `economia`, `profesiones`,
   `recetas`, `migracion`.
 - **Gate:** migración probada · **0 caminos sin salida** · **máximo 4 decisiones** post-batalla.
@@ -233,7 +231,7 @@ Hereda `00_ALCANCE.md` §6 y añade el criterio de impresión:
 
 1. **Se juega de principio a fin** (prólogo → giro final) sin atascos ni callejones sin salida.
 2. **El fallo nunca bloquea**: caer, perder una batalla o no pagar siempre dan salida.
-3. **Guardado intacto**: guardar, cargar, migrar, slots y respaldo del corrupto funcionando.
+3. **Guardado intacto**: guardar, cargar, migrar, slots y respaldo del corrupto, funcionando.
 4. **`npm run qa` verde** (check + lint + validate + docs + tests ≥ 90 % + humo 2 tamaños).
 5. **Paridad ES/EN** y **cero enlaces rotos**.
 6. **10 minutos sin errores en consola.**

@@ -19,6 +19,6 @@
 | [`10_TUTORIAL_Y_FIRST_RUN.md`](10_TUTORIAL_Y_FIRST_RUN.md) | Primer arranque y las 8 lecciones sin manual | ✅ aprobado (2026-10-01) |
 | [`11_AVISOS_DE_CONTENIDO.md`](11_AVISOS_DE_CONTENIDO.md) | Avisos de contenido y techo fotosensible | ✅ aprobado (2026-10-01) |
 
-**Lo que ya existe en el armazón:** escenas de portada, menú, crear partida, cargar, opciones
+**Lo que está previsto en el armazón:** escenas de portada, menú, crear partida, cargar, opciones
 y créditos; i18n con claves `txt_*`; opciones de idioma, calidad, tamaño de UI, daltonismo,
 volúmenes, velocidad de texto y reducción de sacudidas.

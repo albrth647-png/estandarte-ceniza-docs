@@ -48,7 +48,7 @@ presupuesto de texto (todo se escribe ×2, ES/EN) antes de saber si el bucle eng
 | **Profesión (fina)** | **1** profesión (la del origen) en rango **Aprendiz**, sus **3 recetas base** y 1 recurso de nivel 1 (`../sistemas/14_PROFESIONES.md`, `../sistemas/15_FABRICACION_Y_RECETAS.md`) |
 
 ### 2.2 Soporte imprescindible (lo que estos sistemas necesitan para funcionar)
-- **Guardado**: guardar, cargar, migrar, slots y respaldo de corruptos (ya existe y no se rompe).
+- **Guardado**: guardar, cargar, migrar, slots y respaldo de corruptos (previsto y no se rompe).
 - **Derrota sin bloqueo** (Pilar 3, lado B): si caes, el mundo decide qué te pasa
   (cautiverio, rescate, te arrastra un aldeano). **El fallo nunca atasca.**
 - **Economía mínima**: oro que entra (botín, cobranza) y sale (recluta, salarios, soborno,
@@ -71,8 +71,8 @@ presupuesto de texto (todo se escribe ×2, ES/EN) antes de saber si el bucle eng
 ### 2.5 Batalla
 - Campo **semi-tiempo real** con **5-6 por bando** (8 en la batalla de cierre), **órdenes
   globales** (Cargar / Seguirme / Defender) + tus botones (Golpe / Guardia / Desvío).
-- **Moral, huida y rendición** funcionando (de ellas nacen los prisioneros y los testigos).
-- **2 campos** como mínimo: llanura de camino y bosque/aldea (el campo depende del terreno,
+- **Moral, huida y rendición**, funcionando (de ellas nacen los prisioneros y los testigos).
+- **3 campos**: llanura de camino, aldea y bosque (el campo depende del terreno,
   Pilar 6).
 
 ### 2.6 Presentación y textos

@@ -23,7 +23,7 @@ en `../DECISIONES.md`).
 4. **Un bug ALTA bloquea avanzar** (`../BUGS.md`).
 5. **Cada paso cierra con `npm run qa` en verde** (check + lint + validate + docs + tests con
    cobertura ≥ 90 % + humo) y con su **hito jugable** cumplido.
-6. **El guardado nunca se rompe**: lo que toque `SaveState` actualiza migración y pruebas
+6. **El guardado nunca se rompe**: lo que toque el guardado actualizará migración y pruebas (cuando exista)
    (`02_GUARDADO_Y_DATOS.md`).
 7. **El fallo nunca atasca**: si un paso añade derrota, siempre hay salida.
 
@@ -121,7 +121,7 @@ Cada paso cierra con **`npm run qa` verde + hito jugable + presentación mínima
 
 - **`npm run qa` en verde** (cobertura ≥ 90 %, validadores de datos, enlaces y humo en Chromium).
 - **Hito jugable cumplido**: se juega lo que el paso promete (no vale «casi»).
-- **Guardado**: guardar, cargar, migrar y slots funcionando; corrupto siempre respaldado.
+- **Guardado**: guardar, cargar, migrar y slots, funcionando; corrupto siempre respaldado.
 - **Paridad ES/EN** y **cero enlaces rotos**.
 - **Documento actualizado** en la misma tarea que cambia el diseño.
 - **Presentación mínima por paso**: el paso nuevo tiene su aviso, su icono y su sonido.
@@ -137,7 +137,7 @@ Cada paso cierra con **`npm run qa` verde + hito jugable + presentación mínima
 | El mapa crece sobre el alcance | 1.3 | Manda `00_ALCANCE`: **6 sitios** |
 | El campo con 5-6 no se siente | 1.4 | Subir a 8 antes de 1.5; si aún no, reducir el campo |
 | Rendimiento en móvil (60 fps) | 1.4 | Fusión de geometrías, LOD y pooling; simplificar terreno antes que bajar unidades |
-| El guardado se rompe al subir de versión | 1.2 / 1.4 / 1.5 | `migrateSave()` probado en cada subida (regla 6) |
+| El guardado se rompe al subir de versión | 1.2 / 1.4 / 1.5 | la migración se probará en cada subida (regla 6) |
 | Demasiadas decisiones post-batalla | 1.5 | Máximo **4** |
 | El guion se desborda | 1.6 | Recortar secundario, no la columna vertebral |
 | La demo pasa de 2-3 h | 1.6-1.7 | Cortar en el **giro** (ya fijado como final de la demo) |

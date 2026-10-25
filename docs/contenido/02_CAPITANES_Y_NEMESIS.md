@@ -158,7 +158,7 @@
 | Hechos por capitán | **32** (4 intocables) | idem §2.2 |
 | Rencores por capitán | **3** | idem §7 |
 | Rango propio | 0 … **+3** | §3 |
-| Guardado del catálogo | **no añade campos nuevos** | Vive en `memoria` (SAVE_VERSION 3) |
+| Guardado del catálogo | **no añade campos nuevos** | Vivirá en `memoria` (aditivo) |
 
 - **Nunca se pierde** el `id`, el `r`, la `d`, el `f` ni el `rw` de un capitán al superar la cota
   (`../sistemas/00_MEMORIA_Y_DEUDA.md` §8): la memoria se apaga, la deuda no.
@@ -167,15 +167,15 @@
 
 ## 8. Datos, tipos y validación
 
-- **Datos:** `data/capitanes.json` — `{ id, nombre_txt, familia, rango, rasgo, casa, stats, botin,
+- **Datos (por crear):** `data/capitanes.json` — `{ id, nombre_txt, familia, rango, rasgo, casa, stats, botin,
   vuelve, es_nemesis }`.
 - **Tipos:** `Capitan` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/enemigos.json` (familia y
   rasgo), con `data/facciones.json` (casa) y con `data/pnj.json` (su ficha de memoria) en
   `tools/validate_data.js`. Sin validador, `loadData()` no arranca (regla 5).
-- **Sistema puro:** la vuelta y el rencor de un capitán viven en `js/systems/enemigos.js` +
+- **Sistema puro:** la vuelta y el rencor de un capitán vivirán en `js/systems/enemigos.js` +
   `js/systems/memoria.js`; sin DOM, sin reloj, RNG inyectado.
-- **Tests:** `tests/capitanes.test.js`, mínimo 3 casos (normal, borde, error): un capitán huido
+- **Tests (por escribir):** `tests/capitanes.test.js`, mínimo 3 casos (normal, borde, error): un capitán huido
   vuelve con su casa; un ejecutado deja héroe heredero; un capitán sin hecho de memoria no puede
   ser némesis.
 

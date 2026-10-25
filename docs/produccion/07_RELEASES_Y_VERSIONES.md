@@ -31,7 +31,7 @@
 ## 3. Compatibilidad de guardados
 
 - **Regla dura:** una partida de la versión **penúltima** se puede cargar en la última (`00_ALCANCE.md` §6).
-- **Migración aditiva** (`migrateSave()`): los campos nuevos se rellenan, **nunca** se borra nada.
+- **Migración aditiva** (función por crear): los campos nuevos se rellenan, **nunca** se borra nada.
 - **Un guardado más nuevo** que el juego avisa y no rompe.
 
 ---
@@ -50,7 +50,7 @@
 
 - La versión del **build** y la del **guardado** (`SAVE_VERSION`) son **cosas distintas**: una
   numera el producto; la otra, el formato de partida (`02_GUARDADO_Y_DATOS.md` §2).
-- **Tests:** `tests/migracion.test.js` cubre la carga desde la penúltima versión.
+- **Tests (por escribir):** `tests/migracion.test.js` cubre la carga desde la penúltima versión.
 
 ---
 

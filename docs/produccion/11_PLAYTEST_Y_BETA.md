@@ -105,8 +105,8 @@ Antes de jugar, cada jugador lee y acepta un acuerdo de **una sola página**:
 
 - **Sin JSON y sin telemetría:** el feedback vive en el registro fechado de este documento y los
   bugs, en `../BUGS.md` (formato duro de `../../AGENTS.md`).
-- **No se toca el guardado:** la beta juega con el `SaveState` normal (el `SAVE_VERSION` de la
-  versión actual); así se prueba de verdad la migración (`02_GUARDADO_Y_DATOS.md`).
+- **No se toca el guardado:** la beta juega con el `SaveState` normal (el formato de guardado
+  vigente en esa versión); así se prueba de verdad la migración (`02_GUARDADO_Y_DATOS.md`).
 - **Los hallazgos que cambian diseño** se anotan en `../DECISIONES.md` con su fecha; los que no,
   solo son bugs.
 

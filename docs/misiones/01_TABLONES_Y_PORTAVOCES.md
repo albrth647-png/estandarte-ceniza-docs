@@ -77,13 +77,13 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/tablones.json` — `{ lugar, publica, clases, cupo, refresco_dias, filtro }`.
+- **Datos (por crear):** `data/tablones.json` — `{ lugar, publica, clases, cupo, refresco_dias, filtro }`.
 - **Tipos:** `Tablon` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/lugares.json` y
   `data/encargos.json` en `tools/validate_data.js`.
 - **Sistema puro:** la publicación, el refresco y la caducidad viven en
-  `js/systems/tablones.js`; sin DOM, sin reloj (día por `save.day`), RNG inyectado.
-- **Tests:** `tests/tablones.test.js`, mínimo 3 casos (normal, borde, error): un encargo caducado
+  `js/systems/tablones.js`; sin DOM, sin reloj (el día entra inyectado), RNG inyectado.
+- **Tests (por escribir):** `tests/tablones.test.js`, mínimo 3 casos (normal, borde, error): un encargo caducado
   no rompe el registro; no se superan 5 activos; el filtro de honor respeta la Firma.
 
 ---

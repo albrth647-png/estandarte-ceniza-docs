@@ -74,8 +74,8 @@ alcance ni cadencia. Detalle en `../sistemas/15_FABRICACION_Y_RECETAS.md` §7.
 | `w_hoz` | **Hoz de guerra** | Línea | 2,0 m | 13 | 3 |
 | `w_mandoble` | **Mandoble** | Línea | 2,5 m | 19 | 3 |
 
-- Sus ataques base (13-19) están **dentro del rango del catálogo** (11-19): no rompen
-  `../batalla/01_CIFRAS.md` §3.
+- Sus ataques base (13-19) quedan **un punto por encima del techo del catálogo** (11-18):
+  es la ventaja de fabricar. No rompen `../batalla/01_CIFRAS.md` §3.
 - **Las 8 armas del catálogo** (§3.1) siguen siendo **solo de mercado o botín**: el herrero no las
   fabrica.
 
@@ -88,7 +88,7 @@ alcance ni cadencia. Detalle en `../sistemas/15_FABRICACION_Y_RECETAS.md` §7.
 | `a_casco` | Casco | +3 | Reduce un crítico a la mitad 1 vez |
 | `a_escudo` | Escudo | +5 | Solo con espada; mejora Guardia |
 
-### 3.3 Joyas (2 anillos + 1 amuleto) ✅ 2026-10-02
+### 3.3 Joyas (4 anillos + 4 amuletos: 8 piezas) ✅ 2026-10-02
 
 **8 piezas**, todas de la herrería. Los efectos son **pequeños** y entran en la mitigación normal
 (`../batalla/01_CIFRAS.md` §2): **no hay golpe extra**. Materiales y receta en
@@ -108,7 +108,7 @@ alcance ni cadencia. Detalle en `../sistemas/15_FABRICACION_Y_RECETAS.md` §7.
 - **Ranuras del héroe:** `arma` · `armadura` · `escudo` · `anillo_1` · `anillo_2` · `amuleto`.
   Los dos anillos son intercambiables; el amuleto es una ranura aparte.
 - **Verificación obligatoria:** anillo de plata (+2) + arma `rara` +1 en nivel 30 no puede pasar de
-  **90 de daño por golpe** (test de borde en `tests/recetas.test.js`).
+  **90 de daño por golpe** (test de borde por escribir).
 
 ### 3.4 Herramientas (no combaten)
 
@@ -174,13 +174,13 @@ alcance ni cadencia. Detalle en `../sistemas/15_FABRICACION_Y_RECETAS.md` §7.
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/items.json` — `{ id, tipo (arma/armadura/joya/herramienta/consumible), rol, rareza,
+- **Datos (por crear):** `data/items.json` — `{ id, tipo (arma/armadura/joya/herramienta/consumible), rol, rareza,
   stats, peso, mejoras_max, precio_base, donde, apariencia }`.
 - **Tipos:** `Item`, `TipoItem` y `Rareza` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/tropas.json` (rol y arma) y con
   `../batalla/01_CIFRAS.md` (stats conocidas) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/items.js` — aplica rareza, mejora y carga; sin DOM ni reloj.
-- **Tests:** `tests/items.test.js`, mínimo 3 casos (normal, borde, error): una común no se mejora;
+- **Tests (por escribir):** `tests/items.test.js`, mínimo 3 casos (normal, borde, error): una común no se mejora;
   el `+3` respeta el techo de daño; una mochila llena no rompe el guardado.
 
 ---

@@ -143,12 +143,12 @@ Cada tropa tiene: rol, arma, alcance, estadísticas (de `01_CIFRAS.md`), **coste
 
 ## 8. Datos, tipos y validación
 
-- **Datos:** `data/tropas.json` — `{ id, rol, arma, alcance, stats, coste, salario, moral,
+- **Datos (por crear):** `data/tropas.json` — `{ id, rol, arma, alcance, stats, coste, salario, moral,
   rasgo, entrada }`.
 - **Tipos:** `Tropa` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/terreno.json` (rol válido) y
   con `../batalla/01_CIFRAS.md` (stats conocidas) en `tools/validate_data.js`.
-- **Sistema puro:** el reclutamiento y el aforo viven en `js/systems/tropas.js`; sin DOM, sin reloj.
+- **Sistema puro:** el reclutamiento y el aforo vivirán en `js/systems/tropas.js`; sin DOM, sin reloj.
 
 ---
 
@@ -158,7 +158,7 @@ Cada tropa tiene: rol, arma, alcance, estadísticas (de `01_CIFRAS.md`), **coste
 |---|---|
 | Roles | 5 (línea · distancia · apoyo · montado · especialista) |
 | Tropas de las 3 líneas base | **9** (3 por rol) |
-| Aforo de compañía | 6 + 2 × nivel · techo **40** |
+| Aforo de compañía | 6 + 2 × (**nivel − 1**) · techo **40** |
 | Vanguardia en el campo | hasta **20** por bando (10+ del Pilar 6) |
 | Portaestandarte | +5 de moral al bando |
 | Barbero | evita 1 baja de campaña por batalla |
@@ -171,7 +171,7 @@ Cada tropa tiene: rol, arma, alcance, estadísticas (de `01_CIFRAS.md`), **coste
 > **Hasta aquí la demo.** **3 tipos reclutables**, uno por rol:
 > `marcado_lancero` (línea) · `marcado_ballestero` (distancia) · `portaestandarte` (apoyo)
 > (`../produccion/00_ALCANCE.md` §3). Reclutamiento en los 6 sitios y aforo por nivel,
-> funcionando con estas mismas reglas. El resto del catálogo existe en datos pero **no se
+> funcionando con estas mismas reglas. El resto del catálogo entrará en datos pero **no se
 > ofrece** hasta su fase.
 
 > **Y sigue el juego completo.** Los **9** de las 3 líneas base, los **montados** y los

@@ -7,15 +7,15 @@ de ellos; las **stats del campo** (vida/ataque/defensa/daño) son de `../batalla
 solo se **enlazan**.
 
 > Cómo te creas (3 pasos: dificultad → nombre + 10 puntos → origen), en `../interfaz/` y en
-> `js/scenes/sc_crea.js`. La **partida** ya guarda `atributos` (FUE/AGI/INT), `origen`, `honor`,
+> `js/scenes/sc_crea.js`. La partida guardará `atributos` (FUE/AGI/INT), `origen`, `honor`,
 > `prestigio` y `moral`. Este documento dice **qué significa cada número**.
 
 ---
 
-## 1. Los tres orígenes (ya en el código)
+## 1. Los tres orígenes
 
 Eliges **un origen**; decora tu pasado y te da un sesgo, **no** una clase (no hay clases,
-`05_PROGRESION.md` §1). Cifras **ya implementadas** en `construirPartida()`:
+`05_PROGRESION.md` §1). Cifras iniciales por origen:
 
 | Origen | Puntos | Oro inicial | Otros |
 |---|---|---|---|
@@ -45,7 +45,7 @@ Eliges **un origen**; decora tu pasado y te da un sesgo, **no** una clase (no ha
 | **INT** (Inteligencia) | **XP** y **trato** | `+5 %` de XP y `−2 %` de precio al comprar (regateo) |
 
 - ✅ **Cerrado (2026-10-01):** las tres reglas están **aprobadas** (opción A); registro en
-  `../DECISIONES.md`. Hoy en código solo **FUE** tiene efecto (el origen soldado, +2); AGI e INT
+  `../DECISIONES.md`. En el diseño inicial solo **FUE** tiene efecto (el origen soldado, +2); AGI e INT
   se implementan en la Fase 2.
 - **Techo de balance:** ningún reparto rompe el **daño máximo por golpe** de
   `../batalla/01_CIFRAS.md` §2 (90 héroe / 45 tropa). Los atributos matizan; el techo manda.
@@ -59,12 +59,12 @@ Eliges **un origen**; decora tu pasado y te da un sesgo, **no** una clase (no ha
 | **Vida** | `120 + 10 × (nivel − 1)` (nivel 60 → **710**) | `12_NIVELES_DEL_HEROE.md` §2 · `../batalla/01_CIFRAS.md` §1 |
 | **Ataque** | base por nivel (28 … **164** a nivel 60) **+ FUE** | `../batalla/01_CIFRAS.md` §2 |
 | **Defensa** | base por nivel (18 … **177** a nivel 60) | `../batalla/01_CIFRAS.md` §2 |
-| **Aliento** | **100**, regenera **5/s** (**+ AGI**) | `../batalla/01_CIFRAS.md` §3 |
+| **Aliento** | **100**, regenera **4/s** en combate y **5/s** fuera (**+ AGI**) | `../batalla/01_CIFRAS.md` §3 |
 | **Cadencia / Guardia / Desvío** | 1,2 s · 0,5 s · 0,35 s (**Desvío − AGI**) | `../batalla/01_CIFRAS.md` §3 |
 | **Moral de campo de la unidad** | **100** al empezar | `../batalla/01_CIFRAS.md` §5 |
 | **Moral de campaña** | **50** base (sube/baja por hechos) | `../sistemas/08_LUTO_Y_MORAL.md` |
 | **Honor** | **10** (+10 noble) | Este doc §1 · `../sistemas/01_FIRMA.md` |
-| **Prestigio** | **0** (+1 noble) | `createDefaultSave`, `../sistemas/00_MEMORIA_Y_DEUDA.md` |
+| **Prestigio** | **0** (+1 noble) | `createDefaultSave` (por crear), `../sistemas/00_MEMORIA_Y_DEUDA.md` |
 
 - **Moral de campo ≠ moral de campaña:** la primera es de la batalla (`01_CIFRAS.md` §5); la
   segunda vive en el guardado (`SaveState.moral`, base 50) y la mueven el luto y los hechos.
@@ -85,14 +85,14 @@ Eliges **un origen**; decora tu pasado y te da un sesgo, **no** una clase (no ha
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/progresion.json` (vida base, incremento) y `data/origenes.json` **(nuevo
+- **Datos (por crear):** `data/progresion.json` (vida base, incremento) y `data/origenes.json` **(nuevo
   propuesto)** — `{ id, bonos: { atributos, oro, honor, prestigio }, flags }`.
-- **Tipos:** `Origen` y `Atributos` **ya existen** en `js/data/game_types.js`; el héroe ya guarda
-  `atributos`, `origen`, `honor`, `prestigio` y `moral` (`SaveState`). **Sin campos nuevos.**
+- **Tipos:** `Origen` y `Atributos` **están previstos** en `js/data/game_types.js` (por crear); el héroe guardará
+  `atributos`, `origen`, `honor`, `prestigio` y `moral` en el `SaveState` (por definir). **Sin campos nuevos.**
 - **Validación:** esquema en `js/data/schemas.js` + cruce de los bonos con `BASE_GOLD`/`BASE_HONOR`
-  de `sc_crea.js` y del reparto de atributos con `PUNTOS_TOTALES = 10`, en `tools/validate_data.js`.
+  de `sc_crea.js` (por crear) y del reparto de atributos con `PUNTOS_TOTALES = 10`, en `tools/validate_data.js` (por crear).
 - **Sistema puro:** `js/systems/progresion.js` aplica atributos y nivel; sin DOM, sin reloj.
-- **Tests:** `tests/progresion.test.js` y `tests/scene_crea.test.js`: el reparto no pasa de 10
+- **Tests (por escribir):** `tests/progresion.test.js` y `tests/scene_crea.test.js`: el reparto no pasa de 10
   puntos; ningún atributo baja de 1; los bonos de origen cuadran; ningún efecto supera el techo de
   daño.
 
@@ -134,4 +134,4 @@ Eliges **un origen**; decora tu pasado y te da un sesgo, **no** una clase (no ha
 - Cómo sube el héroe → `05_PROGRESION.md`
 - Equipo y rarezas → `../contenido/04_ITEMS_Y_EQUIPO.md`
 - Firma y honor → `01_FIRMA.md`
-- Creación de partida (pantalla) → `js/scenes/sc_crea.js`
+- Creación de partida (pantalla) → `../interfaz/01_PANTALLAS.md`

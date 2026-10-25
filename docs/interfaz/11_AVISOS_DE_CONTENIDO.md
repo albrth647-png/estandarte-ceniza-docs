@@ -33,9 +33,9 @@ El texto completo vive en Opciones. Contenido (propuesta, ES/EN, claves `txt_avi
 
 | # | Etiqueta (1 línea) | Cubre |
 |---|---|---|
-| 1 | **Violencia medieval sin gore** — espadas, sangre sobria, sin desmembramientos | combate (`arte/04`) |
-| 2 | **Muerte de personajes y animales**; tema del luto | `sistemas/08_LUTO_Y_MORAL.md`, `contenido/08` |
-| 3 | **Temas adultos**: condena falsa, deudas heredables, ejecuciones, traición | `historia/00_PREMISA.md` |
+| 1 | **Violencia medieval sin gore** — espadas, sangre sobria, sin desmembramientos | combate (`../arte/04_EFECTOS_Y_PARTICULAS.md`) |
+| 2 | **Muerte de personajes y animales**; tema del luto | `../sistemas/08_LUTO_Y_MORAL.md`, `../contenido/08_ANIMALES_Y_CRIATURAS.md` |
+| 3 | **Temas adultos**: condena falsa, deudas heredables, ejecuciones, traición | `../historia/00_PREMISA.md` |
 | 4 | **Opciones de confort**: texto grande, daltonismo, sacudidas y parpadeo reducibles | `04_ACCESIBILIDAD.md` |
 
 - **4 líneas, 4 etiquetas.** No se lista cada escena; se lista cada **tipo**.
@@ -52,7 +52,7 @@ El texto completo vive en Opciones. Contenido (propuesta, ES/EN, claves `txt_avi
 |---|---|---|
 | Ningún elemento **nuevo** parpadea a > 3 Hz | todo destello (crítico, aviso, marca) usa el mismo temporizador de la escena | `arte/04_EFECTOS_Y_PARTICULAS.md` |
 | **Modo «Poco destello»** en Opciones: sustituye destellos por **cambio de brillo suave** | 1 interruptor, efecto inmediato | `04_ACCESIBILIDAD.md` §3 |
-| **Sacudida de pantalla: 0 al máximo** (8 niveles) ya existe | el nivel 0 es el por defecto en la ficha de contenido | `04_ACCESIBILIDAD.md` §3 |
+| **Sacudida de pantalla: 0 al máximo** (8 niveles) está previsto | el nivel 0 es el por defecto en la ficha de contenido | `04_ACCESIBILIDAD.md` §3 |
 | Transiciones entre pantallas **sin fundido blanco** | solo fundido a negro corto (≤ 0,3 s) | `08_TRANSICIONES_Y_CARGAS.md` |
 | **Verificación manual** antes de cada entrega | guion de 5 comprobaciones (§5) | `../produccion/04_QA.md` |
 
@@ -66,7 +66,7 @@ El texto completo vive en Opciones. Contenido (propuesta, ES/EN, claves `txt_avi
 - **No es control parental ni bloqueo por edad:** la edad 16+ es una **ficha de tienda/página**
   (`../produccion/06_LEGAL_Y_AUTORIA.md` §4); el juego no pregunta ni verifica.
 - **No es un filtro de violencia:** no se apaga la sangre ni se cambia el tono; solo se **avisa** y
-  se ofrecen las opciones de confort que ya existen.
+  se ofrecen las opciones de confort que están previstos.
 - **No sustituye al tono:** el diseño sobrio (sin gore) es el de `../arte/00_ESTILO.md` y
   `../arte/04_EFECTOS_Y_PARTICULAS.md`; el aviso lo recuerda, no lo crea.
 
@@ -91,14 +91,14 @@ El texto completo vive en Opciones. Contenido (propuesta, ES/EN, claves `txt_avi
 ## 6. Datos, tipos y validación
 
 - **Datos:** **sin JSON nuevo.** Las 4 etiquetas son claves `txt_aviso_contenido_1..4` con
-  paridad ES/EN (regla 10); la opción es un ajuste de Opciones como los ya existentes.
-- **Persistencia:** «ya vi la ficha» va en `SaveState` (bandera aditiva, **SAVE_VERSION 3**,
+  paridad ES/EN (regla 10); la opción es un ajuste de Opciones como los están previstostes.
+- **Persistencia:** «ya vi la ficha» va en `SaveState` (bandera aditiva,
   `../produccion/02_GUARDADO_Y_DATOS.md`); una partida vieja sin la bandera **la ve una vez** y no
   se pierde nada.
 - **Sistema puro:** no hace falta: es texto y una bandera. Si se quisiera un aviso por escena
-  (§1), sería `js/systems/avisos.js` ya existente por diseño, con sus tests.
-- **Tests:** `tests/i18n.test.js` (las 4 claves en ambos idiomas) + `tests/save.test.js` (la
-  bandera aditiva no rompe partidas viejas).
+  (§1), sería `js/systems/avisos.js` están previstoste por diseño, con sus tests.
+- **Tests (por escribir):** `tests/i18n.test.js` (las 4 claves en ambos idiomas) + `tests/save.test.js` (la
+  bandera aditiva no rompe partidas existentes).
 
 ---
 

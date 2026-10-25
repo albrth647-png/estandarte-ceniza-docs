@@ -37,7 +37,7 @@
 | 11 | **Los tres finales** | viendo los 3 finales en distintas partidas | **Sí** |
 | 12 | **Deudor del mundo** | debiendo a la vez a 3 casas distintas | No |
 
-- **Son 12; no 50.** (El reparto es propuesta: 8 normales + 4 secretos.)
+- **Son 12; no 50.** (Reparto: 9 normales + 3 secretos.)
 - **Los secretos no aparecen en la lista** hasta que se consiguen (ni su texto).
 - **Cada logro guarda su fecha** de consiguió (día de juego) para la lista.
 
@@ -75,17 +75,17 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/logros.json` — `{ id, nombre_txt, desc_txt, secreto }` (12 filas); las
+- **Datos (por crear):** `data/logros.json` — `{ id, nombre_txt, desc_txt, secreto }` (12 filas); las
   estadísticas **no** tienen JSON: son campos de `SaveState`.
 - **Tipos:** `Logro` y `Estadisticas` en `js/data/game_types.js` (regla 4).
 - **Sistema puro:** `js/systems/logros.js` — evalúa condiciones dadas (hechos, contadores) y
   devuelve los logros nuevos; sin DOM, sin reloj, RNG inyectado si hiciera falta.
 - **Guardado:** `SaveState.logros = { ids: [], fechas: {} }` y `SaveState.estadisticas = {…}` —
-  **aditivo** (**SAVE_VERSION 3**, `../produccion/02_GUARDADO_Y_DATOS.md`); `migrateSave()`
-  rellena vacío y las partidas viejas **no** pierden nada.
+  **aditivos** (`../produccion/02_GUARDADO_Y_DATOS.md`); la migración rellena vacío y
+  nunca se pierde nada.
 - **Validación:** esquema en `js/data/schemas.js` + paridad ES/EN de los 24 textos en
   `tools/validate_data.js` (regla 10).
-- **Tests:** `tests/logros.test.js`, mínimo 3 casos (normal, borde, error): un logro no se suma
+- **Tests (por escribir):** `tests/logros.test.js`, mínimo 3 casos (normal, borde, error): un logro no se suma
   dos veces; un secreto no aparece hasta lograrse; un `id` duplicado se rechaza.
 
 ---
@@ -94,14 +94,14 @@
 
 | Cifra | Valor |
 |---|---|
-| Logros (juego completo) | **12** (8 normales + 4 secretos) |
-| Logros de la demo | **≥ 6** (los que se pueden dar en el Acto I) |
+| Logros (juego completo) | **12** (9 normales + 3 secretos) |
+| Logros de la demo | **0** (los logros se activan en Fase 2) |
 | Poder dado por logro | **0** |
 | Estadísticas | **14** |
 | Export | texto plano ≤ **64 KB** (50 entradas de Crónica) |
 | Import | **no existe** |
 | Pantalla nueva | **0** (pestaña del Registro) |
-| `SAVE_VERSION` | **3** (aditivo) |
+| Guardado | versionado aditivo |
 
 ---
 

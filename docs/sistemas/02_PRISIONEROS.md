@@ -3,7 +3,7 @@
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
 > El fin de batalla no es un botín: es una **decisión con nombre y cara** (`00_REGLAS.md` §9).
-> La Ordenanza reconoce **cuatro salidas** para el que se rinde, y las cuatro se pagan de una
+> La Ordenanza reconoce **cinco salidas** para el que se rinde, y las cinco se pagan de una
 > forma u otra (`../historia/00_PREMISA.md`). Aquí viven sus **reglas y precios**; los efectos
 > sobre la reputación, en `01_FIRMA.md`, y sobre la memoria, en `00_MEMORIA_Y_DEUDA.md`.
 
@@ -19,7 +19,7 @@
 
 ---
 
-## 2. Las cuatro salidas
+## 2. Las cinco salidas
 
 | Salida | Qué haces | Qué ganas | Qué te cuesta |
 |---|---|---|---|
@@ -27,8 +27,9 @@
 | **Retener** | Lo guardas como **rehén** | Palanca: su casa paga o se doblega | Su casa te señala; si abusas, memoria en contra |
 | **Voltear** | Lo pones a tu servicio | Una tropa o **capitán** contigo | Su **deuda** o tu oro; no todos aceptan |
 | **Ejecutar** | Le quitas la vida | Botín, miedo, menos enemigos hoy | Firma **mucho** más baja y **rencores** que crecen |
+| **Canjear** | Lo cambias por algo perdido (un prisionero propio, un rehén, una prueba) | Recuperas lo que cuesta encontrar | Creas una **deuda** con su bando (Pilar 3) |
 
-- **Cuatro salidas, ni una más** (`../produccion/00_ALCANCE.md` §2.1). Ninguna es «la buena»:
+- **Cinco salidas, ni una más** (`../produccion/00_ALCANCE.md` §2.1; el canje, del Pilar 3 de `../VALCORIA_DEUDA_DE_SANGRE.md`). Ninguna es «la buena»:
   cada una abre una puerta y cierra otra.
 - **Solo se retiene a un nombre:** los que se guardan como **rehén** son **capitanes y cabecillas**
   (§1), los únicos que ocupan **cuarto** (§3.1). La **tropa rasa** nunca se retiene: se resuelve en
@@ -133,15 +134,15 @@ Misma mecánica, desde el otro lado. El mundo decide, y **siempre hay salida**:
 
 ## 9. Datos, tipos y validación
 
-- **Guardado:** campo `prisioneros` en `SaveState` (**`SAVE_VERSION` 3**, aditivo) y campo
-  `alquiler` = `{ sitio, dias_restantes, cuartos[] }` (**`SAVE_VERSION` 5**, aditivo), junto a
+- **Guardado:** campo `prisioneros` en `SaveState` (aditivo, aditivo) y campo
+  `alquiler` = `{ sitio, dias_restantes, cuartos[] }` (aditivo), junto a
   `memoria` y `firma`.
 - **Tipos:** `Prisionero` y `Salida` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/tropas.json` en
   `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/prisioneros.js` — calcula precios y aplica hechos a memoria y
   Firma; sin DOM, sin reloj, RNG inyectado.
-- **Tests:** `tests/prisioneros.test.js`, mínimo 3 casos (normal, borde, error): una salida
+- **Tests (por escribir):** `tests/prisioneros.test.js`, mínimo 3 casos (normal, borde, error): una salida
   imposible (voltear a un Enemigo) se rechaza; ejecutar deja rencor; el rescate nunca deja sin
   salida; **un cuarto lleno rechaza retener**.
 

@@ -119,4 +119,4 @@ cuántos saldaron su cuenta a tu lado, cuántos la heredaron.*
   sistemas ya decididos (memoria, Firma, testigos, moral). La historia no se despilfarra: se
   ramifica.
 - Los textos jugables **todavía no existen**: se redactan en fase de contenido, con claves
-  `txt_*` y paridad ES/EN, sobre el motor de diálogo existente (`js/systems/dialogue.js`).
+  `txt_*` y paridad ES/EN, sobre el motor de diálogo previsto (`js/systems/dialogue.js`, por construir).

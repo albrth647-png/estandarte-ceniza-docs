@@ -96,13 +96,13 @@ Un favor **cubre un servicio de hasta 100 oro** (o su equivalente), nunca la vid
 
 ## 8. Datos, tipos y validación
 
-- **Guardado:** no añade campos nuevos: usa `f` de `FichaMemoria` (SAVE_VERSION 3).
+- **Guardado:** no añade campos nuevos: usa `f` de `FichaMemoria` (aditivo).
 - **Tipos:** `Favor` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** los tipos de favor viven en `data/favores.json`; esquema en
   `js/data/schemas.js` + cruce con los ids de PNJ en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/favores.js` — concede, cobra y caduca; sin DOM, sin reloj (el día
-  entra por `save.day`), RNG inyectado.
-- **Tests:** `tests/favores.test.js`, mínimo 3 casos (normal, borde, error): un favor se cobra una
+  entra por día de juego), RNG inyectado.
+- **Tests (por escribir):** `tests/favores.test.js`, mínimo 3 casos (normal, borde, error): un favor se cobra una
   vez; caduca a los 90 días; cobrar de más lo rompe.
 
 ---

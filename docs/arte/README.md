@@ -14,7 +14,7 @@
 | [`04_EFECTOS_Y_PARTICULAS.md`](04_EFECTOS_Y_PARTICULAS.md) | Impactos, ambiente, sacudidas y avisos visuales | ✅ aprobado |
 | [`05_ICONOS.md`](05_ICONOS.md) | El idioma visual de la interfaz | ✅ aprobado |
 
-**Lo que ya existe:** 10 modelos `.glb` en `art/` (7,1 MB) con su ficha en `art/AUTORES.md`
+**Lo que está previsto:** 10 modelos `.glb` en `art/` (7,1 MB) con su ficha en `art/AUTORES.md`
 (KayKit CC0 / Fox CC-BY), Three.js r186 y cargadores vendorizados en `vendor/three/`
 (MIT, ver `../THIRD_PARTY.md`), paleta ceniza/óxido en `css/ui.css` y un pipeline de aligerado
 de GLB en `tools/`.

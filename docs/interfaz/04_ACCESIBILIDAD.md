@@ -47,7 +47,7 @@
 
 ## 5. Lectura y audición
 
-- **Velocidad de texto:** 25 / 45 / 90 cps (ya existe; `../DECISIONES.md`, 2026-09-27).
+- **Velocidad de texto:** 25 / 45 / 90 cps (valores de diseño; por implementar).
 - **Saltar escena:** mantener 1 s **aplicando sus efectos**; nunca se pierde información.
 - **Subtítulos:** activables; **apagarlos = saltar la narración aplicando efectos**.
 - **Avisos también sonoros** (no solo visuales) para no depender de mirar el borde.
@@ -64,12 +64,12 @@
 
 ## 7. Datos, tipos y validación
 
-- Las opciones viven en el sistema de opciones existente (`js/core/options.js`, `eb_opts`), **fuera
+- Las opciones vivirán en el sistema de opciones (`js/core/options.js`, por construir), **fuera
   del guardado de partida** (`../DECISIONES.md`, 2026-09-26).
 - **Tipos:** `OpcionesAccesibilidad` en `js/data/game_types.js`.
 - **Validación:** las opciones se persisten con valores por defecto seguros; un valor corrupto cae
   al default, nunca rompe el arranque.
-- **Tests:** `tests/opciones.test.js` (existente) + `tests/accesibilidad.test.js`.
+- **Tests (por escribir):** `tests/opciones.test.js` (existente) + `tests/accesibilidad.test.js`.
 
 ---
 

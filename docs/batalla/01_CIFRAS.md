@@ -45,14 +45,14 @@
 | Tropa de apoyo | 12 | 12 |
 | Capitán | 30 | 30 |
 
-*Ejemplos:* 28 de ataque contra 22 de defensa → **19** daño. Contra 55 → **13**. La defensa
+*Ejemplos:* 28 de ataque contra 22 de defensa → **22** daño. Contra 55 → **17**. La defensa
 nunca anula el daño (tope práctico: ~85 % con defensa 400).
 
 - **Crítico:** 10 % de probabilidad × **1,5**. Nunca más del 10 %, nunca acumulable.
 - **Daño máximo por golpe:** 90 (héroe) / 45 (tropa) — para que nadie «onewipe». **Se aplica
   después de escalar por nivel** (`../sistemas/12_NIVELES_DEL_HEROE.md` §5).
 - **Las joyas no rompen el tope:** anillo de plata (+2 ataque) + arma `rara` +1 en nivel 30 sigue
-  por debajo de 90. Test de borde en `tests/recetas.test.js`
+  por debajo de 90. Test de borde (por escribir, junto a las recetas)
   (`../sistemas/15_FABRICACION_Y_RECETAS.md` §8).
 
 ---
@@ -65,7 +65,7 @@ nunca anula el daño (tope práctico: ~85 % con defensa 400).
 | Ventana de Guardia | **0,5 s** (reduce 75 %) |
 | Recuperación de Guardia | 0,4 s en los que no bloqueas |
 | Desvío (esquiva) | 0,35 s de invulnerabilidad, coste 15 de aliento |
-| Aliento | 100, regenera **5/s** fuera de acción |
+| Aliento | 100 · regenera **4/s** en combate · **5/s** fuera de acción |
 | Alcance cuerpo a cuerpo | **2,5 m** (lanza: 3,5 m) |
 | Alcance de arco | **18 m** |
 | Vista de campo | **60 m** (la niebla corta antes) |
@@ -100,7 +100,7 @@ nunca anula el daño (tope práctico: ~85 % con defensa 400).
 | Orden **Cargar** recibida | **+10** |
 | Héroe o capitán a < 8 m | **+2/s** |
 | Recuperación sin daño | **+2/s** |
-| **Ruptura** | a **0** · con miedo (Fiera/Hiena) a **10** |
+| **Ruptura** | a **0** · con miedo (Fiera/Hiena) a **10** · bandidos y hostigadores a **10** (cobardes por oficio) |
 | Pánico en cadena | se rompe **un tercio** del bando |
 | Capitán: sus pérdidas pesan | ×**2** en su gente |
 

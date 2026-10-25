@@ -54,13 +54,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/supervivencia.json` — `{ racion_dia, descanso, coste, penalizacion_hambre }`.
+- **Datos (por crear):** `data/supervivencia.json` — `{ racion_dia, descanso, coste, penalizacion_hambre }`.
 - **Tipos:** `Descanso` y `Racion` en `js/data/game_types.js`.
 - **Validación:** cruce de precios con `data/economia.json` y de props (leña) con `data/props.json`
   en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/supervivencia.js` — consumo, descanso y penalización; sin DOM ni
-  reloj (día por `save.day`).
-- **Tests:** `tests/supervivencia.test.js`: sin raciones la moral baja; dormir en posada recupera
+  reloj (el día entra inyectado).
+- **Tests (por escribir):** `tests/supervivencia.test.js`: sin raciones la moral baja; dormir en posada recupera
   entero; el hambre no mata.
 
 ---

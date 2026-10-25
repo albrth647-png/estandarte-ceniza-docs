@@ -10,9 +10,9 @@
 - **El relato lo escriben los sistemas**: memoria universal (Pilar 5), La Firma (Pilar 7),
   la Crónica y la Deuda de Sangre (Pilar 3). La trama guionizada pone el **marco**;
   la partida de cada jugador escribe su historia dentro.
-- **Motor de diálogo ya disponible**: `js/systems/dialogue.js` — nodos
+- **Motor de diálogo previsto** (por construir): nodos
   `habla / decision / une / batalla`, con condiciones sobre el guardado y efectos
-  (oro, honor, moral, banderas, unir companero). Puro y testado.
+  (oro, honor, moral, banderas, unir compañero). Puro, sin DOM ni reloj.
 - **Todo texto visible pasa por claves `txt_*` con paridad ES/EN** (cuesta ×2: la historia
   se dosifica, no se despilfarra).
 - **1.ª persona y exploración libre**: la historia se cuenta caminando, hablando y leyendo
@@ -24,7 +24,7 @@
 |---|---|---|
 | [`00_PREMISA.md`](00_PREMISA.md) | Logline, tema, el mundo de la Ordenanza, el eslogan y su encaje con el juego | ✅ aprobado |
 | [`01_ESTRUCTURA.md`](01_ESTRUCTURA.md) | Prólogo, tres actos, flashbacks, giros y **los tres finales** | ✅ aprobado |
-| [`02_PERSONAJES.md`](02_PERSONAJES.md) | Los 8: protagonista, viuda, Escribano Mayor, Altamir, el Teniente, los Marcados | ✅ aprobado |
+| [`02_PERSONAJES.md`](02_PERSONAJES.md) | El elenco de 8: el héroe, Doña Sira, Beltrán, el Maestro Ambrosio, Casa Altamir, el Teniente, los Marcados y los que huyen | ✅ aprobado |
 | [`03_RECORRIDO.md`](03_RECORRIDO.md) | Cómo se cuenta en pantalla: primeros minutos, diálogo, Crónica, memoria | ✅ aprobado |
 | [`04_GUION.md`](04_GUION.md) | Escenas y diálogos jugables con claves `txt_*` (árboles del motor) | ✅ aprobado |
 | [`05_CASAS_Y_FACCIONES.md`](05_CASAS_Y_FACCIONES.md) | Casas, la otra ribera, los Escribanos: quién manda y qué quiere | ✅ aprobado |

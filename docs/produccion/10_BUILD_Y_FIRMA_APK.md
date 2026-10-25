@@ -104,7 +104,7 @@
   `04_QA.md` y los mismos guardados que `02_GUARDADO_Y_DATOS.md`.
 - **Tooling:** `tools/build_web.mjs` y `tools/apk.mjs` (propuesta) encapsulan las etapas 2-6 para
   que el proceso sea de un comando y no de memoria.
-- **Tests:** `tests/apk.test.js` (normal, borde, error) al implementar: el build se niega si
+- **Tests (por escribir):** `tests/apk.test.js` (normal, borde, error) al implementar: el build se niega si
   `npm run qa` está rojo; el `versionCode` sube siempre; un keystore ausente avisa y no compila
   `release`.
 

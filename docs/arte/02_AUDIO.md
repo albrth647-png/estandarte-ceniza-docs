@@ -50,7 +50,7 @@
 
 ## 3. Mezcla y volúmenes
 
-- **3 buses:** música · efectos · interfaz. Volúmenes ya existentes en Opciones
+- **3 buses:** música · efectos · interfaz. Volúmenes están previstostes en Opciones
   (`../../js/core/options.js`), **fuera del guardado de partida**.
 - **Ducking:** al entrar una voz/orden, la música baja **−6 dB** y vuelve en 0,4 s.
 - **El silencio cuenta:** en momentos de deuda y muerte, **calla la música** para que pese
@@ -78,15 +78,15 @@
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/audio.json` — `{ id, familia, fuente ("sintesis" | "fichero"), fichero?, ficha? }`.
+- **Datos (por crear):** `data/audio.json` — `{ id, familia, fuente ("sintesis" | "fichero"), fichero?, ficha? }`.
 - **Voz:** una clave **hablada** tiene **dos ficheros** (uno por idioma, `voz/<clave>_es` y
   `_en`); el validador exige que **ambos existan** si la clave está marcada como hablada.
 - **Tipos:** `Sonido` en `js/data/game_types.js`.
 - **Validación:** todo `fichero` referenciado **existe** y **tiene ficha** en `art/AUTORES.md`
   (`tools/validate_data.js`); una referencia sin licencia **falla**.
-- **Sistema/escena:** la reproducción vive en `js/scenes/*`; la simulación **no** conoce el audio
+- **Sistema/escena:** la reproducción vivirá en las escenas (`js/scenes/*`); la simulación **no** conoce el audio
   (regla 11 de `../../AGENTS.md`).
-- **Tests:** `tests/audio.test.js`: sin audio no hay excepción; los volúmenes se aplican; no se
+- **Tests (por escribir):** `tests/audio.test.js`: sin audio no hay excepción; los volúmenes se aplican; no se
   superan 16 voces.
 
 ---

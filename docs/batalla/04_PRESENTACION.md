@@ -124,8 +124,8 @@ La **primera batalla** enseña sola, con la presentación:
 
 ## 8. Datos, tipos y validación
 
-- Pintura en las escenas (`js/scenes/sc_battle.js`) con el kit de DOM (`dom_kit.js`) y el render
-  3D existente; **nada** de esto entra en `js/systems/*`.
+- Pintura en la escena de batalla (por construir) con el kit de DOM (`dom_kit.js`, por crear) y el render
+  3D (por construir); **nada** de esto entrará en la simulación.
 - Claves `txt_bat_*` en `strings_es.json` / `strings_en.json` con **paridad obligatoria**
   (regla 10).
 - Los efectos se prueban en `tests/scene_battle.test.js` (pintura, avisos, estados) y su coste con
@@ -153,8 +153,8 @@ La **primera batalla** enseña sola, con la presentación:
 
 > **Hasta aquí la demo.** Las **dos mitades del HUD** de batalla (moral y quién acata) y las de
 > exploración, los **3 botones de combate** más la Habilidad, la barra de órdenes y los avisos
-> funcionando en los **2 campos** con **5-6 por bando** (8 en el cierre). Escalado verificado en
-> 960×683 y 915×555.
+> por construir en los **3 campos** con **5-6 por bando** (8 en el cierre). Escalado a verificar en
+> 960×683 y 960×540.
 
 > **Y sigue el juego completo.** Con **10+ por bando** la presentación **no cambia**: mismas
 > franjas, mismos avisos, mismo presupuesto. Si el rendimiento aprieta, se recortan partículas

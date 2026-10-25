@@ -36,7 +36,7 @@ Para cada bloque de la lista se da: **documento(s) del repo que lo cubren**, y e
   live-service, sin equipo grande, sin monetización más allá del pago único).
 
 Regla de oro que se respeta en todo el mapeo: **un documento de diseño describe el juego**, no
-el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTING`-style o en
+el proceso corporativo. Lo de proceso vivirá en `tools/` (por crear) y `AGENTS.md`, `CONTRIBUTING`-style o en
 `produccion/`, y no infla los 98.
 
 ---
@@ -60,9 +60,9 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 | Registro de deuda técnica | 🧩 | **Hueco menor** (§3). |
 | Propiedad de código, convenciones de nomenclatura | ✅ | `AGENTS.md` (reglas y convenciones). |
 | Política de registro de eventos, taxonomía de errores, rastro de auditoría, matriz de cumplimiento | ⬜ / 🟡 | Sin telemetría (ver `produccion/09_PRIVACIDAD_Y_DATOS.md`, 0 datos); el "rastro" es la `Crónica` del juego. |
-| Plan de verificación, plan de validación, estrategia de prueba, entorno/datos de prueba, datos simulados, módulos stub | ✅ | `produccion/04_QA.md` + `tests/` (node:test) + RNG inyectado (`AGENTS.md` regla 9). |
-| Puntos de integración, especificaciones de interfaz, contratos de módulo, API interna | 🧩 | **Hueco**: hoy viven implícitos en `game_types.js` y `ARQUITECTURA.md` (§3). |
-| Cadena de herramientas, importador de assets, automatización de build, pipeline CI, repositorio de artefactos | 🟡 | `tools/` + `arte/01_ASSETS.md` (pipeline GLB) + `../package.json` (scripts de QA). |
+| Plan de verificación, plan de validación, estrategia de prueba, entorno/datos de prueba, datos simulados, módulos stub | ✅ | `produccion/04_QA.md` + `tests/` (node:test, por crear) + RNG inyectado (`AGENTS.md` regla 9). |
+| Puntos de integración, especificaciones de interfaz, contratos de módulo, API interna | 🧩 | **Cubierto por diseño**: quedan definidos en los tipos (`game_types.js`) y en `ARQUITECTURA.md` (§3). |
+| Cadena de herramientas, importador de assets, automatización de build, pipeline CI, repositorio de artefactos | 🟡 | `tools/` (por crear) + `arte/01_ASSETS.md` (pipeline GLB) + `../package.json` (scripts de QA, por crear). |
 
 ### Bloque 2 — Build, firma, empaquetado y plataforma móvil
 
@@ -73,7 +73,7 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 | Pérdida de contexto WebGL, renderizador alternativo, compatibilidad de shaders, precisión GLSL | 🟡 | `produccion/03_RIESGOS.md` (riesgos WebGL) + `PLAN_MIGRACION_3D.md`. |
 | Compresión de texturas/audio, códec de vídeo, formatos de subtítulos/fuentes, licencias de fuentes | 🟡 / ⬜ | Audio: `arte/02_AUDIO.md`. Vídeo/subs: el juego no tiene vídeo. |
 | Unicode, RTL, pluralización, género, sustitución, concatenación, expansión, truncamiento, cortes, silabeo, formatos de fecha/número/moneda/unidades | 🟡 | `interfaz/03_I18N_Y_TONO.md` (≤ 90 car., 2 idiomas, plantillas con huecos). RTL/plural: **fuera** (ES/EN). |
-| Pruebas de localización, pseudolocalización, QA de traducción, revisión cultural | 🟡 | `npm run validate` (paridad ES/EN, `tools/validate_data.js`). |
+| Pruebas de localización, pseudolocalización, QA de traducción, revisión cultural | 🟡 | `npm run validate` (paridad ES/EN; validador por crear). |
 | Versión de WebView/Chrome, fragmentación, capas OEM, errores de driver, particularidades de fabricante | ⬜ / 🟡 | Mínimos en `produccion/08_PLATAFORMAS_Y_MINIMOS.md`. |
 | Política multiplataforma, plan de portado, abstracción de entrada/render/audio/archivos, adaptador de plataforma, servicios de plataforma | 🟡 | `PLAN_MIGRACION_3D.md` (abstracción de render) + `interfaz/00_CONTROLES.md`. |
 
@@ -81,14 +81,14 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 
 | Ítems | Veredicto | Dónde |
 |---|---|---|
-| Compatibilidad, humo, cordura, regresión, inventario de tests, guiones manuales | ✅ | `produccion/04_QA.md` + `tools/smoke.mjs` + `tests/`. |
+| Compatibilidad, humo, cordura, regresión, inventario de tests, guiones manuales | ✅ | `produccion/04_QA.md` + `tools/smoke.mjs` (por crear) + `tests/` (por crear). |
 | Triaje de errores, matriz severidad/prioridad | ✅ | `docs/BUGS.md` (ALTA bloquea; formato de registro). |
 | Aprobación de calidad, lista de certificación, cumplimiento de tienda | 🟡 | `produccion/05_MERCADO_Y_LANZAMIENTO.md` + `06_LEGAL_Y_AUTORIA.md`. |
 | Especificación mínima/recomendada/objetivo, dispositivos probados/no soportados, laboratorio | 🟡 | `produccion/08_PLATAFORMAS_Y_MINIMOS.md`. |
-| Migración de guardado, inyección de corrupción | ✅ | `produccion/02_GUARDADO_Y_DATOS.md` + `js/core/save.js` (backup corrupto). |
+| Migración de guardado, inyección de corrupción | ✅ | `produccion/02_GUARDADO_Y_DATOS.md` (backup corrupto; módulo por crear). |
 | Validación de determinismo y repeticiones | ✅ | `batalla/00_REGLAS.md` §10 + `AGENTS.md` regla 9 (RNG inyectado). |
 | Simulación de balance, modelo económico | ✅ | `batalla/01_CIFRAS.md` §8 + `sistemas/06_ECONOMIA.md` §7. |
-| Pruebas negativas, casos límite, frontera, partición, transición de estado, tablas de decisión, causa-efecto | ✅ | `AGENTS.md` (mínimo 3 casos: normal, borde, error) en `tests/`. |
+| Pruebas negativas, casos límite, frontera, partición, transición de estado, tablas de decisión, causa-efecto | ✅ | `AGENTS.md` (mínimo 3 casos: normal, borde, error) en `tests/` (por crear). |
 | Casos de uso, historias de usuario, aceptación, alfa, beta (cerrada/abierta), acuerdo/NDA, feedback, encuesta, entrevista, grupo focal, métricas de usabilidad | 🧩 | **Hueco** (§3): no hay plan de **playtest/beta**. |
 
 ### Bloque 4 — Rendimiento, latencia y presupuestos
@@ -100,9 +100,9 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 | Candidato de versión, master dorado, build final/firmada/sin firmar/de depuración/liberación/perfil/prueba/demo/prototipo | 🟡 | `produccion/07_RELEASES_Y_VERSIONES.md`. |
 | Corte vertical/horizontal, build jugable/de hito/nocturna/CI | 🟡 | `produccion/00_ALCANCE.md` (rodaja vertical) + `01_FASES.md`. |
 | Versionado de artefactos/semántico, número de build, hash de commit, builds reproducibles/deterministas | 🟡 | `produccion/07_RELEASES_Y_VERSIONES.md` (semver). |
-| Escaneo de vulnerabilidades, análisis estático, lint, formato, cobertura, mutación, property-based, fuzzing, caos, inyección de fallos | 🟡 | `npm run qa` (tsc + lint + cobertura ≥ 90 %). Mutación/fuzzing/caos: **no** aplican hoy. |
+| Escaneo de vulnerabilidades, análisis estático, lint, formato, cobertura, mutación, property-based, fuzzing, caos, inyección de fallos | 🟡 | `npm run qa` (tsc + lint + cobertura ≥ 90 %). Mutación/fuzzing/caos: **no** aplican. |
 | Tirones, tartamudeo, microtartamudeo, picos (GC/asignación/draw calls/triángulos), shaders, pipeline, streaming de texturas, mipmaps, anisotrópico, antialiasing | 🟡 | Rendimiento cubierto por `arte/00_ESTILO.md`; perfiladores: **fuera** (§4). |
-| Análisis de trazas, captura de fotogramas, suite de benchmark, profilers (GPU/CPU/almacenamiento/batería/térmico/UI/entrada/audio/animación/IA/física/render/carga/guardado) | ⬜ | Herramientas externas; el proyecto usa `npm run smoke`. |
+| Análisis de trazas, captura de fotogramas, suite de benchmark, profilers (GPU/CPU/almacenamiento/batería/térmico/UI/entrada/audio/animación/IA/física/render/carga/guardado) | ⬜ | Herramientas externas; el proyecto usará `npm run smoke` (por crear). |
 
 ### Bloque 6 — Audio, voz, háptica y accesibilidad avanzada
 
@@ -141,7 +141,7 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 | Propagación de rumores, boca a boca, memoria de facción, estado global | ✅ | `sistemas/09_TIEMPO_Y_MUNDO_VIVO.md` + `historia/05_CASAS_Y_FACCIONES.md` + `misiones/03_CADENAS_Y_RUMORES.md`. |
 | Cola de eventos, enfriamientos, prioridad, deduplicación, resolución de conflictos | 🟡 | `sistemas/09_TIEMPO_Y_MUNDO_VIVO.md` (eventos deterministas). |
 | Condiciones de carrera, hilos, async, orden de actualización, paso de tiempo, interpolación/extrapolación, frecuencias, tick, multihilo, atómica, interbloqueo, hambruna, inversión de prioridad, tiempo real | ⬜ / 🟡 | JS de un solo hilo; determinismo cubierto. |
-| Manejo de errores/excepciones, reintentos, timeouts, interruptor de circuito, limitación, anti-rebote, estrangulamiento, colas, contrapresión, búfer, trabajos, planificador, temporizadores | ⬜ / 🟡 | Sin red ni servicios; `js/core/game_loop.js` y `save.js` cubren lo local. |
+| Manejo de errores/excepciones, reintentos, timeouts, interruptor de circuito, limitación, anti-rebote, estrangulamiento, colas, contrapresión, búfer, trabajos, planificador, temporizadores | ⬜ / 🟡 | Sin red ni servicios; el bucle de juego y el guardado (por crear) cubren lo local. |
 | Interruptor de emergencia, degradación elegante, comportamiento de alternativa | ✅ | `AGENTS.md` ("el fallo nunca atasca"), `produccion/03_RIESGOS.md`. |
 
 ### Bloque 9 — Supervivencia, economía medieval y sistemas de mundo
@@ -198,7 +198,7 @@ el proceso corporativo. Lo de proceso vive en `tools/`, `AGENTS.md`, `CONTRIBUTI
 | Ítems | Veredicto | Dónde |
 |---|---|---|
 | Optimización de store, palabras clave, icono, gráfico, texto, eslogan, pitch, ficha, póster de pilares, inspiración, guía de marca, logotipo, kit de prensa/creadores, política streamers/UGC/fans, merchandising, hoja de ruta de IP | 🟡 | `produccion/05_MERCADO_Y_LANZAMIENTO.md` + `VALCORIA_DEUDA_DE_SANGRE.md` (pilares/eslogan). Varios: **fuera** hoy (single-dev). |
-| KPIs, OKR, métrica estrella, embudo, conversión, abandono, sesión, ARPU, LTV, CAC, ROAS, CPI, wishlist, demo, precio | 🧩 / ⬜ | **Hueco**: métricas de lanzamiento no están (§3). Analytics/telemetría: **fuera** (0 datos, `produccion/09_PRIVACIDAD_Y_DATOS.md`). |
+| KPIs, OKR, métrica estrella, embudo, conversión, abandono, sesión, ARPU, LTV, CAC, ROAS, CPI, wishlist, demo, precio | 🧩 / ⬜ | **Fuera de alcance por decisión del dueño** (métricas de lanzamiento). Analytics/telemetría: **fuera** (0 datos, `produccion/09_PRIVACIDAD_Y_DATOS.md`). |
 | A/B, experimentos, hipótesis, significancia, muestra, potencia, intervalo, efecto, salvaguardia, telemetría, panel | ⬜ | Sin servidores ni test A/B en un juego offline. |
 
 ### Bloque 14 — Gobernanza de documentación y archivos de repositorio

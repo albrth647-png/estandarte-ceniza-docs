@@ -69,7 +69,7 @@ oficio, no el nivel del héroe.**
 
 - **Total: 11 recursos** (7 de nivel 1 + 4 de nivel 2) ✅ (`05_RECURSOS_Y_MERCADO.md` §1).
 - **Cada uno tiene su yacimiento en el mapa** (`../mundo/03_LUGARES.md` §2) y su prop recolectable;
-  el validador (regla 5) cruza `recursos.json` ↔ `props.json` ↔ `lugares.json`.
+  el validador (regla 5, por crear) deberá cruzar `recursos.json` ↔ `props.json` ↔ `lugares.json`.
 - **Los 4 nuevos no se compran en la aldea**: solo en mercado de ciudad
   (`05_RECURSOS_Y_MERCADO.md` §4).
 
@@ -183,7 +183,7 @@ oficio, no el nivel del héroe.**
 - **Los efectos son pequeños y no hay daño directo**: entran en la mitigación normal
   (`../batalla/01_CIFRAS.md` §2), no hay golpe extra.
 - **Verificación obligatoria:** anillo de plata (+2) + arma `rara` +1 en nivel 30 no puede pasar de
-  **90 de daño por golpe**. Es un test de borde de `tests/recetas.test.js`.
+  **90 de daño por golpe**. Es un test de borde (por escribir).
 
 ---
 
@@ -220,9 +220,9 @@ oficio, no el nivel del héroe.**
   `tools/validate_data.js` falla si algo no cuadra.
 - **Sistema puro:** `js/systems/fabricacion.js` — rareza, coste, mejora y carga; sin DOM, sin reloj,
   RNG inyectado.
-- **Guardado:** `SaveState.profesion = { id, rango, xp, recetas: [] }` → **SAVE_VERSION 4**
-  (`../produccion/02_GUARDADO_Y_DATOS.md`); `migrateSave()` rellena vacío.
-- **Tests:** `tests/recetas.test.js` y `tests/profesiones.test.js`, mínimo 3 casos (normal, borde,
+- **Guardado:** `SaveState.profesion = { id, rango, xp, recetas: [] }` → aditivo
+  (`../produccion/02_GUARDADO_Y_DATOS.md`); la migración rellena vacío.
+- **Tests (por escribir):** `tests/recetas.test.js` y `tests/profesiones.test.js`, mínimo 3 casos (normal, borde,
   error): sin material suficiente no se fabrica; el rango pone el techo de rareza; una receta con
   material inexistente se rechaza; el daño de una joya respeta el tope 90/45.
 
@@ -259,7 +259,7 @@ oficio, no el nivel del héroe.**
 > **Y sigue el juego completo.** Las **6** del núcleo con sus 3 rangos y 9 recetas, la clase `oficio`
 > con sus 9 encargos, los **4 recursos de nivel 2** desde el nivel 30, las **4 armas nuevas × 3
 > apariencias**, la **joyería** completa y **Equitación** tras el Capítulo 1. Todo con **las mismas
-> reglas**: crecer = más filas en `recetas.json`, no otro sistema.
+> reglas**: crecer = más filas en la tabla de recetas, no otro sistema.
 
 ---
 

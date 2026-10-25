@@ -55,13 +55,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/clima.json` — `{ id, estacion, efecto_viaje, efecto_moral, efecto_precio }`.
+- **Datos (por crear):** `data/clima.json` — `{ id, estacion, efecto_viaje, efecto_moral, efecto_precio }`.
 - **Tipos:** `Estacion` y `Fenomeno` en `js/data/game_types.js`.
 - **Validación:** cruce con `data/tiempo.json` (estaciones de 28 días) y con `data/terreno.json`
   (barro) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/clima.js` — aplica efectos por estación/franja; sin DOM, sin reloj
-  (día por `save.day`), RNG inyectado.
-- **Tests:** `tests/clima.test.js`: la estación dura 28 días; lluvia añade 1 día al trayecto; el
+  (el día entra inyectado), RNG inyectado.
+- **Tests (por escribir):** `tests/clima.test.js`: la estación dura 28 días; lluvia añade 1 día al trayecto; el
   clima no distingue de bando.
 
 ---

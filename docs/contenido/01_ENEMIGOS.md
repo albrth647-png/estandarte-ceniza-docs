@@ -103,7 +103,7 @@ Un enemigo no solo existe cuando peleas:
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/enemigos.json` — `{ id, familia, rasgo, composicion, moral_base, capitan,
+- **Datos (por crear):** `data/enemigos.json` — `{ id, familia, rasgo, composicion, moral_base, capitan,
   botin, fuera_de_campo }`.
 - **Tipos:** `FamiliaEnemiga` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/tropas.json` (roles válidos)

@@ -56,12 +56,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/iconos.json` — `{ id, familia, forma, tinte, uso }`.
+- **Datos (por crear):** `data/iconos.json` — `{ id, familia, forma, tinte, uso }`.
 - **Tipos:** `Icono` en `js/data/game_types.js`.
 - **Validación:** esquema + cruce con las familias de §1 y comprobación de que **ningún icono
   depende solo del color** (tiene `forma`).
 - **Pintura:** DOM/CSS (sin imágenes, `../../THIRD_PARTY.md`); el sistema **no** conoce iconos.
-- **Tests:** `tests/iconos.test.js`: todo icono tiene forma propia; tamaños ≥ 48; contraste mínimo
+- **Tests (por escribir):** `tests/iconos.test.js`: todo icono tiene forma propia; tamaños ≥ 48; contraste mínimo
   (4,5:1) en el HUD.
 
 ---

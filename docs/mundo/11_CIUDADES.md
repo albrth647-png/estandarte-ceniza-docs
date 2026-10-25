@@ -38,8 +38,8 @@
 - **Toque de queda de noche:** se cierran; entrar de noche exige soborno (`../sistemas/06_ECONOMIA.md` §3)
   o un favor.
 - **La marca se ve en la puerta:** tu Firma y tu deuda deciden si entras, si te registran o si te
-  niegan (`01_FIRMA.md` §6).
-- **Un Hiena** puede entrar a un mercado… y pagar **+40 %** (`01_FIRMA.md` §3).
+  niegan (`../sistemas/01_FIRMA.md` §6).
+- **Un Hiena** puede entrar a un mercado… y pagar **+40 %** (`../sistemas/01_FIRMA.md` §3).
 
 ---
 
@@ -55,13 +55,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/ciudades.json` — `{ id, barrios, servicios, corte, toque_de_queda }`; la ficha de
+- **Datos (por crear):** `data/ciudades.json` — `{ id, barrios, servicios, corte, toque_de_queda }`; la ficha de
   sitio en `lugares.json`.
 - **Tipos:** `Ciudad` en `js/data/game_types.js`.
 - **Validación:** cruce de `servicios` con `lugares.json` y de la `corte` con
   `../historia/05_CASAS_Y_FACCIONES.md` en `tools/validate_data.js`.
-- **Sistema puro:** control de puertas y mercado en los sistemas existentes; sin DOM ni reloj.
-- **Tests:** `tests/ciudades.test.js`: la ciudad tiene los 7 servicios; el toque de queda no deja
+- **Sistema puro:** control de puertas y mercado en los sistemas previstos; sin DOM ni reloj.
+- **Tests (por escribir):** `tests/ciudades.test.js`: la ciudad tiene los 7 servicios; el toque de queda no deja
   atrapado a nadie; una sola ciudad en el mapa base.
 
 ---
@@ -75,7 +75,7 @@
 | Barrios | 2-4 |
 | Cupo de gente | 25 fichas por lugar |
 | Toque de queda | noche |
-| Recargos por Firma | los de `01_FIRMA.md` §3 |
+| Recargos por Firma | los de `../sistemas/01_FIRMA.md` §3 |
 
 ---
 

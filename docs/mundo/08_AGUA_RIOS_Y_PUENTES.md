@@ -3,7 +3,7 @@
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
 > El **río Ulia** parte Valcoria (`00_MAPA.md` §1) y los cruces son **puntos de decisión**:
-> peaje, emboscada o atajo. El vado ya existe como **terreno** (`06_TERRENO_DEL_MUNDO.md`);
+> peaje, emboscada o atajo. El vado está previsto como **terreno** (`06_TERRENO_DEL_MUNDO.md`);
 > aquí se rige el **cruce**.
 
 ---
@@ -45,13 +45,13 @@
 
 ## 4. Datos, tipos y validación
 
-- **Datos:** `data/agua.json` — `{ id, tipo (vado/puente/barca/paso), peaje, capacidad, riesgo }`.
+- **Datos (por crear):** `data/agua.json` — `{ id, tipo (vado/puente/barca/paso), peaje, capacidad, riesgo }`.
 - **Tipos:** `Cruce` en `js/data/game_types.js`.
 - **Validación:** cruce con `data/lugares.json` (todo sitio junto al río declara su cruce) y con
   `data/terreno.json` (`vado`) en `tools/validate_data.js`.
-- **Sistema puro:** elegir cruce y aplicar peaje/riesgo vive en `js/systems/viaje.js`; sin DOM ni
+- **Sistema puro:** elegir cruce y aplicar peaje/riesgo vivirá en `js/systems/viaje.js`; sin DOM ni
   reloj.
-- **Tests:** `tests/agua.test.js`: sin puente siempre hay vado; el peaje sin derecho marca deuda;
+- **Tests (por escribir):** `tests/agua.test.js`: sin puente siempre hay vado; el peaje sin derecho marca deuda;
   ningún cruce bloquea el paso.
 
 ---
@@ -71,9 +71,9 @@
 
 ## 6. Qué entra en la demo (Fase 1) — y qué sigue
 
-> **Hasta aquí la demo.** El **cruce del tramo de camino** (puente o vado, `03_LUGARES.md` §2),
-> con su peaje y su emboscada. El **tipo de terreno `vado`** entra con el mapa completo
-> (`06_TERRENO_DEL_MUNDO.md` §4).
+> **Hasta aquí la demo.** El camino real del Acto I **no cruza agua** (ningún cruce fluvial en
+> `03_LUGARES.md` §2). El **tipo de terreno `vado`** y los cruces con peaje y emboscada entran
+> con el mapa completo (`06_TERRENO_DEL_MUNDO.md` §4).
 
 > **Y sigue el juego completo.** El **Ulia**, las barcas de la Ribera y los pasos de montaña se
 > añaden **con este mismo formato**; crecer = más filas en `agua.json`, no otro sistema.

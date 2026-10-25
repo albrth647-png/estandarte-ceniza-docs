@@ -24,7 +24,7 @@
 | **10 modelos `.glb`** | personajes y animal | **CC0 1.0** (KayKit) · **CC0 + CC-BY 4.0** (Fox) |
 | **Assets generados con herramientas propias** (retratos, texturas, voz) | caras, materiales y voz hablada | Propios del proyecto; herramienta y licencia fichadas en `../../art/AUTORES.md` |
 
-- **Todo vendorizado** en `vendor/` y `art/`: cero CDNs, cero red (regla offline).
+- **Se vendorizará** en `vendor/` y `art/` (por crear): cero CDNs, cero red (regla offline).
 - **Crédito CC-BY obligatorio** del **zorro** (PixelMannen · tomkranis · AsoboStudio): se conserva
   en los créditos del juego (`js/scenes/sc_creditos.js`).
 - Fichas y licencias completas: `../../art/AUTORES.md` y `../../THIRD_PARTY.md`.
@@ -35,7 +35,7 @@
 
 - **Cero** activos, nombres o textos de juegos de terceros.
 - **Toda pieza nueva** entra **con su ficha** (autor, licencia, enlace, fecha) **antes** de
-  commitearse; sin ficha, no entra (lo comprueba `tools/validate_data.js`).
+  commitearse; sin ficha, no entra (lo comprobará el validador (`tools/validate_data.js`, por crear)).
 - **Prueba de originalidad:** el nombre «Valcoria», sus casas, su Ordenanza y sus textos son
   **propios**; los modelos libres están atribuidos.
 - **Assets generados (2026-10-02):** todo lo generado con las herramientas del dueño (imagen y
@@ -62,8 +62,8 @@
 
 ## 6. Cómo se prueba el cumplimiento
 
-- `tools/validate_data.js` falla si un asset referenciado **no tiene ficha** o **no existe**.
-- `npm run docs` comprueba que los enlaces a las fichas (`art/AUTORES.md`, `THIRD_PARTY.md`) no
+- `tools/validate_data.js` (por crear) fallará si un asset referenciado **no tiene ficha** o **no existe**.
+- `npm run docs` (por crear) comprobará que los enlaces a las fichas (`art/AUTORES.md`, `THIRD_PARTY.md`) no
   están rotos.
 
 ---
@@ -83,7 +83,7 @@
 
 ## 8. Qué entra en la demo (Fase 1) — y sigue
 
-> **Hasta aquí la demo.** Los modelos actuales con sus fichas, los créditos con el zorro y la
+> **Hasta aquí la demo.** Los modelos de reserva con sus fichas, los créditos con el zorro y la
 > comprobación de assets.
 
 > **Y sigue el juego completo.** Cada asset de las Fases 2-5 sigue **la misma regla**: ficha antes

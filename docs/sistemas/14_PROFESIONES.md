@@ -128,7 +128,7 @@ sigilo ni magia), que **cambie decisiones** y no solo números, y que **no dupli
 **el mapa tiene que traer todo lo que esa profesión consume o explota**. Si el recurso no está en
 el mapa, **la profesión no entra**.
 
-| Profesión | Derivado (qué necesita) | Dónde está en el mapa | ¿Ya existe en los datos? |
+| Profesión | Derivado (qué necesita) | Dónde está en el mapa | Recurso requerido |
 |---|---|---|---|
 | **Herrero** | **Minería → hierro** + **leña** (carbón) | Vetas y escombreras de la Serranía y los Altos; leñador en bosque y arboleda | ✅ `hierro`, `leña` (`../contenido/05_RECURSOS_Y_MERCADO.md`) · `plata`, `piedra`, `resina` de nivel 2 ✅ |
 | **Sanador** | **Herbolario → hierbas** + **cuero** (vendas) | Prados, riberas y campos de grano | ✅ `cuero` · ✅ `hierbas` (**recurso oficial**, 2026-10-01) |
@@ -138,13 +138,13 @@ el mapa, **la profesión no entra**.
 | **Cazador** | **Caza → cuero y carne** | Bosques, arboledas y prados (`../contenido/08_ANIMALES_Y_CRIATURAS.md`) | ✅ `cuero` · ✅ `carne` (**recurso oficial**, 2026-10-01) |
 | **Equitación** | **Caballería → caballos y mulas** | Establos, praderas y dehesas (`../mundo/03_LUGARES.md`) | ✅ · `cuerda` (arreos) de nivel 2 ✅ |
 
-- **Dónde se mapea:** cada recurso de la tabla tiene que existir como **fila de `lugares.json`**,
+- **Dónde se mapea:** cada recurso de la tabla se definirá como **fila de `lugares.json`** (por crear),
   como **prop del campo** (`../mundo/07_PROPS_Y_VEGETACION.md`) o como **fila de
   `recursos.json`**. Es decir: **mineral para la herrería, hierbas para el sanador, cuero para el
   escribano y el cazador, prado/establo para la equitación** — no pueden faltar.
 - **Validación (regla 5):** `data/profesiones.json` lleva `recurso: [...]` y
   `tools/validate_data.js` **cruza cada recurso** con `recursos.json` / `props.json` /
-  `lugares.json`. Una profesión con un recurso que no existe en el mapa **no arranca** el juego.
+  `lugares.json`. Una profesión con un recurso que no existe en el mapa **no arrancará** el juego (regla 5).
 - ✅ **Cerrado (2026-10-01): `hierbas` y `carne` son recursos oficiales** — entran en
   `data/recursos.json` (precios en `../contenido/05_RECURSOS_Y_MERCADO.md` §2).
 - ✅ **Cerrado (2026-10-02): 4 recursos de nivel 2 más** — `plata`, `piedra`, `cuerda`, `resina`
@@ -154,16 +154,16 @@ el mapa, **la profesión no entra**.
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/profesiones.json` — `{ id, rangos: [{xp, nombre_txt, fuera, dentro}], maestro,
+- **Datos (por crear):** `data/profesiones.json` — `{ id, rangos: [{xp, nombre_txt, fuera, dentro}], maestro,
   recurso: [], xp_por_rango }`.
 - **Tipos:** `Profesion` y `ProfesionEstado` en `js/data/game_types.js` (regla 4).
 - **Guardado:** `SaveState.profesion = { id, rango, xp, recetas: [] }` — **aditivo**
-  (**SAVE_VERSION 4**, `../produccion/02_GUARDADO_Y_DATOS.md`); `migrateSave()` rellena vacío.
+  (aditivo, `../produccion/02_GUARDADO_Y_DATOS.md`); la migración rellena vacío.
 - **Validación:** esquema en `js/data/schemas.js` + cruce de cada `recurso` con los datos del mapa
   (§5) y de las recetas con `items.json` (`15_FABRICACION_Y_RECETAS.md` §10).
 - **Sistema puro:** `js/systems/profesiones.js` — rangos, bonus de fuera y ventaja de dentro; sin
-  DOM, sin reloj, RNG inyectado. La fabricación vive en `js/systems/fabricacion.js`.
-- **Tests:** `tests/profesiones.test.js` y `tests/recetas.test.js`, mínimo 3 casos (normal, borde,
+  DOM, sin reloj, RNG inyectado. La fabricación vivirá en `js/systems/fabricacion.js`.
+- **Tests (por escribir):** `tests/profesiones.test.js` y `tests/recetas.test.js`, mínimo 3 casos (normal, borde,
   error): no se sube de rango sin XP de oficio; el cambio de profesión cuesta **3 días**; ninguna
   ventaja supera el techo de daño; una profesión con un recurso **ausente del mapa** se rechaza.
 

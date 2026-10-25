@@ -24,10 +24,12 @@
 | **Control** | Táctil propio, diseñado **para** táctil; no una imitación de consola |
 | **Modelo** | Juego **de pago** único, sin micropagos. Demuestra primero, cobra después |
 | **Tono** | No eres el héroe elegido: eres un superviviente de la caída de Valcoria |
-| **Repo** | **El mismo de siempre** y con **las mismas dependencias**: cero instalaciones nuevas |
+| **Repo** | **Uno solo** para documentación y código: este repositorio. La documentación ya está aquí; el código nacerá en él cuando empiece la Fase 1 |
 
-**Se tira de cima:** el motor de batalla táctica (escuadrones, mitigación, moral, Ola de choque)
-y el mapa por casillas. **Base nueva.** El código viejo se queda en el repo como historia.
+**Se conserva como concepto:** el combate por escuadrones del proyecto anterior (mitigación,
+moral, Ola de choque). **Fuera** el mapa por casillas. **Implementación nueva desde cero:**
+el código del proyecto anterior no existe en este repositorio (solo documentación); si algo
+de aquél vuelve, es por decisión del dueño fechada en `DECISIONES.md`.
 
 ---
 
@@ -177,7 +179,7 @@ combate (tu héroe).
 | Terreno | El campo **depende de dónde te encontraste**: el terreno del encuentro da cobertura, frena o favorece la carga. |
 | Tus tropas | **Reclutas en el mundo**. |
 | Fin de batalla | Rota la **moral**: huyen o se rinden → entra el Pilar 3 (rescate / rehén / volteo). **Si pierdes tú, la misma mecánica de la deuda.** |
-| Motor | **Prototipo nuevo**; `battle.js` (commit `6fcddb7`) no se resucita sin decisión documentada. |
+| Motor | **Prototipo nuevo, desde cero**; el motor del proyecto anterior no se reutiliza ni se consulta sin decisión documentada. |
 
 🟡 **Solo faltan cifras:** moral cuánto aguanta y cuándo se rompe, coste y aforo de la
 recluta, qué hace cada terreno en el campo y el reparto exacto de las 10+ unidades.
@@ -276,13 +278,13 @@ Con eso aprobado, se añade en este orden: **memoria → decisión de rescate �
 | 6 | Encuentro **libre**; el enemigo inicia en zonas hostiles y por venganza | 2026-09-30 |
 | 7 | **La Firma**: cómo peleas escribe tu reputación | 2026-09-30 |
 | 8 | Nombre: **Valcoria — Deuda de Sangre** | 2026-09-30 |
-| 9 | **Mismo repo y mismas dependencias** (cero instalaciones nuevas) | 2026-09-30 |
+| 9 | **Un solo repo** para documentación y código (cero dependencias nuevas fuera de Three.js vendorizado) | 2026-09-30 |
 | 10 | **Batallas por campo de batalla con unidades** (tuyas vs. enemigas) al encontrarte; exploración en 1.ª persona | 2026-09-30 |
 | 11 | Campo de batalla **semi-tiempo real** (se frena al dar orden), **eres una unidad más**, cámara **1.ª persona pura** | 2026-09-30 |
 | 12 | Tropas con **órdenes globales** + IA propia (sin micromando), escala **10+ por bando**; pantalla: **barra de órdenes + botones de combate** | 2026-09-30 |
 | 13 | El campo **depende del terreno** del encuentro; tropas **reclutas en el mundo** | 2026-09-30 |
 | 14 | Fin de batalla: moral rota = huir/rendición → **Pilar 3**; derrota propia = **misma mecánica de la deuda** | 2026-09-30 |
-| 15 | Motor: **prototipo nuevo**; `battle.js` (commit `6fcddb7`) no se resucita sin decisión documentada | 2026-09-30 |
+| 15 | Motor: **prototipo nuevo desde cero**; el motor del proyecto anterior no se reutiliza sin decisión documentada | 2026-09-30 |
 
 ---
 
@@ -314,9 +316,10 @@ lanzamiento** — todo en `../DECISIONES.md` (§Pendientes) y `../PLAN_DOCUMENTO
 ~~Prototipar el **duelo jugable 1v1**~~ — **superado el 2026-09-30**: el campo es una **batalla
 con unidades y órdenes globales** (§Pilar 6 y `../batalla/00_REGLAS.md`).
 
-**El próximo paso real:** redactar los **7 documentos aprobados**
-(`../ANALISIS_COBERTURA_DOCUMENTOS.md` §3) y cerrar las **cifras del campo** en la Fase 2.
+~~Redactar los documentos de diseño~~ — **completado el 2026-10-01**: los **98 documentos**
+están escritos y aprobados (`../PLAN_DOCUMENTOS.md`).
+
+**El próximo paso real:** construir la **demo del Acto I** — Fase 1, paso 1.1
+(`../produccion/PLAN_FASE1.md`) — y cerrar las **cifras del campo** en la Fase 2.
 
 ---
-
-— Generado con Codebuff

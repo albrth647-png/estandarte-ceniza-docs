@@ -87,12 +87,12 @@ Solo hechos con **testigos o con nombre** (`00_MEMORIA_Y_DEUDA.md` §4, `01_FIRM
 ## 7. Datos, tipos y validación
 
 - **Guardado:** campo `cronica` (array de `{d, t, e}` — día, tipo, datos) en `SaveState` →
-  `SAVE_VERSION` 3 (aditivo), junto a `memoria`, `firma` y `prisioneros`.
+  el guardado aditivo, junto a `memoria`, `firma` y `prisioneros`.
 - **Tipos:** `EntradaCronica` y `VozCronica` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + paridad de `txt_cron_*` en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/cronica.js` — compone el texto desde plantillas y enums; sin DOM,
-  sin reloj (recibe `save.day`), RNG no lo necesita.
-- **Tests:** `tests/cronica.test.js`, mínimo 3 casos (normal, borde, error): un hecho sin testigos
+  sin reloj (recibe día de juego), RNG no lo necesita.
+- **Tests (por escribir):** `tests/cronica.test.js`, mínimo 3 casos (normal, borde, error): un hecho sin testigos
   no entra; el tope resume y no tira capitales; paridad ES/EN de las plantillas.
 
 ---

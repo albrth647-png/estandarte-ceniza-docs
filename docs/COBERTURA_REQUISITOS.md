@@ -6,8 +6,9 @@
 decisión fuerte apunta a **dónde está escrito** y a **cómo se comprueba**. Si una fila no tiene
 destino, el proyecto tiene un hueco; si el destino no existe, esta tabla se corrige el mismo día.
 
-> **Cómo se lee:** *Requisito → Dónde se diseña → Cómo se verifica*. «Verificación» = comando de
-> `npm run qa` o test de `tests/`. **Este documento no inventa requisitos:** son los de
+> **Cómo se lee:** *Requisito → Dónde se diseña → Cómo se verifica*. «Verificación» = comando del
+> pipeline de QA o test previsto (se ejecutarán cuando exista el build, Fase 1; ninguna ha corrido
+> todavía). **Este documento no inventa requisitos:** son los de
 > `../AGENTS.md`, de `VALCORIA_DEUDA_DE_SANGRE.md` y de los propios documentos enlazados.
 
 ---
@@ -49,11 +50,11 @@ destino, el proyecto tiene un hueco; si el destino no existe, esta tabla se corr
 |---|---|---|
 | Cobertura ≥ **90 %** | `produccion/04_QA.md` §2 | `npm run test:cov` (falla si baja) |
 | **0** errores de consola / 10 min | `produccion/04_QA.md` §2 | `npm run smoke` + prueba manual §4 |
-| Humo en **2** tamaños | `produccion/04_QA.md` §1 | `npm run smoke` (960×683 y 915×555) |
+| Humo en **2** tamaños | `produccion/04_QA.md` §1 | `npm run smoke` (960×683 y 960×540) |
 | ≥ 3 casos por módulo (normal/borde/error) | `../AGENTS.md` §Convenciones | revisión + cobertura |
 | Objetivos ≥ **48 px**, sin solo-color | `interfaz/00_CONTROLES.md`, `arte/05_ICONOS.md` | revisión de diseño + smoke visual |
 | Texto ≤ **90** caracteres por clave | `interfaz/03_I18N_Y_TONO.md` | `npm run validate` |
-| Presupuesto assets demo ≤ **8 MB** | `produccion/03_RIESGOS.md` | revisión al añadir assets |
+| Presupuesto assets demo ≤ **~90 MB** (APK ~100 MB) | `produccion/03_RIESGOS.md` | revisión al añadir assets |
 | Guardado ≤ **5 MB**, 3 slots | `produccion/02_GUARDADO_Y_DATOS.md` | `tests/save.test.js` |
 | Parpadeo ≤ **3 Hz** | `interfaz/04_ACCESIBILIDAD.md` | revisión de efectos (`arte/04`) |
 | Enlaces de docs **0 rotos** | `README.md` §Reglas | `npm run docs` |
@@ -64,7 +65,7 @@ destino, el proyecto tiene un hueco; si el destino no existe, esta tabla se corr
 
 | Decisión | Dónde vive hoy | Verificación |
 |---|---|---|
-| Nivel máximo **60** (demo, hasta 15) | `sistemas/12_NIVELES_DEL_HEROE.md`, `js/core/save.js` | `tests/save.test.js` (60 válido / 61 rechazado) |
+| Nivel máximo **60** (demo, hasta 15) | `sistemas/12_NIVELES_DEL_HEROE.md` | al implementar: test de borde (60 válido / 61 rechazado) |
 | Árbol de habilidades 3×4 (sin talentos) | `contenido/06_HABILIDADES.md` §4 | al implementar: `tests/habilidades.test.js` |
 | **7** profesiones, 1 activa, Equitación post-demo | `sistemas/14_PROFESIONES.md` | al implementar: `tests/profesiones.test.js` |
 | **XP de oficio propio** (umbrales 150 / 450) y 9 encargos del maestro | `sistemas/14_PROFESIONES.md` §2 | al implementar: `tests/profesiones.test.js` |
@@ -97,14 +98,14 @@ destino, el proyecto tiene un hueco; si el destino no existe, esta tabla se corr
 | Reglas duras trazadas | **11 / 11** |
 | Pilares trazados | **6 / 6** |
 | Requisitos no funcionales | **10** |
-| Decisiones fuertes trazadas | **8** |
-| Filas «en mora» (sin verificación) | **0** |
+| Decisiones fuertes trazadas | **12** |
+| Filas «en mora» (sin verificación prevista) | **0** |
 
 ---
 
 ## 7. Qué entra en la demo (Fase 1) — y qué sigue
 
-> **Hasta aquí la demo.** Las 35 filas de §1-§4 con sus verificaciones de `npm run qa`; los
+> **Hasta aquí la demo.** Las 39 filas de §1-§4 con sus verificaciones previstas; los
 > sistemas de las Fases 2-5 aparecen con su marca «al implementar».
 
 > **Y sigue el juego completo.** Cada sistema nuevo de las Fases 2-5 **gana su fila y su test** en

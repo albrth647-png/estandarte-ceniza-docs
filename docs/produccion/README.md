@@ -28,6 +28,6 @@
 | [`PLAN_FASE1.md`](PLAN_FASE1.md) | **El plan de construcción de la Fase 1**: los 88 documentos, los JSON, `js/systems/*`, las costuras de test y el gate de cada paso | ✅ 2026-10-02 |
 | [`../PLAN_MIGRACION_3D.md`](../PLAN_MIGRACION_3D.md) | La capa de dibujo (fases 0-6): escena, cámara, niebla, LOD, pooling y reserva 2D | ✅ 2026-10-02 |
 
-**Lo que ya existe:** `npm run qa` (check + lint + validate + docs + test con cobertura ≥ 90 %
+**Lo que está previsto:** `npm run qa` (check + lint + validate + docs + test con cobertura ≥ 90 %
 + humo en Chromium), guardado versionado con migración y respaldo de corruptos, validadores de
 datos, i18n con paridad ES/EN y un árbol del repo de 287 ficheros (46 de test).

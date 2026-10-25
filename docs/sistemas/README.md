@@ -24,6 +24,6 @@
 | [`14_PROFESIONES.md`](14_PROFESIONES.md) | Profesiones del héroe: dentro y fuera del combate | ✅ aprobado |
 | [`15_FABRICACION_Y_RECETAS.md`](15_FABRICACION_Y_RECETAS.md) | XP de oficio, recetas, materiales, armas nuevas y joyería | ✅ aprobado 2026-10-02 |
 
-**Regla técnica (AGENTS.md):** todo lo de esta carpeta vive en `js/systems/*` **puro**
+**Regla técnica (AGENTS.md):** todo lo de esta carpeta vivirá en `js/systems/*` **puro**
 —sin DOM, sin reloj, sin `fetch`— con dependencias inyectadas, y con tests propios.
 Los candidatos aún sin aprobar están en `../MECANICAS.md`.

@@ -27,7 +27,7 @@
 | **Día** | Arriba-izq., bajo el oro | Día de juego (p. ej. «Día 12») |
 | **Firma** | Arriba-der. | **Nombre de la banda** (nunca el número): «Sin nombre», «Duro»… |
 | **Punto de interacción** | Centro-bajo del punto de mira | Aparece solo con algo toquible a < 2,5 m |
-| **Botones fijos** | Inferior der. | Acción, secundario, correr (`00_CONTROLES.md`) |
+| **Botones fijos** | Inferior der. | Acción y secundario (el de correr va junto a la palanca, `00_CONTROLES.md`) |
 | **Palanca** | Inferior izq. | Invisible hasta que se toca |
 
 - **No hay barra de vida en exploración**: la vida solo se muestra cuando baja (aviso §5) o
@@ -47,7 +47,7 @@
 | **Capitanes con nombre** | Sobre su unidad | Chip con su nombre y su banda, si la tiene memoria |
 
 - Todo lo de presentación, partículas y cámara → `../batalla/04_PRESENTACION.md`.
-- Simulación de la batalla → `../batalla/00_REGLAS.md` y `01_CIFRAS.md` (el HUD **nunca**
+- Simulación de la batalla → `../batalla/00_REGLAS.md` y `../batalla/01_CIFRAS.md` (el HUD **nunca**
   decide nada, solo pinta).
 
 ---
@@ -85,14 +85,14 @@
 
 - Base **960×540** (horizontal). En pantallas más estrechas se reducen **los márgenes**, no
   los botones (se prefiere apretar que encoger objetivos).
-- Humo verificado en **960×683** y **915×555** (`npm run smoke`).
+- Humo (a verificar, por implementar) en **960×683** y **960×540**.
 - El HUD respeta la escala de la opción «Tamaño de texto» (`../interfaz/04_ACCESIBILIDAD.md`).
 
 ---
 
 ## 7. Datos, tipos y validación
 
-- Pintura en escenas (`js/scenes/*`), con el kit de DOM existente (`dom_kit.js`).
+- Pintura en escenas (`js/scenes/*`), con el kit de DOM (por construir) (`dom_kit.js`).
 - Las claves de texto son `txt_hud_*` en `strings_es.json` / `strings_en.json` con **paridad
   obligatoria** (regla 10).
 - Tests: `tests/scene_hud.test.js` (pintura, estados, paridad de claves).
@@ -103,7 +103,7 @@
 
 - Las dos caras del HUD completas: exploración y batalla.
 - Avisos de deuda, de Firma y de recuerdo.
-- Escalado verificado en los dos tamaños del humo.
+- Escalado a verificar en los dos tamaños del humo.
 
 ---
 

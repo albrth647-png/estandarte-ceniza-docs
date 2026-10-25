@@ -90,7 +90,7 @@
   `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/pagos.js` (o dentro de `encargos.js`) — calcula tarifa, regateo y
   recargos; sin DOM, sin reloj, RNG inyectado.
-- **Tests:** `tests/pagos.test.js`, mínimo 3 casos (normal, borde, error): el regateo no supera
+- **Tests (por escribir):** `tests/pagos.test.js`, mínimo 3 casos (normal, borde, error): el regateo no supera
   ±20 %; cobrar de más deja memoria en contra; un cliente sin oro siempre tiene salida (§5).
 
 ---
@@ -105,7 +105,7 @@
 | Recargo por plazo | +10 % |
 | Recargos por Firma | los de `../sistemas/06_ECONOMIA.md` §5 |
 | Coste de regatear | media jornada por intento |
-| Formas de cobro | 6 (§2) |
+| Formas de cobro | 7 (§2; la 7.ª, XP de oficio, entró el 2026-10-02) |
 
 ---
 

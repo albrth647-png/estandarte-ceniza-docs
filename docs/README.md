@@ -29,8 +29,9 @@
 | [`PLAN_MIGRACION_3D.md`](PLAN_MIGRACION_3D.md) | **La capa de dibujo** (fases 0-6): escena única, cámara 1.ª, niebla 60 m, LOD, pooling y reserva a 2D. Plan, no documento de diseño (no cuenta en los 98). |
 | [`PROPUESTA_DE_DOCUMENTOS.md`](PROPUESTA_DE_DOCUMENTOS.md) | **Que contendra cada uno de los 98 documentos** y el orden en que se escriben (aprobado 2026-09-30). |
 | [`ANALISIS_COBERTURA_DOCUMENTOS.md`](ANALISIS_COBERTURA_DOCUMENTOS.md) | 🧪 **documento de trabajo**: mapea una lista externa de tipos de documento contra los 98; senala 7 huecos (ya redactados 2026-10-01) y lo que queda fuera de alcance. No cuenta en los 98. |
-| [`COBERTURA_REQUISITOS.md`](COBERTURA_REQUISITOS.md) | **Trazabilidad**: cada regla dura, pilar y requisito no funcional → documento → test/comando que lo verifica. |
-| [`PENDIENTES.md`](PENDIENTES.md) | 🧪 **documento de trabajo**: barrido de **todo lo abierto (🟡)** documento por documento, con la lista maestra y los marcadores obsoletos a limpiar. No cuenta en los 98. |
+| [`COBERTURA_REQUISITOS.md`](COBERTURA_REQUISITOS.md) | **Trazabilidad**: cada regla dura, pilar y requisito no funcional → documento → test/comando que lo verificará. |
+| [`PENDIENTES.md`](PENDIENTES.md) | 🧪 **documento de trabajo**: barrido de **todo lo abierto (🟡)** documento por documento, con la lista maestra. No cuenta en los 98. |
+| [`produccion/PLAN_FASE1.md`](produccion/PLAN_FASE1.md) | **El plan de construcción de la demo** (paso a paso: sus 88 documentos, sus JSON, sus sistemas y sus gates). Plan, no documento de diseño. |
 | [`historia/`](historia/README.md) | **La historia del juego**: premisa, estructura, actos, finales, personajes, códice y bestiario. Indice en su `README.md`. |
 | [`mundo/`](mundo/README.md) | Como es Valcoria y como se camina: mapa, exploracion, viajes, lugares, PNJ y tiempo. |
 | [`contenido/`](contenido/README.md) | Los catalogos jugables: tropas, enemigos, capitanes, companeros, items, mercado, habilidades, artefactos, animales, edificios, botin, trampas, comidas y estandartes. |
@@ -52,12 +53,15 @@ esta en `PLAN_DOCUMENTOS.md`.
 Regla: **no se escribe un documento de diseno hasta que el dueño aprueba el contenido**. Lo
 pendiente se marca 🟡 aqui, nunca se rellena inventando.
 
+🟡 **El hueco de numeración `interfaz/09` es intencional** (no hay doc 09): no se rellena sin
+decisión del dueño.
+
 ## Reglas de mantenimiento
 
 1. Documentacion **actualizada en la misma tarea** que cambia el diseno (DoD).
 2. Un doc nuevo **solo con lo ya decidido**; lo pendiente se marca 🟡.
 3. Si anades un doc, enlazalo desde aqui (si no, es un doc huerfano).
-4. Enlaces relativos verificados por `tools/check_docs.mjs` (parte de `npm run qa`).
+4. Enlaces relativos verificados por `tools/check_docs.mjs` (por crear en el paso 1.1; parte de `npm run qa`).
 5. **Todos los documentos se escriben completos y finales** (decision del dueno, 2026-09-30):
    no se dejan esquemas a medias ni se reescriben; si una cifra queda pendiente, se marca 🟡
    **dentro** del documento y se cierra cuando el dueno la aprueba.

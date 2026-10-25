@@ -61,7 +61,7 @@
 
 ## 4. Datos, tipos y validación
 
-- **Datos:** `data/encargos.json` — cada encargo trae su `clase` (una de las 10) y el resto de
+- **Datos (por crear):** `data/encargos.json` — cada encargo trae su `clase` (una de las 11) y el resto de
   campos de `02_ESTRUCTURA_DE_ENCARGO.md`.
 - **Tipos:** `ClaseEncargo` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `clase` con esta lista y de ids de

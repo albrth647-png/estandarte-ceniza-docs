@@ -2,7 +2,7 @@
 
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
-> **Todo se mide en días de juego** (`save.day`), nunca en minutos reales (regla 8 de
+> **Todo se mide en días de juego** (día de juego), nunca en minutos reales (regla 8 de
 > `../../AGENTS.md`). El tiempo entra **inyectado** en los sistemas puros; ninguno mira el reloj
 > del dispositivo (`../../AGENTS.md`, regla 9 de determinismo).
 
@@ -50,13 +50,13 @@
 
 ## 4. Datos, tipos y validación
 
-- **Datos:** `data/tiempo.json` — `{ franjas, dias_semana, dias_estacion }`.
+- **Datos (por crear):** `data/tiempo.json` — `{ franjas, dias_semana, dias_estacion }`.
 - **Tipos:** `Franja` y `Calendario` en `js/data/game_types.js`.
 - **Validación:** esquema; coherencia con los plazos de encargos y la caducidad del favor
   (`tools/validate_data.js`).
 - **Sistema puro:** `js/systems/tiempo.js` — avanza el día y dispara caducidades; sin reloj real,
   `dt` inyectado.
-- **Tests:** `tests/tiempo.test.js`: 4 franjas por día; la estación dura 28 días; una deuda **nunca**
+- **Tests (por escribir):** `tests/tiempo.test.js`: 4 franjas por día; la estación dura 28 días; una deuda **nunca**
   caduca por tiempo.
 
 ---

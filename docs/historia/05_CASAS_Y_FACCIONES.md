@@ -55,13 +55,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/facciones.json` — `{ id, tipo (casa/escribania/ribera/compañia), miembros,
+- **Datos (por crear):** `data/facciones.json` — `{ id, tipo (casa/escribania/ribera/compañia), miembros,
   heraldica, memoria_peso, quiere }`.
 - **Tipos:** `Faccion` en `js/data/game_types.js`.
 - **Validación:** cada `miembro` existe en `data/pnj.json`; la `heraldica` existe en
   `data/estandartes.json` (`tools/validate_data.js`).
 - **Sistema puro:** la memoria de casa se calcula en `js/systems/memoria.js`; sin DOM ni reloj.
-- **Tests:** `tests/facciones.test.js`: una casa con rencor queda Enemigo; una casa sin miembros se
+- **Tests (por escribir):** `tests/facciones.test.js`: una casa con rencor queda Enemigo; una casa sin miembros se
   extingue; la media ponderada no supera el rango de su miembro más extremo.
 
 ---
@@ -84,7 +84,7 @@
 > con su memoria y su presencia en los 6 sitios; la ribera se **menciona** (no se visita).
 
 > **Y sigue el juego completo.** Las **casas menores** y la **otra ribera** se añaden en la
-> **Fase 2** con la misma herencia de memoria; crecer = más filas en `facciones.json`.
+> **Fase 2** con la misma herencia de memoria; crecer = más filas en la tabla de facciones.
 
 ---
 

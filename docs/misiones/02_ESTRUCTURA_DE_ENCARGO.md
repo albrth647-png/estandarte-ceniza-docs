@@ -14,7 +14,7 @@
 |---|---|---|
 | `id` | `snake_case` único (`cobranza_peaje_vega`) | Sí |
 | `titulo_txt` | Clave `txt_enc_*` para el cartel | Sí |
-| `clase` | Una de las **10** (`00_TIPOS_DE_ENCARGO.md`) | Sí |
+| `clase` | Una de las **11** (`00_TIPOS_DE_ENCARGO.md`) | Sí |
 | `da` | Quién lo publica: id de PNJ o de casa | Sí |
 | `lugar` | Id de sitio (`data/lugares.json`) donde se coge | Sí |
 | `objetivo` | Qué hay que lograr (§2) | Sí |
@@ -51,7 +51,7 @@
   - Firma según el hecho (`../sistemas/01_FIRMA.md` §4),
   - memoria del agraviado (que puede **encender rencor**, `../sistemas/00_MEMORIA_Y_DEUDA.md` §7),
   - y, si había testigos, **crónica**.
-- **Nunca bloquea:** el fallo cierra esa puerta, no la partida (`01_FASES.md` §1 regla 7).
+- **Nunca bloquea:** el fallo cierra esa puerta, no la partida (`../produccion/01_FASES.md` §1 regla 7).
 
 ---
 
@@ -105,15 +105,15 @@
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/encargos.json` (array de objetos con el formato de §1).
+- **Datos (por crear):** `data/encargos.json` (array de objetos con el formato de §1).
 - **Tipos:** `Encargo`, `Objetivo`, `Recompensa`, `Fallo` en `js/data/game_types.js` (una vez).
 - **Validación** (`js/data/schemas.js` + `tools/validate_data.js`):
-  - `clase` ∈ las 10; `lugar` existe en `lugares.json`; `da` existe en datos de PNJ/casas;
+  - `clase` ∈ las 11; `lugar` existe en `lugares.json`; `da` entrará en datos de PNJ/casas;
   - `objetivo.tipo` ∈ los 6; `meta` coherente con el tipo;
   - `plazo_dias` ≥ 0; `recompensa` no vacía; ids de `cadenas` existen;
-  - **sin validador en verde, `loadData()` no arranca** (regla 5).
+  - **sin validador en verde, la carga no arranca (regla 5, cuando exista el build)** (regla 5).
 - **Sistema puro:** `js/systems/encargos.js` — ofrece, acepta, resuelve y caduca; sin DOM ni reloj.
-- **Tests:** `tests/encargos.test.js`, mínimo 3 casos (normal, borde, error): un encargo mal
+- **Tests (por escribir):** `tests/encargos.test.js`, mínimo 3 casos (normal, borde, error): un encargo mal
   formado se rechaza al cargar; el fallo blando no rompe nada; `cadenas` inexistentes fallan.
 
 ---
@@ -134,7 +134,7 @@
 ## 8. Qué entra en la demo (Fase 1) — y qué sigue
 
 > **Hasta aquí la demo.** Los **6 encargos** del Acto I escritos con este formato, pasando por su
-> validador, con `testigos` y `cadenas` funcionando.
+> validador, con `testigos` y `cadenas`, funcionando.
 
 > **Y sigue el juego completo.** Todos los encargos del reino usan **este mismo formato**: crecer
 > = añadir filas a `encargos.json` (a mano o generadas con `js/systems/encargos.js`), sin tocar el

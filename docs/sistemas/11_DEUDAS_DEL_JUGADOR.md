@@ -62,9 +62,9 @@
 - **Tipos:** `DeudaJugador` y `Final` en `js/data/game_types.js`.
 - **Validación:** los 3 finales existen; las banderas `final_*` cruzan con `../historia/04_GUION.md`
   (`tools/validate_data.js`).
-- **Sistema puro:** el cálculo de la deuda grande vive en `js/systems/memoria.js` + `finales.js`;
+- **Sistema puro:** el cálculo de la deuda grande vivirá en `js/systems/memoria.js` + `finales.js`;
   sin DOM ni reloj.
-- **Tests:** `tests/deudas_jugador.test.js`: la deuda total suma la memoria; ningún final deja la
+- **Tests (por escribir):** `tests/deudas_jugador.test.js`: la deuda total suma la memoria; ningún final deja la
   partida sin cierre; quemar limpia Firma y Crónica.
 
 ---

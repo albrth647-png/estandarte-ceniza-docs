@@ -5,7 +5,7 @@
 > Ni el camino ni el campo son lisos: hay **troncos, derrumbes, portones con cerrojo, fosos y
 > empalizadas**. Aquí está **qué corta el paso, quién lo pone y cómo se pasa**. Los edificios, en
 > `09_EDIFICIOS_Y_ESTRUCTURAS.md`; los puntos de interés del campo, en `../batalla/02_TERRENO.md` §9;
-> las herramientas, en `04_ITEMS_Y_EQUIPO.md` §3.3.
+> las herramientas, en `04_ITEMS_Y_EQUIPO.md` §3.4.
 >
 > **Trampas, ids y cifras son propuesta de diseño** (cambiables → `../DECISIONES.md`).
 
@@ -109,7 +109,7 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/trampas.json` — `{ id, tipo (mundo/campo), pone, superacion, coste, punto,
+- **Datos (por crear):** `data/trampas.json` — `{ id, tipo (mundo/campo), pone, superacion, coste, punto,
   modelo, letal }`.
 - **Tipos:** `Trampa` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `modelo` con `data/assets.json`, del
@@ -117,7 +117,7 @@
   `true` solo) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/trampas.js` — estado, superación y coste; sin DOM, sin reloj, RNG
   inyectado.
-- **Tests:** `tests/trampas.test.js`, mínimo 3 casos (normal, borde, error): el fuego no es letal
+- **Tests (por escribir):** `tests/trampas.test.js`, mínimo 3 casos (normal, borde, error): el fuego no es letal
   solo; una trampa no cierra la única salida; el zapador abre la empalizada que otro no abre.
 
 ---

@@ -52,14 +52,15 @@
 - Un **recuerdo** es un PNJ diciéndote **lo que hiciste por él** (o contra él), sacado de su
   memoria (`../sistemas/00_MEMORIA_Y_DEUDA.md` §4).
 - **No se narra en tercera persona:** sale de su boca («Tú eres el que perdonó a mi hermano»).
-- **Es la forma de que el jugador vea la memoria funcionando** sin abrir una pantalla.
+- **Es la forma de que el jugador vea la memoria en acción** sin abrir una pantalla.
 
 ---
 
 ## 5. Reglas de contención (no marear)
 
 1. **Máximo 1 aviso de sistema a la vez** (los demás esperan su turno).
-2. **En batalla, avisos mínimos:** solo moral, vida y orden (`../batalla/04_PRESENTACION.md`).
+2. **En batalla, solo los avisos del HUD de batalla** (`../batalla/04_PRESENTACION.md`):
+   moral, tercio roto, orden, capitán y carga. Nada más.
 3. **Nada a menos de 24 px del borde** si hay botones (`00_CONTROLES.md` §2).
 4. **El silencio también informa:** algunos cambios (música que calla) valen más que un cartel.
 5. **Todo aviso es apagable** en opciones (accesibilidad, `04_ACCESIBILIDAD.md`).
@@ -71,7 +72,7 @@
 - Claves `txt_aviso_*` y `txt_rumor_*` con **paridad ES/EN** (`03_I18N_Y_TONO.md`).
 - **Tipos:** `Aviso` y `Rumor` en `js/data/game_types.js`.
 - **Pintura** en escena (DOM); la **cola de avisos** es pura y testable.
-- **Tests:** `tests/avisos.test.js`: nunca hay 2 avisos a la vez; un aviso caduca a los 3 s; en
+- **Tests (por escribir):** `tests/avisos.test.js`: nunca hay 2 avisos a la vez; un aviso caduca a los 3 s; en
   batalla solo entran los permitidos.
 
 ---

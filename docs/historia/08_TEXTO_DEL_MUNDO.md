@@ -50,13 +50,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/texto_mundo.json` — `{ id, familia, clave_txt, lugar, requisito? }`.
+- **Datos (por crear):** `data/texto_mundo.json` — `{ id, familia, clave_txt, lugar, requisito? }`.
 - **Tipos:** `TextoMundo` en `js/data/game_types.js`.
 - **Validación:** toda `clave_txt` tiene **pareja ES/EN** (`validateStringsPair`); el `lugar`
   existe en `lugares.json` (`tools/validate_data.js`).
-- **Sistema puro:** la colocación vive en `js/systems/texto_mundo.js` (semilla inyectada); la
+- **Sistema puro:** la colocación vivirá en `js/systems/texto_mundo.js` (semilla inyectada); la
   pintura, en escena.
-- **Tests:** `tests/texto_mundo.test.js`: toda clave tiene pareja; nada se coloca sobre un
+- **Tests (por escribir):** `tests/texto_mundo.test.js`: toda clave tiene pareja; nada se coloca sobre un
   interactuable; un texto sin lugar no rompe la carga.
 
 ---
@@ -80,7 +80,7 @@
 > y **1-2 cartas** conectadas al giro de las páginas.
 
 > **Y sigue el juego completo.** Lápidas, coplas y los **registros del Libro Mayor** se añaden con
-> estas mismas reglas; crecer = más filas en `texto_mundo.json`.
+> estas mismas reglas; crecer = más filas en la tabla de texto del mundo.
 
 ---
 

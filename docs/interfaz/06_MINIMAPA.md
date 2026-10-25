@@ -47,7 +47,7 @@
 - Lee `SaveState` (sitios/caminos visitados) y `data/lugares.json` + `data/caminos.json`.
 - **Tipos:** `EstadoMapa` en `js/data/game_types.js`.
 - **Pintura** en escena; **no simula** (regla 2 de `../../AGENTS.md`).
-- **Tests:** `tests/scene_minimapa.test.js`: un sitio no visitado no se dibuja; el minimapa respeta
+- **Tests (por escribir):** `tests/scene_minimapa.test.js`: un sitio no visitado no se dibuja; el minimapa respeta
   el tamaño; nada aparece en batalla.
 
 ---

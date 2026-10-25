@@ -143,14 +143,14 @@ compran en la aldea**: solo en mercado de ciudad.
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/recursos.json` — `{ id, nombre_txt, unidad, precio_base, se_estropea, stock }`;
+- **Datos (por crear):** `data/recursos.json` — `{ id, nombre_txt, unidad, precio_base, se_estropea, stock }`;
   los precios de compra/venta se cruzan con `data/economia.json`.
 - **Tipos:** `Recurso` y `Mercado` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/lugares.json` (stocks) y con
   `data/economia.json` (recargos) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/mercado.js` — aplica precio, recargos, curva y stock; sin DOM, sin
-  reloj (día por `save.day`), RNG inyectado.
-- **Tests:** `tests/mercado.test.js`, mínimo 3 casos (normal, borde, error): el recargo de Hiena es
+  reloj (el día entra inyectado), RNG inyectado.
+- **Tests (por escribir):** `tests/mercado.test.js`, mínimo 3 casos (normal, borde, error): el recargo de Hiena es
   +40 %; vender en masa baja el precio sin bajar del 50 %; un stock agotado no rompe la tienda.
 
 ---

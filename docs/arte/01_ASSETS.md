@@ -3,12 +3,12 @@
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
 > **Solo material propio o libre con ficha** (regla 7 de `../../AGENTS.md`; originalidad total).
-> La ficha viva está en `../../art/AUTORES.md` y las licencias en `../../THIRD_PARTY.md`. Aquí
+> La ficha vivirá en `../../art/AUTORES.md` (por crear) y las licencias en `../../THIRD_PARTY.md` (por crear). Aquí
 > está **qué hay, qué falta y cómo entra lo nuevo**.
 
 ---
 
-## 1. Lo que ya hay (10 modelos `.glb`, 7,1 MB)
+## 1. Los 10 modelos `.glb` de reserva (por producir)
 
 | Fichero | Autor | Licencia | Uso previsto |
 |---|---|---|---|
@@ -34,7 +34,7 @@
 
 | Falta | Para | Nota |
 |---|---|---|
-| **Aldeanos y oficios** (posadero, herrero, portavoz) | Demo | Variedad de humanos; hoy solo hay 5 clases |
+| **Aldeanos y oficios** (posadero, herrero, portavoz) | Demo | Variedad de humanos; en reserva se contemplan 5 clases |
 | **Elenco con cara propia**: 16 GLB clave (12 relevantes + 4 capitanes) | Demo | ~13 MB; el **resto de los personajes** es **único por piezas modulares + `semilla`** (§2b, `00_ESTILO.md` §5, `../mundo/04_PNJ.md`) |
 | **Retratos pintados** de los 16 clave (estilo película) | Demo | 2D generado + upscaler; **un solo retrato vale para ES y EN** (no ×2) |
 | **Cuerpos de proporción humana en todos los personajes** | Demo | Sustituyen al cartoon de KayKit: 16 clave primero, después tropa y aldeanos |
@@ -86,10 +86,10 @@ que **lo más realista sean las personas**, así que el cartoon de muñeco **no 
 
 1. **Buscar/crear** con licencia **CC0** o **CC-BY** (nada de activos de juegos de terceros).
 2. **Descargar** a `art/origen/` con `tools/descargar_assets3d.mjs` (solo desarrollo).
-3. **Recortar** con `tools/recortar_glb.mjs` (quita huesos, mallas y clips que el juego no usa;
+3. **Recortar** con `tools/recortar_glb.mjs` (por crear) (quita huesos, mallas y clips que el juego no usa;
    **no altera el arte**) → `art/*.glb`.
 4. **Ficha** en `art/AUTORES.md` + licencia en `THIRD_PARTY.md` si aplica.
-5. **Carga** con `js/render/modelos3d.js` (GLB + aligerado); **vendorizado**, sin CDN.
+5. **Carga** con `js/render/modelos3d.js` (por construir; GLB + aligerado); **vendorizado**, sin CDN.
 
 **Camino de generación con IA (2026-10-02):** las piezas 2D nuevas (**retratos**, texturas,
 portada, iconos, bocetos, decoración) se **generan con la API propia** (Cloudflare) + **upscaler**
@@ -123,12 +123,12 @@ fichero final, ya optimizado.
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/assets.json` — `{ id, fichero, autor, licencia, uso }`, espejo de `art/AUTORES.md`.
+- **Datos (por crear):** `data/assets.json` — `{ id, fichero, autor, licencia, uso }`, espejo de `art/AUTORES.md` (por crear).
 - **Tipos:** `Asset3D` en `js/data/game_types.js`.
 - **Validación** (`tools/validate_data.js`): todo asset referenciado **existe en disco**
   (`art/`, `vendor/`) y **tiene ficha**; una referencia rota o sin licencia **falla**.
-- **Tests:** `tests/assets.test.js`: todo `.glb` de `art/` tiene fila; una referencia a un GLB
-  inexistente rompe la carga.
+- **Tests (por escribir):** `tests/assets.test.js`: todo `.glb` de `art/` tiene fila; una referencia a un GLB
+  faltante romperá la carga (cuando exista el cargador).
 
 ---
 
@@ -136,7 +136,7 @@ fichero final, ya optimizado.
 
 | Cifra | Valor |
 |---|---|
-| Modelos actuales | **10** (7,1 MB) |
+| Modelos de reserva (a producir) | **10** (~7 MB) |
 | Elenco con GLB propio (demo) | **16** clave (~13 MB); el resto, modular + `semilla` ✅ 2026-10-02 |
 | Retratos pintados (2D) | **16** · ≤ 200 KB c/u · 1 imagen vale ES+EN ✅ 2026-10-02 |
 | Cuerpos de personaje | **proporción humana en todos**; KayKit cartoon → reserva ✅ 2026-10-02 |
@@ -144,13 +144,13 @@ fichero final, ya optimizado.
 | Peso por personaje | ≤ **6 MB** recortado ✅ 2026-10-02 |
 | Total demo | ≤ **~90 MB** (incluido audio ≤ 20 MB; APK ~100 MB) ✅ 2026-10-02 |
 | Terceros de código | Three.js r186 + loaders (MIT) |
-| Red en ejecución | **0** (todo vendorizado) |
+| Red en ejecución (prevista) | **0** (todo se vendorizará) |
 
 ---
 
 ## 7. Qué entra en la demo (Fase 1) — y qué sigue
 
-> **Hasta aquí la demo.** Los modelos actuales + los **16 personajes clave** con cara propia y
+> **Hasta aquí la demo.** Los modelos de reserva + los **16 personajes clave** (por modelar) con cara propia y
 > **retrato pintado**, los **aldeanos/oficios** (modulares + semilla), los **props** y las
 > **estructuras** mínimas de los 6 sitios, todos con ficha y licencia.
 
@@ -165,4 +165,4 @@ fichero final, ya optimizado.
 - Estilo y paleta → `00_ESTILO.md`
 - Audio → `02_AUDIO.md`
 - Animaciones → `03_ANIMACIONES.md`
-- Fichas de autoría → `../../art/AUTORES.md`, `../../THIRD_PARTY.md`
+- Fichas de autoría → `../../art/AUTORES.md` y `../../THIRD_PARTY.md` (por crear)

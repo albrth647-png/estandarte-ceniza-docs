@@ -22,7 +22,7 @@
 | `terreno` | terreno de su campo de batalla (`../batalla/02_TERRENO.md`) |
 | `atmosfera` | clave `txt_lugar_*` con la primera impresión |
 
-Todo en `data/lugares.json`, validado por `tools/validate_data.js` (cruce con `zonas.json` y
+Todo vivirá en `data/lugares.json` (por crear), validado por el validador (cruce con `zonas.json` y
 `caminos.json`). **Si un sitio no tiene deudas, encargos o recursos, no existe**: se borra.
 
 ---
@@ -39,7 +39,7 @@ Todo en `data/lugares.json`, validado por `tools/validate_data.js` (cruce con `z
 | **Cruce de las Dos Sendas** | cruce (hito) | **Encuentros y emboscadas**: el campo de las batallas de camino | Patrulla de Altamir que cobra peaje sin derecho |
 
 - **1 encargo por sitio = 6 encargos** (`../misiones/00_TIPOS_DE_ENCARGO.md`).
-- **2 campos** de batalla: llanura del camino y bosque/aldea (`../batalla/02_TERRENO.md`).
+- **3 campos** de batalla: llanura del camino, aldea y bosque (`../batalla/02_TERRENO.md`).
 - **12 PNJ con memoria completa** repartidos: 8 del elenco + 4 de mundo; el resto, memoria
   ligera (cupo 25 por sitio).
 
@@ -66,7 +66,7 @@ sitio sin su deuda viva.
 ## 5. Qué entra en la demo (Fase 1)
 
 Los **6** de §2, con sus deudas, encargos y gente. Ningún otro sitio se construye (alcance
-§2.3); el formato de datos ya es el del juego completo.
+§2.3); el formato de datos será el del juego completo.
 
 ---
 

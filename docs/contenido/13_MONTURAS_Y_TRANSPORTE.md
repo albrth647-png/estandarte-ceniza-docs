@@ -105,14 +105,14 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/transporte.json` — `{ id, tipo (pie/carreta/barca), velocidad, carga, coste,
+- **Datos (por crear):** `data/transporte.json` — `{ id, tipo (pie/carreta/barca), velocidad, carga, coste,
   terreno_ok, ruido }`.
 - **Tipos:** `Transporte` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `terreno_ok` con `data/terreno.json` y
   del `coste`/peaje con `data/economia.json` en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/transporte.js` — velocidad, carga y paso por terreno; sin DOM, sin
   reloj.
-- **Tests:** `tests/transporte.test.js`, mínimo 3 casos (normal, borde, error): la carreta no pasa
+- **Tests (por escribir):** `tests/transporte.test.js`, mínimo 3 casos (normal, borde, error): la carreta no pasa
   el vado; sin buey no se mueve; dejar la carreta no pierde la carga (queda en el sitio).
 
 ---
@@ -121,7 +121,7 @@
 
 | Cifra | Valor |
 |---|---|
-| Montar al héroe | **no** (decisión de diseño, §1) |
+| Montar al héroe | **no en la demo**; sí tras el Capítulo 1 vía Equitación (§1) |
 | Velocidad de viaje a pie | base |
 | Carreta: velocidad / carga | **−20 %** / **+20 huecos** |
 | Carreta: dónde no pasa | bosque espeso · vado · pasillo 1,5 m |

@@ -86,7 +86,7 @@
 
 ## 5. Arte y animación
 
-- **Modelos:** el **zorro** ya existe (`art/u_fox.glb`, CC0 + CC-BY); perro, caballo, lobo y cuervo
+- **Modelos:** el **zorro** está previsto (`art/u_fox.glb`, CC0 + CC-BY); perro, caballo, lobo y cuervo
   están en la lista de **falta** (`../arte/01_ASSETS.md` §2), Fase 4.
 - **Animación:** 3 clips por bestia (idle, andar, atacar/morder); sin ragdoll
   (`../arte/03_ANIMACIONES.md` §4).
@@ -110,14 +110,14 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/animales.json` — `{ id, tipo (ambiente/peligro/criatura), donde, peligro,
+- **Datos (por crear):** `data/animales.json` — `{ id, tipo (ambiente/peligro/criatura), donde, peligro,
   caza, domestica, modelo }`.
 - **Tipos:** `Animal` y `Criatura` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `modelo` con `data/assets.json`
   (ficha y licencia) y de la `zona` con `data/lugares.json` en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/animales.js` — aparición, caza y espanto; sin DOM, sin reloj (día
-  por `save.day`), RNG inyectado.
-- **Tests:** `tests/animales.test.js`, mínimo 3 casos (normal, borde, error): no sale una bestia en
+  por día de juego), RNG inyectado.
+- **Tests (por escribir):** `tests/animales.test.js`, mínimo 3 casos (normal, borde, error): no sale una bestia en
   la aldea; no hay dos encuentros de bestias seguidos; un animal sin modelo en disco rompe la carga.
 
 ---
@@ -132,7 +132,7 @@
 | Clips por bestia | 3 (sin ragdoll) |
 | Encuentros de bestias | ≤ 1/día · nunca 2 seguidos |
 | Bestias que rinden | **ninguna** (se espantan o se cazan) |
-| Modelo existente | zorro (CC0 + CC-BY) |
+| Modelo previsto | zorro (CC0 + CC-BY, por descargar) |
 
 ---
 

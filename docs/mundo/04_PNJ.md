@@ -58,13 +58,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/pnj.json` — `{ id, oficio, lugar, relevante, rutina, semilla }`.
+- **Datos (por crear):** `data/pnj.json` — `{ id, oficio, lugar, relevante, rutina, semilla }`.
 - **Tipos:** `PNJ` en `js/data/game_types.js`.
 - **Validación:** cruce de `lugar` con `lugares.json` y de `relevante` con el cupo (§8 de memoria);
   sin validador no arranca (`tools/validate_data.js`).
 - **Sistema puro:** rutinas y cupos en `js/systems/pnj.js`; sin DOM, sin reloj (franja por
-  `save.day`).
-- **Tests:** `tests/pnj.test.js`: no se superan 25 fichas por lugar; un relevante tiene memoria
+  día de juego).
+- **Tests (por escribir):** `tests/pnj.test.js`: no se superan 25 fichas por lugar; un relevante tiene memoria
   completa; una rutina no deja a un PNJ «sin sitio».
 
 ---

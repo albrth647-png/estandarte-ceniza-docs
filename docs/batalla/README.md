@@ -17,5 +17,5 @@ falta lo que no se decidió en la conversación: **las reglas finas, las cifras 
 | [`05_CATALOGO_DE_CAMPOS.md`](05_CATALOGO_DE_CAMPOS.md) | Los escenarios concretos que pueden abrirse | ✅ aprobado |
 | [`06_BATALLAS_DE_LA_HISTORIA.md`](06_BATALLAS_DE_LA_HISTORIA.md) | Las batallas fijas de la trama (incluido el flashback del Paso) | ✅ aprobado |
 
-**Regla técnica:** la simulación vive en `js/systems/*` **puro** (determinista, con RNG
+**Regla técnica:** la simulación vivirá en `js/systems/*` **puro** (determinista, con RNG
 inyectado); la escena solo dibuja y presenta (AGENTS.md).

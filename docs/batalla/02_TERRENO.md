@@ -192,7 +192,7 @@ La cobertura es un **nivel 0–3** y hace dos cosas:
   tiene su ficha de combate y al revés**.
 - **Sistema puro:** `js/systems/terreno.js` — lee la zona por la que se mueve una unidad y
   devuelve freno, cobertura y detección. Sin DOM, sin reloj.
-- **Tests:** `tests/terreno.test.js`, mínimo 3 casos (normal, borde, error): la cobertura nunca
+- **Tests (por escribir):** `tests/terreno.test.js`, mínimo 3 casos (normal, borde, error): la cobertura nunca
   pasa de 3; el freno no atrapa a un huido; el fuego no es letal solo.
 
 ---
@@ -217,9 +217,9 @@ La cobertura es un **nivel 0–3** y hace dos cosas:
 ## 13. Qué entra en la demo (Fase 1) — y qué sigue
 
 > **Hasta aquí la demo.** Los **5 terrenos** de `../mundo/06_TERRENO_DEL_MUNDO.md` §4 (camino
-> real, tierra, rocío, bosque espeso y barro) y los **2 campos** del alcance
-> (`../produccion/00_ALCANCE.md` §2.5): llanura de camino y bosque/aldea. Ventaja de carga,
-> cobertura, fuego y puerta funcionando con estas mismas cifras.
+> real, tierra, rocío, bosque espeso y barro) y los **3 campos** del alcance
+> (`../produccion/00_ALCANCE.md` §2.5): llanura de camino, aldea y bosque. Ventaja de carga,
+> cobertura, fuego y puerta, funcionando con estas mismas cifras.
 
 > **Y sigue el juego completo.** Los 4 terrenos restantes (roca, arboleda, vado, muralla) y sus
 > 4 plantillas (vado/orilla, puerta de ciudad, ruina, pedral) se añaden **con estas mismas

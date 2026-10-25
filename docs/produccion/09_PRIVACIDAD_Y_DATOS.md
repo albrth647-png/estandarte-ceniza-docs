@@ -24,9 +24,9 @@
 
 ## 2. Dónde vive todo
 
-- **Partida:** `localStorage` del navegador (`eb_save`, 3 slots) (`02_GUARDADO_Y_DATOS.md`).
-- **Opciones:** `eb_opts` (fuera de la partida) (`../DECISIONES.md`, 2026-09-26).
-- **Backup de corrupto:** `eb_save.corrupt` (solo local).
+- **Partida:** `localStorage` del navegador (`valcoria_save`, 3 slots) (`02_GUARDADO_Y_DATOS.md`).
+- **Opciones:** `valcoria_opts` (fuera de la partida) (`../DECISIONES.md`, 2026-09-26).
+- **Backup de corrupto:** `valcoria_save.corrupt` (solo local).
 - **No** se sube nada a ninguna parte: el juego no abre conexiones.
 
 ---

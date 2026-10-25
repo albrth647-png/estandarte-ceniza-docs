@@ -32,7 +32,7 @@
 | **Venta** | Precio de mercado | `../contenido/05_RECURSOS_Y_MERCADO.md` |
 | **Servicio** | 0 oro, pero **paga deuda** | `00_MEMORIA_Y_DEUDA.md` §5 |
 
-- **Empezar:** **50 oro** y una espada alquilada. No eres pobre por casualidad: el cadalso te
+- **Empezar:** **100 oro** de base (los orígenes añaden sus bonos, `13_ESTADISTICAS_DEL_HEROE.md` §1) y una espada alquilada. No eres pobre por casualidad: el cadalso te
   quitó todo (`../historia/01_ESTRUCTURA.md`, prólogo).
 - **Deuda inicial del jugador:** **20 marcos = 200 oro** (la primera cobranza del Acto I).
 
@@ -54,7 +54,7 @@
 | **Enmienda de Firma** | **100 oro** + 1 día (`01_FIRMA.md` §7) |
 | **Luto y funerales** | `08_LUTO_Y_MORAL.md` |
 
-- **Los salarios se cobran por día** (`save.day`): sin oro, la lealtad cae y pueden desertar
+- **Los salarios se cobran por día** (día de juego): sin oro, la lealtad cae y pueden desertar
   (`10_LEALTAD_Y_DESERCION.md`).
 
 ---
@@ -113,14 +113,14 @@
 
 ## 8. Datos, tipos y validación
 
-- **Datos:** `data/economia.json` — `{ oro_inicial, marco_oro, salarios, precios_base,
+- **Datos (por crear):** `data/economia.json` — `{ oro_inicial, marco_oro, salarios, precios_base,
   recargos_firma, curva_venta }`.
 - **Tipos:** `Economia` y `Precio` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/tropas.json` (salarios) y
   `data/lugares.json` (stocks) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/economia.js` — aplica precio, recargos y curva; sin DOM, sin reloj,
-  recibe `save.day` y el RNG de la partida.
-- **Tests:** `tests/economia.test.js`, mínimo 3 casos (normal, borde, error): el recargo de Hiena es
+  recibe día de juego y el RNG de la partida.
+- **Tests (por escribir):** `tests/economia.test.js`, mínimo 3 casos (normal, borde, error): el recargo de Hiena es
   +40 %; vender en masa baja el precio; un saldo negativo no rompe el guardado.
 
 ---
@@ -130,7 +130,7 @@
 | Cifra | Valor |
 |---|---|
 | Marco de sangre | **1 marco = 10 oro** |
-| Oro inicial | **50** |
+| Oro inicial | **100** (soldado 120 · noble 140 · mercader 150; escaramuza ×1,3) |
 | Deuda inicial del jugador | **20 marcos = 200 oro** |
 | Salario por tropa | 2–5 oro/día |
 | Renta de la casa alquilada | 5 oro/día |

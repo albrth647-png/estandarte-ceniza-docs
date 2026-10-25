@@ -43,12 +43,12 @@
 
 ## 4. Datos, tipos y validación
 
-- **Datos:** `data/cicatrices.json` — `{ id, tipo, origen, efecto, comentario_txt }`.
+- **Datos (por crear):** `data/cicatrices.json` — `{ id, tipo, origen, efecto, comentario_txt }`.
 - **Tipos:** `Cicatriz` en `js/data/game_types.js`.
 - **Validación:** `comentario_txt` con pareja ES/EN; cruce del `origen` con los hechos de memoria y
   Firma (`tools/validate_data.js`).
 - **Sistema puro:** `js/systems/cicatrices.js` — concede y consulta; sin DOM ni reloj.
-- **Tests:** `tests/cicatrices.test.js`: no se gana más de 1 por batalla; una cicatriz no da stats;
+- **Tests (por escribir):** `tests/cicatrices.test.js`: no se gana más de 1 por batalla; una cicatriz no da stats;
   la marca del cadalso existe desde el Día 1.
 
 ---

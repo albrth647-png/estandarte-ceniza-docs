@@ -58,12 +58,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/lealtad.json` — `{ detonante, umbral, efecto, recuperable }`.
+- **Datos (por crear):** `data/lealtad.json` — `{ detonante, umbral, efecto, recuperable }`.
 - **Tipos:** `Lealtad` en `js/data/game_types.js`.
 - **Validación:** cruce con `data/tropas.json` (salario) y `data/economia.json`; sin ellos, falla
   (`tools/validate_data.js`).
 - **Sistema puro:** `js/systems/lealtad.js` — aplica detonantes y deserciones; sin DOM ni reloj.
-- **Tests:** `tests/lealtad.test.js`: sin salario 3 días hay riesgo; una deserción se puede
+- **Tests (por escribir):** `tests/lealtad.test.js`: sin salario 3 días hay riesgo; una deserción se puede
   recuperar una vez; una traición deja némesis.
 
 ---
@@ -89,7 +89,7 @@
 > comer todavía no se va nadie (recorte de `../produccion/00_ALCANCE.md` §5, 2026-10-02).
 
 > **Y sigue el juego completo.** Traiciones, némesis y lealtad de casas entran con el reino grande
-> **con estas mismas reglas**; crecer = más filas en `lealtad.json`.
+> **con estas mismas reglas**; crecer = más filas en la tabla de lealtad.
 
 ---
 

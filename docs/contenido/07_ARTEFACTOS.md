@@ -105,13 +105,13 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/artefactos.json` — `{ id, nombre_txt, efecto, dueno, via, unico, trama }`.
+- **Datos (por crear):** `data/artefactos.json` — `{ id, nombre_txt, efecto, dueno, via, unico, trama }`.
 - **Tipos:** `Artefacto` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de los artefactos `trama` con las
   banderas de `../historia/04_GUION.md` (p. ej. `paginas_arrancadas`) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/artefactos.js` — concede, consulta y aplica el efecto de regla; sin
   DOM, sin reloj.
-- **Tests:** `tests/artefactos.test.js`, mínimo 3 casos (normal, borde, error): un artefacto único
+- **Tests (por escribir):** `tests/artefactos.test.js`, mínimo 3 casos (normal, borde, error): un artefacto único
   no se duplica; el estandarte da +10 de moral; perder una vía de trama no deja la partida sin
   cierre.
 

@@ -42,7 +42,7 @@
 ## 3. Qué campo sale en cada sitio/zona
 
 - El campo **sale del terreno del tramo** (no se elige a mano): al abrirse una batalla,
-  `js/systems/campo.js` toma el terreno dominante y elige la plantilla (§1).
+  `js/systems/campo.js` (por construir) tomará el terreno dominante y elegirá la plantilla (§1).
 - **Por zona:** Marca del Sur → `llanura_camino`, `aldea`; Ribera → `vado_orilla`; Serranía →
   `bosque`, `ruina`; Altos → `bosque`, `puerta_ciudad`; Tierra del Paso → `ruina`, `bosque`.
 - **Variedad sin repetir:** con la **semilla de la partida** se colocan manchas y puntos de interés
@@ -61,12 +61,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/campos.json` — `{ id, terreno_base, cobertura, carga, ancho_paso, puntos }`.
+- **Datos (por crear):** `data/campos.json` — `{ id, terreno_base, cobertura, carga, ancho_paso, puntos }`.
 - **Tipos:** `PlantillaCampo` en `js/data/game_types.js`.
 - **Validación:** cada `terreno_base` existe en `data/terreno.json`; los `puntos` existen en
   `data/props.json` (`tools/validate_data.js`); ≤ 4 puntos.
 - **Sistema puro:** `js/systems/campo.js` elige plantilla y siembra puntos; sin DOM ni reloj.
-- **Tests:** `tests/campos.test.js`: todo terreno mapea a ≥ 1 plantilla; nunca se superan 4 puntos;
+- **Tests (por escribir):** `tests/campos.test.js`: todo terreno mapea a ≥ 1 plantilla; nunca se superan 4 puntos;
   el campo estrecho no bloquea la salida.
 
 ---
@@ -86,8 +86,8 @@
 
 ## 7. Qué entra en la demo (Fase 1) — y qué sigue
 
-> **Hasta aquí la demo.** **2 campos** (`../produccion/00_ALCANCE.md` §2.5): `llanura_camino` y
-> `bosque`/`aldea`, con sus puntos de interés y estas reglas.
+> **Hasta aquí la demo.** **3 plantillas** (`../produccion/00_ALCANCE.md` §2.5): `llanura_camino`, `aldea` y
+> `bosque`, con sus puntos de interés y estas reglas.
 
 > **Y sigue el juego completo.** `vado_orilla`, `puerta_ciudad` y `ruina` se añaden **con el mismo
 > formato de datos y las mismas reglas**; crecer = más filas en `campos.json`, no un motor nuevo.

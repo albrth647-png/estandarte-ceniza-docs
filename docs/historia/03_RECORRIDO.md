@@ -17,7 +17,7 @@
 4. **La memoria es la narración:** lo que el mundo recuerda es lo que el jugador ve cambiar
    (`../sistemas/00_MEMORIA_Y_DEUDA.md`).
 5. **El jugador puede saltar** cualquier escena manteniendo pulsado 1 s
-   (`SKIP_MS` de `js/systems/dialogue.js`), **aplicando sus efectos**
+   (constante de salto, por definir), **aplicando sus efectos**
    (`../DECISIONES.md`, 2026-09-27).
 
 ---
@@ -63,7 +63,7 @@ Toda la columna vertebral (`01_ESTRUCTURA.md`) usa el **mismo molde**:
 
 | Texto | Vive en | Se lee |
 |---|---|---|
-| **Columna vertebral** | `04_GUION.md` + `data/` del motor | Escena de diálogo (`js/systems/dialogue.js`) |
+| **Columna vertebral** | `04_GUION.md` + `data/escenas.json` (por crear) | Escena de diálogo (motor por construir) |
 | **Reacciones de los PNJ** | Memorias + plantillas `txt_mem_*` | Bocadillo al saludarte |
 | **Carteles y lápidas** | `../historia/08_TEXTO_DEL_MUNDO.md` (`txt_mundo_*`) | Enfocar y tocar (Lectura) |
 | **Tablones** | `../misiones/01_TABLONES_Y_PORTAVOCES.md` (`txt_enc_*`) | Cartel del tablón |
@@ -105,11 +105,11 @@ Toda la columna vertebral (`01_ESTRUCTURA.md`) usa el **mismo molde**:
 
 ## 7. Datos, tipos y validación
 
-- Las escenas son **nodos** del motor existente (`habla / decision / une / batalla`,
+- Las escenas son **nodos** del motor previsto (`habla / decision / une / batalla`,
   `js/systems/dialogue.js`) con **condiciones** sobre el guardado; ampliar el juego de
   condiciones (Firma, memoria, día) es **aditivo** (regla 6 de `../../AGENTS.md`).
-- El recorrido vive en `data/escenas.json` (ids `snake_case`); las claves `txt_*` con paridad ES/EN.
-- **Tests:** `tests/recorrido.test.js`: toda escena de la columna es alcanzable; ninguna puerta
+- El recorrido vivirá en `data/escenas.json` (por crear) (ids `snake_case`); las claves `txt_*` con paridad ES/EN.
+- **Tests (por escribir):** `tests/recorrido.test.js`: toda escena de la columna es alcanzable; ninguna puerta
   deja sin salida; el salto de escena aplica sus efectos.
 
 ---

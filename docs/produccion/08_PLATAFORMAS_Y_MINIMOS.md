@@ -30,7 +30,7 @@
 | **Entrada** | pantalla táctil **o** ratón; teclado **no** necesario |
 | **Red** | **ninguna** (100 % offline) |
 
-- **Verificado** con el humo en **960×683** y **915×555** (`npm run smoke`).
+- **Verificable** con el humo en **960×683** y **960×540** (`npm run smoke`).
 
 ---
 
@@ -46,14 +46,14 @@
 
 - **Sin vibración:** no rompe (`../interfaz/04_ACCESIBILIDAD.md` §3).
 - **Sin audio:** arranca igual (`../arte/02_AUDIO.md` §1).
-- **Sin WebGL2:** mensaje claro de requisito (el juego **no** finge que corre).
+- **Sin WebGL2:** reserva a 2D (el juego sigue jugable) y mensaje claro de aviso.
 
 ---
 
 ## 5. Datos y despliegue
 
 - **Rutas relativas** (`data/…`, `art/…`, `vendor/…`), nunca absolutas (regla 3, APK).
-- **Todo vendorizado:** Three.js y assets locales; cero CDNs (regla offline).
+- **Todo se vendorizará (por crear):** Three.js y assets locales; cero CDNs (regla offline).
 - **Sin servidores:** el hosting solo sirve ficheros estáticos.
 
 ---
@@ -67,7 +67,7 @@
 | Almacenamiento | `localStorage` ~5 MB |
 | Red | **0** |
 | Objetivo | 60 fps con 10+10 |
-| Humo | 960×683 y 915×555 |
+| Humo | 960×683 y 960×540 |
 | Teclado/mando | **no** necesarios |
 
 ---
@@ -75,7 +75,7 @@
 ## 7. Qué entra en la demo (Fase 1) — y sigue
 
 > **Hasta aquí la demo.** Web estática + APK, con los mínimos de §2 y el rendimiento de los 6
-> sitios y 2 campos.
+> sitios y 3 campos.
 
 > **Y sigue el juego completo.** Las regiones y unidades de las Fases 2-5 caben en **los mismos
 > mínimos**; si no, se optimiza el contenido, no se sube el listón del dispositivo.

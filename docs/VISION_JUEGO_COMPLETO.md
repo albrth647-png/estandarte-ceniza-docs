@@ -1,9 +1,9 @@
 # Visión del juego completo — de la demo (Acto I) al horizonte de campaña
 
-> **Qué es este documento.** La idea del juego completo, **continuando la demo**. La demo
-> (Acto I, "La Ceniza") es una **vista previa**: un trozo jugable del sistema. Aquí se cuenta de
-> dónde parte lo que ya existe y qué tipos de mecánicas podrían seguir, sin cerrar todavía
-> ninguna cifra.
+> **Qué es este documento.** La teoría de longevidad del juego completo. La demo del Acto I
+> («La Ceniza», en diseño, `produccion/00_ALCANCE.md`) será una **vista previa**: un trozo
+> jugable del sistema. Aquí se cuenta de qué **lecciones del prototipo anterior** parte el
+> diseño y qué tipos de mecánicas podrían seguir, sin cerrar todavía ninguna cifra.
 >
 > **Documento autónomo:** no depende de ni enlaza a otros textos del proyecto (usa sus nombres en
 > `código` como referencia, no como enlace).
@@ -16,14 +16,14 @@
 
 ---
 
-## 1. De dónde partimos: la demo ya enseña el sistema
+## 1. De dónde partimos: las lecciones del prototipo anterior
 
-> **Nota (2026-10-01):** la tabla de abajo describe el **primer juego** («Estandarte de Ceniza»),
-> cuyo código **se retiró** de este repositorio. Se conserva **solo como memoria de lo que ya se
-> probó**; no es diseño del juego nuevo. El diseño vivo está en
-> `VALCORIA_DEUDA_DE_SANGRE.md` y en `docs/`.
+> **Nota (2026-10-01, aclarada 2026-10-25):** la tabla de abajo describe el **primer juego**
+> («Estandarte de Ceniza»), cuyo código **ya no existe** y no se conserva en este repo. Se
+> conserva **solo como memoria de lo que ya se probó**; no es diseño del juego nuevo. El diseño
+> vivo está en `VALCORIA_DEUDA_DE_SANGRE.md` y en `docs/`.
 
-Esto **no es propuesta**, es lo que la demo (Acto I) ya tenía o tenía diseñado:
+Esto **no es propuesta**, es lo que el prototipo anterior (Acto I) ya tenía o tenía diseñado:
 
 | Pieza | Estado |
 |---|---|
@@ -36,9 +36,11 @@ Esto **no es propuesta**, es lo que la demo (Acto I) ya tenía o tenía diseñad
 | **Contenido:** 9 unidades, 20 misiones, 19 ítems + 9 artefactos, 8 mercancías, 3 facciones activas (de 8 reinos) | Diseñado |
 | **Histórico (primer juego):** cámara, rondas de enemigos, raza neutral, IA de héroes, habilidades de escuadrón, mazmorras | ⬜ **No aplican** al juego nuevo |
 
-**La clave:** el juego completo no empieza de cero. Se construye **encima** de estas piezas
-(mapa por casillas, escuadrones, veteranos, culdán, honor, economía y campaña por días). Todo lo
-que sigue son **familias de mecánicas** que encajan con ellas.
+**La clave:** el juego completo no repite estas piezas tal cual — el **mapa por casillas** y la
+**batalla 2D** quedaron fuera con el cambio de género — pero **hereda sus lecciones**: los
+escuadrones (como concepto, ahora en un campo de batalla en 1.ª persona), los veteranos, la
+idea del culdán (hoy generalizada en los **capitanes con memoria**), el honor, la economía y la
+campaña por días. Todo lo que sigue son **familias de mecánicas** que encajan con el juego nuevo.
 
 ---
 
@@ -135,7 +137,8 @@ Todo lo que se añada tiene que respetar la naturaleza del proyecto:
 - **Nada de `localStorage` sin capar.** Todo lo que crezca (diario, agentes) va **acotado**.
 - **El reloj entra inyectado.** Las capas puras reciben el tiempo; nunca lo consultan solas.
 - **Paridad de textos ES/EN** desde el primer commit.
-- **Motor de batalla intocable.** Lo nuevo entra por datos, despliegues o capas puras por encima.
+- **Motor de batalla estable.** El motor se diseña una vez: lo nuevo entra por datos,
+  despliegues o capas puras por encima, sin tocar el motor.
 
 ---
 
@@ -181,7 +184,8 @@ La regla del proyecto es clara y aplica a todo lo de §5:
   entra por parámetro (los nombres exactos se deciden al implementar).
 - **Escenas:** el mapa y el resultado dibujan y llaman a esas capas; no simulan.
 - **Guardado:** lo nuevo es **aditivo** (migración compatible) y **acotado**.
-- **Motor:** `battle.js` y `pathfinding.js` se llaman, no se tocan.
+- **Motor:** el motor de campo y el pathfinding (por construir) se diseñan estables; lo nuevo
+  los llama, no los toca.
 
 **Orden propuesto (sujeto a tu decisión):** primero las dos piezas más baratas y que más
 reutilizan lo ya hecho (**agentes con memoria** + **diario**), luego el reloj de campaña y los
@@ -210,12 +214,12 @@ bloques que rotan, después la repetición escalada, y al final lo que toca econ
   puede reclutar al enemigo vencido?
 - **Diario:** ¿cuántos registros se conservan? ¿qué tipos? ¿panel en el mapa o pantalla propia?
 - **Bloques que rotan:** ¿qué duración en días de juego? ¿qué conservan?
-- **Reloj de campaña:** hoy la demo va a **1 día = 30 s**. ¿Se mantiene o se recalibra para el
-  juego completo?
+- **Reloj de campaña:** el prototipo anterior usó **1 día = 30 s**. ¿Se mantiene o se recalibra
+  para el juego completo?
 - **Repetición escalada:** ¿qué afijos? ¿con o sin tope de recompensa?
 - **Duración objetivo** de la campaña completa (**a decidir**; yo propuse cifras en el chat sin
   base, retiradas).
-- **Persistencia:** ¿todo lo nuevo entra en la misma fase de guardado (aditivo v2)?
+- **Persistencia:** ¿todo lo nuevo entra en la misma fase de guardado (aditivo)?
 
 ---
 

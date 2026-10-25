@@ -109,15 +109,15 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/edificios.json` — `{ id, nombre_txt, servicio, entrable, terreno, fuego,
+- **Datos (por crear):** `data/edificios.json` — `{ id, nombre_txt, servicio, entrable, terreno, fuego,
   modelo, peso }`.
 - **Tipos:** `Edificio` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `modelo` con `data/assets.json`, del
   `servicio` con `data/lugares.json` y del `terreno` con `data/terreno.json` en
   `tools/validate_data.js`.
-- **Sistema puro:** la colocación y el estado (en pie / quemado) viven en `js/systems/edificios.js`;
-  sin DOM, sin reloj (día por `save.day`), semilla inyectada.
-- **Tests:** `tests/edificios.test.js`, mínimo 3 casos (normal, borde, error): nada se coloca sobre
+- **Sistema puro:** la colocación y el estado (en pie / quemado) vivirán en `js/systems/edificios.js`;
+  sin DOM, sin reloj (el día entra inyectado), semilla inyectada.
+- **Tests (por escribir):** `tests/edificios.test.js`, mínimo 3 casos (normal, borde, error): nada se coloca sobre
   el camino; un edificio quemado no sigue dando servicio; un interior sin sala definida no rompe la
   carga.
 

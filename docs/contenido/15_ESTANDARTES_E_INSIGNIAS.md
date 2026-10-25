@@ -106,7 +106,7 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/estandartes.json` — `{ id, faccion, campo, simbolo, lema_txt, estados, modelo,
+- **Datos (por crear):** `data/estandartes.json` — `{ id, faccion, campo, simbolo, lema_txt, estados, modelo,
   atlas }`.
 - **Tipos:** `Estandarte` y `EstandarteCompania` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `faccion` con `data/facciones.json`
@@ -114,7 +114,7 @@
   `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/estandartes.js` — elige el estado por Firma y aplica el +5 de moral
   mientras el abanderado esté en pie; sin DOM ni reloj.
-- **Tests:** `tests/estandartes.test.js`, mínimo 3 casos (normal, borde, error): el estado cambia con
+- **Tests (por escribir):** `tests/estandartes.test.js`, mínimo 3 casos (normal, borde, error): el estado cambia con
   la Firma; sin abanderado se pierde el +5; una facción sin heráldica rompe la carga.
 
 ---

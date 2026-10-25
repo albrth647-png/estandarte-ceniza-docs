@@ -86,7 +86,7 @@ Dos estados laterales, que conviven con la banda:
 
 ## 4. Hechos: qué mueve el rango
 
-Todo hecho tiene un **peso**: leve **±2**, medio **±5**, grave **±10**, capital **±15**.
+Todo hecho tiene un **peso**: leve **±2**, medio **±5**, grave **±10**, capital **±15** (clases orientativas: el peso exacto de cada hecho manda en su tabla §4).
 El rango se acota a [−100, +100]; los pesos se aplican en el día en que ocurren.
 
 | Hecho (`t`) | Peso | Notas |
@@ -196,14 +196,14 @@ rencor (`rw`). La memoria se apaga, la deuda no.
 
 ## 10. Datos, tipos y validación
 
-- **Guardado:** campo nuevo `memoria` en `SaveState` → **`SAVE_VERSION` 3** (aditivo:
-  `migrateSave()` rellena `memoria` vacío en partidas v2; nunca borra nada).
+- **Guardado:** campo nuevo `memoria` en el guardado (aditivo:
+  la migración rellena `memoria` vacío en partidas de versiones anteriores; nunca borra nada).
 - **Tipos:** `FichaMemoria` y `HechoMemoria` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `id` de PNJ en
   `tools/validate_data.js`; sin eso, `loadData()` no arranca (regla 5).
-- **Sistema puro:** la memoria vive en `js/systems/memoria.js` — sin DOM, sin fetch, sin
-  reloj: todo se mide con `save.day` y los RNG se inyectan (regla 2).
-- **Tests:** `tests/memoria.test.js`, mínimo 3 casos (normal, borde, error).
+- **Sistema puro:** la memoria vivirá en `js/systems/memoria.js` — sin DOM, sin fetch, sin
+  reloj: todo se mide en días de juego y los RNG se inyectan (regla 2).
+- **Tests (por escribir):** `tests/memoria.test.js`, mínimo 3 casos (normal, borde, error).
 
 ---
 

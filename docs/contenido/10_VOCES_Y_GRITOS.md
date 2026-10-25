@@ -96,14 +96,14 @@
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/voces.json` — `{ id, familia, clave_txt, banda_min, banda_max, prioridad }`.
+- **Datos (por crear):** `data/voces.json` — `{ id, familia, clave_txt, banda_min, banda_max, prioridad }`.
 - **Tipos:** `Voz` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + `validateStringsPair` (toda `clave_txt` tiene
   pareja ES/EN) + cruce de `familia` con §1 en `tools/validate_data.js`.
 - **Sistema/escena:** el **sistema emite un evento** («orden recibida», «unidad rota») y la
   **escena** elige la frase y la pinta/reproduce; el motor puro no conoce bocadillos
   (regla 11 de `../../AGENTS.md`).
-- **Tests:** `tests/voces.test.js`, mínimo 3 casos (normal, borde, error): toda clave tiene pareja
+- **Tests (por escribir):** `tests/voces.test.js`, mínimo 3 casos (normal, borde, error): toda clave tiene pareja
   ES/EN; una frase de más de 90 caracteres falla; una banda de memoria sin saludo cae al neutral.
 
 ---

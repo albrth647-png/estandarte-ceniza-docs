@@ -12,12 +12,12 @@
 
 | Grupo | Pantalla | Qué es | Estado |
 |---|---|---|---|
-| **Armazón** | Portada | Título y primera tecla | Ya existe |
-| | Menú | Continuar, nueva partida, cargar, opciones, créditos | Ya existe |
-| | Crear partida | Nombre, origen, dificultad | Ya existe |
-| | Cargar | 3 slots + respaldo de corrupto | Ya existe |
-| | Opciones | Idioma, calidad, texto, control, accesibilidad | Ya existe |
-| | Créditos | Autoría y terceros | Ya existe |
+| **Armazón** | Portada | Título y primera tecla | Por construir (diseño cerrado) |
+| | Menú | Continuar, nueva partida, cargar, opciones, créditos | Por construir (diseño cerrado) |
+| | Crear partida | Nombre, origen, dificultad | Por construir (diseño cerrado) |
+| | Cargar | 3 slots + respaldo de corrupto | Por construir (diseño cerrado) |
+| | Opciones | Idioma, calidad, texto, control, accesibilidad | Por construir (diseño cerrado) |
+| | Créditos | Autoría y terceros | Por construir (diseño cerrado) |
 | **Mundo** | Exploración | 1.ª persona, libre | Demo |
 | | Diálogo | Conversación por nodos | Demo |
 | | Viaje / mapa | Elegir destino y resolver días | Demo |
@@ -40,7 +40,7 @@
   detiene; `../batalla/00_REGLAS.md` §3).
 - **Diálogo y batalla son pantallas del mundo**, no menús: no tienen «volver al menú» salvo por
   el menú de pausa.
-- **Pausa:** el juego **no tiene pausa total** (`00_REGLAS.md` §3); el menú de pausa solo abre
+- **Pausa:** el juego **no tiene pausa total** (`../batalla/00_REGLAS.md` §3); el menú de pausa solo abre
   opciones y guardado, y el mundo espera **dentro de lo posible** (días de juego, no reloj real).
 
 ---
@@ -71,10 +71,10 @@ Acto III → Asamblea → Final
 
 ## 5. Datos, tipos y validación
 
-- Las escenas existentes (`js/scenes/*`) y el `scene_manager` ya gestionan la navegación; las
+- Las escenas (`js/scenes/*`, por construir) y el gestor de escenas gestionarán la navegación; las
   nuevas se añaden como escenas **que dibujan, no simulan** (regla 2 de `../../AGENTS.md`).
 - **Tipos:** `Pantalla` en `js/data/game_types.js`.
-- **Tests:** `tests/scene_manager.test.js` (existente) + `tests/pantallas.test.js` (toda pantalla
+- **Tests (por escribir):** `tests/scene_manager.test.js` (por escribir) + `tests/pantallas.test.js` (toda pantalla
   es alcanzable y **regresable**, salvo la asamblea).
 
 ---

@@ -1,12 +1,15 @@
-# Estandarte de Ceniza — documentación de diseño
+# Valcoria — Deuda de Sangre · documentación de diseño
 
 > **Qué es:** la documentación de diseño de **Valcoria — Deuda de Sangre** (nombre de
-> trabajo), un **RPG medieval de supervivencia y memoria**, en **1.ª persona y tiempo
+> trabajo cerrado), un **RPG medieval de supervivencia y memoria**, en **1.ª persona y tiempo
 > real**, **móvil primero** (APK), sin mando y **100 % offline**.
 >
 > **El gancho:** «Cada enemigo se acuerda de ti. Y no todos mueren.»
-
-**Este repositorio contiene solo documentación.** El código de la demo no está aquí.
+>
+> **Este repositorio contiene solo documentación.** El código del juego **aún no existe**:
+> se escribirá aquí cuando el diseño esté aprobado y empiece la Fase 1
+> (`docs/produccion/PLAN_FASE1.md`). Toda la documentación está escrita en clave
+> **greenfield**: describe el juego que se va a construir, no un build previo.
 
 ---
 
@@ -26,9 +29,9 @@
 
 | Ruta | Qué hay |
 |---|---|
-| `docs/` | **121 documentos**: la idea, la visión, las decisiones, y las 9 áreas de diseño |
-| `AGENTS.md` | reglas de trabajo del proyecto (código y documentación) |
-| `CHANGELOG.md` | historial de cambios |
+| `docs/` | **98 documentos de diseño aprobados** (la idea, la visión, las decisiones y las 9 áreas de diseño) más índices y documentos de trabajo |
+| `AGENTS.md` | reglas de trabajo del proyecto (el contrato de ingeniería del futuro build) |
+| `CHANGELOG.md` | historial de cambios de la documentación |
 
 **Las 9 áreas de `docs/`** (cada una con su propio `README.md` como índice):
 
@@ -60,9 +63,11 @@ El detalle está en [`docs/README.md`](docs/README.md) §«Reglas de mantenimien
 
 ## Estado
 
-🟡 **Diseño en curso.** Existe una **demo jugable** (Acto I, «La Ceniza») que sirve de
-vista previa del sistema; el **juego completo está en diseño** y sus cifras no están
-cerradas.
+🟡 **Diseño cerrado en borrador completo, código por empezar.** Los 98 documentos de diseño
+están escritos y aprobados (con 🟡 internos donde falta una cifra del dueño). **No existe
+ningún código, ningún asset ni ningún build del juego**: la primera entrega será la demo del
+Acto I («La Ceniza», `docs/produccion/00_ALCANCE.md`) y su plan de construcción está en
+`docs/produccion/PLAN_FASE1.md`.
 
 ---
 

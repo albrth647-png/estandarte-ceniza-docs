@@ -6,7 +6,7 @@ habilidades, tropas, enemigos y zonas) **escale según el nivel del héroe**. Es
 **casa única de la escala**; `05_PROGRESION.md` apunta aquí. Las **estadísticas** del héroe, en
 `13_ESTADISTICAS_DEL_HEROE.md`; el balance del campo, en `../batalla/01_CIFRAS.md`.
 
-> **Doc ↔ código:** `js/core/save.js` ya trae `NIVEL_MAX = 60` (actualizado 2026-10-01). **La demo
+> **Decisión:** nivel máximo **60** (2026-10-01). La constante vivirá en el módulo de guardado cuando exista. **La demo
 > llega hasta el nivel 15**; los niveles 16-60 son del juego completo (§8).
 
 > Regla de oro: **una sola escala (1 … 60) para todos** (héroe, tropa, compañero, capitán y
@@ -25,7 +25,7 @@ habilidades, tropas, enemigos y zonas) **escale según el nivel del héroe**. Es
 | **Capitán / némesis** | **Sobrevivir con testigos** → rango propio | **60** |
 | **Enemigo de zona** | No sube: **lo pone la zona** (§3) | — |
 
-- **El XP solo lo lleva el héroe** (`SaveState.nivel_personaje`); el resto sube por **hechos**.
+- **El XP solo lo lleva el héroe** (campo previsto `nivel_personaje` del guardado); el resto sube por **hechos**.
 - **Nadie pasa de su techo:** un enemigo de zona 12 no se convierte en nivel 40 solo porque tú
   llegues arriba; el mundo tiene su propio nivel.
 
@@ -199,21 +199,21 @@ resuelta. Nada «solo da oro».
 
 ## 6. Datos, tipos y validación
 
-- **Datos:** `data/zonas.json` gana `nivel_min`/`nivel_max` (bandas §3); `data/tropas.json`,
+- **Datos (por crear):** `data/zonas.json` gana `nivel_min`/`nivel_max` (bandas §3); `data/tropas.json`,
   `data/companeros.json` y `data/capitanes.json` ganan `nivel` (y `techo_extra` en tropas);
   `data/progresion.json` pasa a `{ nivel_max: 60, vida_base, incremento, veteranias }`.
-- **Tipos:** `NivelPersonaje` y `NivelEscuadron` **ya existen**; se añaden `NivelZona` y el campo
+- **Tipos:** `NivelPersonaje` y `NivelEscuadron` **están previstos**; se añaden `NivelZona` y el campo
   `nivel` a `Tropa`/`Companero`/`Capitan` en `js/data/game_types.js` (regla 4).
-- **Código ya actualizado:** `NIVEL_MAX = 60` en `js/core/save.js` (con test de borde 60 válido /
+- **Constante prevista:** `NIVEL_MAX = 60` (con test de borde 60 válido /
   61 rechazado).
-- **Guardado:** `SaveState.nivel_personaje` y `niveles` **ya existen**; **sin campos nuevos**
-  (SAVE_VERSION 3 solo por `juramento`).
+- **Guardado:** `nivel_personaje` y `niveles` quedan previstos en el guardado; **sin campos nuevos**
+  (aditivo).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de bandas (`nivel_min ≤ nivel_max`), de
   los niveles de enemigo contra la banda de su zona y del `nivel` de ficha contra `NIVEL_MAX`, en
   `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/progresion.js` + `js/systems/enemigos.js`; sin DOM, sin reloj, RNG
   inyectado.
-- **Tests:** `tests/progresion.test.js` y `tests/capitanes.test.js`: el héroe no pasa de **60**;
+- **Tests (por escribir):** `tests/progresion.test.js` y `tests/capitanes.test.js`: el héroe no pasa de **60**;
   una tropa no pasa de «zona + 2»; el daño tras escalar no supera 90/45; la misma semilla da el
   mismo nivel de enemigo.
 

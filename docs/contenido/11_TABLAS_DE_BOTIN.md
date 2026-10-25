@@ -29,7 +29,7 @@
 | id | Contenedor | Dónde | Se abre con |
 |---|---|---|---|
 | `cuerpo` | Cuerpo | Tras un combate o un hallazgo | Toque |
-| `arcon` | Arcón | Casas, escribanía, ruina | Toque o **pico** (`04_ITEMS_Y_EQUIPO.md` §3.3) |
+| `arcon` | Arcón | Casas, escribanía, ruina | Toque o **pico** (`04_ITEMS_Y_EQUIPO.md` §3.4) |
 | `carreta` | Carreta volcada | Camino, campo (punto de interés) | Fuerza / tiempo |
 | `ruina` | Ruina | Serranía, Tierra del Paso | — |
 | `saco` | Saco / alijo | Aldeas, graneros | Toque |
@@ -101,7 +101,7 @@ Botín **garantizado** + **extra** por tirada. Los ids de familia son de `01_ENE
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/botin.json` — `{ id, contenedor, familia, garantizado, extras: [{ id, peso }],
+- **Datos (por crear):** `data/botin.json` — `{ id, contenedor, familia, garantizado, extras: [{ id, peso }],
   senalado }`.
 - **Tipos:** `Botin` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce de `familia` con `data/enemigos.json`, de
@@ -109,7 +109,7 @@ Botín **garantizado** + **extra** por tirada. Los ids de familia son de `01_ENE
   memoria en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/botin.js` — tirada con **RNG inyectado**, aplica límites y botín
   señalado; sin DOM, sin reloj.
-- **Tests:** `tests/botin.test.js`, mínimo 3 casos (normal, borde, error): la misma semilla da el
+- **Tests (por escribir):** `tests/botin.test.js`, mínimo 3 casos (normal, borde, error): la misma semilla da el
   mismo botín; siempre hay garantizado; un contenedor vaciado no vuelve a dar.
 
 ---
@@ -119,7 +119,7 @@ Botín **garantizado** + **extra** por tirada. Los ids de familia son de `01_ENE
 | Cifra | Valor |
 |---|---|
 | Contenedores | **5** |
-| Garantizado por familia | **sí** (5-40 oro + 1 recurso) |
+| Garantizado por familia | **5-40 oro** (+ 1 recurso solo la cuadrilla de casa) |
 | Extras | 1 tirada por enemigo |
 | Botín de capitán | familia + **40-80 oro** + pieza `buena` |
 | Botín señalado | exige **hecho** en memoria |

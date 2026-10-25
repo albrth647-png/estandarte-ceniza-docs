@@ -50,7 +50,7 @@
 
 ## 4. Qué pasa si pierdes una batalla fija
 
-- **Nunca bloquea:** caes, el mundo cobra (rescate/servicio/rehén, `02_PRISIONEROS.md` §7) y la
+- **Nunca bloquea:** caes, el mundo cobra (rescate/servicio/rehén, `../sistemas/02_PRISIONEROS.md` §7) y la
   trama **espera**.
 - La batalla se puede **reintentar** más tarde con más gente o mejor posición; el enemigo
   **recuerda** que le ganaste antes (memoria) o que huiste.
@@ -60,12 +60,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/batallas_historia.json` — `{ id, momento, enemigo, campo, unidades, banderas }`.
+- **Datos (por crear):** `data/batallas_historia.json` — `{ id, momento, enemigo, campo, unidades, banderas }`.
 - **Tipos:** `BatallaHistoria` en `js/data/game_types.js`.
 - **Validación:** `campo` existe en `data/campos.json`, `enemigo` en `data/enemigos.json`; las
   `banderas` son las de `../historia/04_GUION.md` (`tools/validate_data.js`).
-- **Sistema puro:** el montaje usa `js/systems/campo.js`; la escena solo pinta.
-- **Tests:** `tests/batallas_historia.test.js`: cada batalla fija es **perdible sin bloquear**; las
+- **Sistema puro:** el montaje usará `js/systems/campo.js` (por construir); la escena solo pinta.
+- **Tests (por escribir):** `tests/batallas_historia.test.js`: cada batalla fija es **perdible sin bloquear**; las
   banderas quedan alcanzables; el flashback guionizado no da recursos.
 
 ---

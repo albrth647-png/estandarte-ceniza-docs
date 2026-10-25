@@ -57,11 +57,11 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/cronologia.json` — `{ id, cuando, hecho, bandera }`.
+- **Datos (por crear):** `data/cronologia.json` — `{ id, cuando, hecho, bandera }`.
 - **Tipos:** `Hito` en `js/data/game_types.js`.
 - **Validación:** coherencia entre fechas (un hecho no precede a su causa) y existencia de las
   `bandera` en `../historia/04_GUION.md` (`tools/validate_data.js`).
-- **Tests:** `tests/cronologia.test.js`: Beltrán no actúa tras el Día −89; el Paso cae antes del
+- **Tests (por escribir):** `tests/cronologia.test.js`: Beltrán no actúa tras el Día −89; el Paso cae antes del
   Día 1; una bandera citada existe en el guion.
 
 ---
@@ -85,7 +85,7 @@
 > prólogo y el giro de las páginas.
 
 > **Y sigue el juego completo.** Los hitos del **Acto II y III** se añaden **con esta misma línea
-> de tiempo**; crecer = más filas en `cronologia.json`, sin reescribir el pasado.
+> de tiempo**; crecer = más filas en la tabla de cronología, sin reescribir el pasado.
 
 ---
 

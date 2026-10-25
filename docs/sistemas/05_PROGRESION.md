@@ -11,7 +11,7 @@
 
 ## 1. Niveles del héroe
 
-- **Nivel 1 … 60** (`NIVEL_MAX = 60` ya en `js/core/save.js`); **la demo llega hasta el 15**
+- **Nivel 1 … 60** (nivel máximo: **60**, decisión del dueño); **la demo llega hasta el 15**
   (`12_NIVELES_DEL_HEROE.md` §1).
 - **Vida:** `120 + 10 × (nivel − 1)` (nivel 60 → **710**); ataque/defensa, en `../batalla/01_CIFRAS.md` §2.
 - **XP:** `60 × nivel` para subir (tabla completa y bandas de zona en `12_NIVELES_DEL_HEROE.md` §2).
@@ -59,12 +59,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/progresion.json` — `{ nivel_max, vida_base, incremento, veteranias }`.
+- **Datos (por crear):** `data/progresion.json` — `{ nivel_max, vida_base, incremento, veteranias }`.
 - **Tipos:** `Progresion` y `Veterania` en `js/data/game_types.js`.
-- **Validación:** coherencia con `NIVEL_MAX` de `save.js` y con `../batalla/01_CIFRAS.md` §1
+- **Validación:** coherencia con el nivel máximo (60) y con `../batalla/01_CIFRAS.md` §1
   (`tools/validate_data.js`).
 - **Sistema puro:** `js/systems/progresion.js` — sube nivel y veteranía; sin DOM ni reloj.
-- **Tests:** `tests/progresion.test.js`: el nivel no pasa de 15; la vida cuadra con la fórmula; la
+- **Tests (por escribir):** `tests/progresion.test.js`: el nivel no pasa de 15; la vida cuadra con la fórmula; la
   mejora no supera el techo de balance.
 
 ---

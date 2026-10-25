@@ -57,10 +57,10 @@
 
 ## 5. Datos, tipos y validación
 
-- Lee `SaveState.memoria`, `.firma`, `.cronica` (SAVE_VERSION 3). **No añade campos.**
+- Leerá el estado de partida (memoria, Firma, Crónica). **No añade campos.**
 - **Tipos:** `PestanaLibro` en `js/data/game_types.js`.
 - **Pintura** en escena (`js/scenes/sc_libro.js`) con el kit DOM; **no simula** (regla 2).
-- **Tests:** `tests/scene_libro.test.js`: las 5 pestañas se pintan; un guardado vacío no rompe; el
+- **Tests (por escribir):** `tests/scene_libro.test.js`: las 5 pestañas se pintan; un guardado vacío no rompe; el
   grafo de rencores no dibuja un rencor caducado.
 
 ---

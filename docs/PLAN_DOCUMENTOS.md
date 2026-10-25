@@ -56,7 +56,7 @@
 
 ## 🎒 `contenido/` — los catálogos jugables (16 ✅)
 
-- [x] `00_TROPAS.md` — **aprobado**: 3 roles base, 9 tropas, aforo 6 + 2 × nivel
+- [x] `00_TROPAS.md` — **aprobado**: 3 roles base, 9 tropas, aforo 6 + 2 × (nivel − 1), techo 40
 - [x] `01_ENEMIGOS.md` — **aprobado**: 5 familias (4 fijas + rencorosos), rasgos de IA
 - [x] `02_CAPITANES_Y_NEMESIS.md` — **aprobado**: capitanes con memoria, rangos, némesis y herencia
 - [x] `03_COMPANEROS.md` — **aprobado**: 4 compañeros (1 en la demo), motor `une`
@@ -64,7 +64,7 @@
 - [x] `05_RECURSOS_Y_MERCADO.md` — **aprobado**: **11** recursos (7 de nivel 1 + 4 de nivel 2), precios, trueque, stock finito
 - [x] `06_HABILIDADES.md` — **aprobado**: 4 habilidades del héroe (tronco), acciones de tropa, aliento y **árbol de habilidades** (3 ramas × 4 nodos, activas/pasivas)
 - [x] `07_ARTEFACTOS.md` — **aprobado**: 6 piezas únicas, estante, botín señalado
-- [x] `08_ANIMALES_Y_CRIATURAS.md` — **aprobado**: 8 animales, 4 bestias, 1 leyenda (🟡)
+- [x] `08_ANIMALES_Y_CRIATURAS.md` — **aprobado**: 8 animales, 4 bestias, 1 leyenda (`cri_animas`, 4 unidades)
 - [x] `09_EDIFICIOS_Y_ESTRUCTURAS.md` — **aprobado**: 14 edificios, 5 interiores, assets
 - [x] `10_VOCES_Y_GRITOS.md` — **aprobado**: 9 familias de frases, paridad ES/EN, voz del elenco relevante y texto en lo generativo
 - [x] `11_TABLAS_DE_BOTIN.md` — **aprobado**: 5 contenedores, garantizado + extra, determinista
@@ -79,7 +79,7 @@
 - [x] `01_TABLONES_Y_PORTAVOCES.md` — **aprobado**: tablón, posada, escribano, casa; cupo 5
 - [x] `02_ESTRUCTURA_DE_ENCARGO.md` — **aprobado**: 9 campos, 6 objetivos, validación
 - [x] `03_CADENAS_Y_RUMORES.md` — **aprobado**: cadenas 3-5, 1 rumor/lugar, 3 abiertas
-- [x] `04_PAGOS_Y_RECOMPENSAS.md` — **aprobado**: tarifas, ±20 % regateo, 6 formas de cobro
+- [x] `04_PAGOS_Y_RECOMPENSAS.md` — **aprobado**: tarifas, ±20 % regateo, 7 formas de cobro
 - [x] `05_ENCARGOS_DE_LA_HISTORIA.md` — **aprobado**: 11 encargos fijos (6 en el Acto I)
 
 ## ⚙️ `sistemas/` — el alma del juego (16 ✅)
@@ -138,7 +138,7 @@
 
 - [x] `00_ALCANCE.md` — **aprobado**: demo del Acto I, 2-3 h, 6 encargos, batalla 5-6
 - [x] `01_FASES.md` — **aprobado**: Fase 1 = Acto I de la demo (8 pasos), Fases 2-5 continuación
-- [x] `02_GUARDADO_Y_DATOS.md` — **aprobado**: SAVE_VERSION 5 aditivo, 3 slots, ≤ 5 MB
+- [x] `02_GUARDADO_Y_DATOS.md` — **aprobado**: guardado versionado aditivo (v1 inicial), 3 slots, ≤ 5 MB
 - [x] `03_RIESGOS.md` — **aprobado**: 15 riesgos con plan B
 - [x] `04_QA.md` — **aprobado**: 6 pasos, cobertura ≥ 90 %, 0 errores
 - [x] `05_MERCADO_Y_LANZAMIENTO.md` — **aprobado**: demo gratis + pago único, sin red
@@ -162,7 +162,7 @@
    batalla → contenido/misiones → resto).
 2. Se redacta **con el dueño**; lo pendiente se marca 🟡, nunca se inventa.
 3. Al aprobarse: se marca ✅ aquí y en el índice de su carpeta.
-4. `npm run qa` en verde antes de dar el documento por cerrado.
+4. Cuando exista el build: `npm run qa` en verde antes de dar el documento por cerrado.
 5. **El documento se escribe completo y final** (decision del dueno): no se deja a medias ni se
    reescribe; la cifra que falte se marca 🟡 **dentro** y se cierra al aprobarse.
 6. **Todos los documentos son del juego FINAL**: se documenta el juego completo, no la demo.

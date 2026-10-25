@@ -3,8 +3,8 @@
 **Estado:** ✅ **aprobado por el dueño (aprobación en bloque, 2026-09-30). Documento final.**
 
 > Los **Marcados** son tropa que peleas; un **compañero** es un **aliado con nombre, oficio y
-> pasado propio** que camina a tu lado y te cambia cómo juegas. El motor que ya existe
-> (`js/systems/dialogue.js`, nodos `une`) y el campo `SaveState.companeros` nacieron para esto.
+> pasado propio** que camina a tu lado y te cambia cómo juegas. El motor previsto
+> (`js/systems/dialogue.js`, nodos `une`) y el campo `SaveState.companeros` están pensados para esto.
 > La tropa reclutable, en `00_TROPAS.md`; el capitán enemigo que se voltea, en
 > `02_CAPITANES_Y_NEMESIS.md`; su memoria, en `../sistemas/00_MEMORIA_Y_DEUDA.md`.
 >
@@ -65,7 +65,7 @@
 
 ---
 
-## 3. El motor que ya existe (no se reescribe)
+## 3. El motor previsto (no se reescribe)
 
 - **Nodos `une`:** el diálogo de la historia marca `[une] <companero_id>`; al ejecutarse, el id
   entra en `SaveState.companeros` (`js/systems/dialogue.js`).
@@ -118,7 +118,7 @@
 
 | Cifra | Valor |
 |---|---|
-| Compañeros en el juego completo | **4** (propuesta) |
+| Compañeros en el juego completo | **4** (cerrado) |
 | Compañeros en la demo | **1** (La Sorda) |
 | Aporte fuera de combate | 1 por día / 1 por batalla |
 | Recuperación tras irse | **una vez** por persona (`10_LEALTAD_Y_DESERCION.md`) |
@@ -133,16 +133,16 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/companeros.json` — `{ id, nombre_txt, oficio, casa, aporte, rol, stats,
+- **Datos (por crear):** `data/companeros.json` — `{ id, nombre_txt, oficio, casa, aporte, rol, stats,
   une_en, lealtad }`.
 - **Tipos:** `Companero` en `js/data/game_types.js` (una sola vez, regla 4).
-- **Guardado:** `SaveState.companeros` (array de ids) **ya existe**; no añade campos nuevos
-  (SAVE_VERSION 3 es aditivo, `../produccion/02_GUARDADO_Y_DATOS.md`).
+- **Guardado:** `SaveState.companeros` (array de ids) **está previsto**; no añade campos nuevos
+  (aditivo, `../produccion/02_GUARDADO_Y_DATOS.md`).
 - **Validación:** esquema en `js/data/schemas.js` + cruce del `id` con los nodos `une` de
   `data/dialogos.json` y con `data/pnj.json` en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/companeros.js` — alta, aporte y salida; sin DOM, sin reloj, RNG
   inyectado si hace falta.
-- **Tests:** `tests/companeros.test.js`, mínimo 3 casos (normal, borde, error): un `une` mete el
+- **Tests (por escribir):** `tests/companeros.test.js`, mínimo 3 casos (normal, borde, error): un `une` mete el
   id en `companeros`; la condición `companero` filtra opciones; un compañero caído no vuelve.
 
 ---
@@ -165,7 +165,7 @@
 
 > **Hasta aquí la demo.** **La Sorda**, la guía que se une al final del Acto I con el nodo `une`, y
 > su aporte de atajo/aviso. El motor de diálogo, la condición `companero` y el `SaveState` ya
-> funcionan con ella; el resto del catálogo existe en datos pero **no se une** hasta su fase.
+> funcionan con ella; el resto del catálogo entrará en datos pero **no se une** hasta su fase.
 
 > **Y sigue el juego completo.** Los otros **3 compañeros** (barbero, sargento, escribana) se
 > añaden **con estas mismas reglas**: crecer = más filas en `companeros.json` y un nodo `une` más,

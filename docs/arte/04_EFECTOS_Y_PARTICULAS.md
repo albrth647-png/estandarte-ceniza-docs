@@ -60,13 +60,13 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/efectos.json` — `{ id, tipo, presupuesto, duracion_ms, ajuste_accesibilidad }`.
+- **Datos (por crear):** `data/efectos.json` — `{ id, tipo, presupuesto, duracion_ms, ajuste_accesibilidad }`.
 - **Tipos:** `Efecto` en `js/data/game_types.js`.
 - **Validación:** esquema + cruce de presupuestos con `../batalla/04_PRESENTACION.md` en
   `tools/validate_data.js`.
 - **Sistema/escena:** el sistema **emite eventos** («golpe», «carga»); la **escena** los pinta. El
   motor puro no conoce partículas.
-- **Tests:** `tests/efectos.test.js`: no se superan los topes; apagar efectos no rompe la escena;
+- **Tests (por escribir):** `tests/efectos.test.js`: no se superan los topes; apagar efectos no rompe la escena;
   el sistema no importa nada de `js/scenes/*`.
 
 ---
@@ -81,13 +81,13 @@
 | Focos de fuego | ≤ 3 |
 | Sacudida | ≤ 6 px · desactivable |
 | Parpadeo | ≤ 3 Hz |
-| Efectos en `js/systems/` | **0** |
+| Efectos en la simulación | **0** |
 
 ---
 
 ## 7. Qué entra en la demo (Fase 1) — y qué sigue
 
-> **Hasta aquí la demo.** Impactos, polvo, sangre sobria, daño flotante y sacudida en los 2 campos
+> **Hasta aquí la demo.** Impactos, polvo, sangre sobria, daño flotante y sacudida en los 3 campos
 > y en los 6 sitios, con los topes de §2 y las opciones de accesibilidad.
 
 > **Y sigue el juego completo.** Fuego, agua y criaturas añaden focos y gotas **dentro de los

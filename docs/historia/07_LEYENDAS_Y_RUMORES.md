@@ -50,12 +50,12 @@
 
 ## 5. Datos, tipos y validación
 
-- **Datos:** `data/rumores.json` (mecánica, `../misiones/03_CADENAS_Y_RUMORES.md`) + claves
+- **Datos (por crear):** `data/rumores.json` (mecánica, `../misiones/03_CADENAS_Y_RUMORES.md`) + claves
   `txt_rumor_*` para el texto.
 - **Tipos:** `Leyenda` y `Rumor` en `js/data/game_types.js`.
 - **Validación:** cada leyenda referencia un `hecho`/`deuda` existente en datos
   (`tools/validate_data.js`); paridad ES/EN de sus claves.
-- **Tests:** `tests/leyendas.test.js`: toda leyenda esconde algo real; ninguna queda sin salida;
+- **Tests (por escribir):** `tests/leyendas.test.js`: toda leyenda esconde algo real; ninguna queda sin salida;
   las claves tienen pareja EN.
 
 ---

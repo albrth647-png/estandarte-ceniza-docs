@@ -55,7 +55,7 @@ cordillera del **Paso del Juramento**. Cinco zonas:
 | Villa | — | 1–2 | 1–2 | 3–5 |
 | Ciudad | — | — | — | 3–5 |
 
-- Todo viaje se mide en **días enteros** de juego (`save.day`), no en minutos reales.
+- Todo viaje se mide en **días enteros** de juego (día de juego), no en minutos reales.
 - El camino **real** (pavimentado) resta 1 día a los trayectos de más de 2; el **atajo** lo
   ahorra solo a pie y con encuentro seguro de emboscada (§5).
 

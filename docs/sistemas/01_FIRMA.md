@@ -55,7 +55,7 @@ Cada banda tiene su puerta y su trampa: **no hay una Firma «buena»**, hay la q
 
 ## 4. Qué la mueve
 
-Pesos: leve **±1** · medio **±3** · grave **±6** · capital **±10**. Todo a la vista de
+Pesos: leve **±1** · medio **±3** · grave **±6** · capital **±10** (clases orientativas: el peso exacto de cada hecho manda en la tabla §4). Todo a la vista de
 testigos (regla 1).
 
 | Hecho | Peso | Dónde ocurre |
@@ -125,13 +125,13 @@ Para que una Firma baja **no sea una condena eterna** (la derrota nunca bloquea)
 ## 8. Datos, tipos y validación
 
 - **Guardado:** `firma` (entero), `enmiendas` (0…3) y `firmaHechos` (máx 16) en `SaveState`
-  → **`SAVE_VERSION` 3**, junto con `memoria` (`00_MEMORIA_Y_DEUDA.md` §10).
+  → aditivo, junto con `memoria` (`00_MEMORIA_Y_DEUDA.md` §10).
 - **Tipos:** `FirmaEstado` y `HechoFirma` en `js/data/game_types.js` (una sola vez).
 - **Validación:** esquema en `js/data/schemas.js`; los enums de hechos, cruzados en
   `tools/validate_data.js`.
-- **Sistema puro:** `js/systems/firma.js` — sin DOM, sin reloj (el día entra en `dt`/`save.day`),
+- **Sistema puro:** `js/systems/firma.js` — sin DOM, sin reloj (el día entra en `dt`/día de juego),
   RNG inyectado; las escenas solo **emiten hechos** y pintan la banda.
-- **Tests:** `tests/firma.test.js`, mínimo 3 casos (normal, borde, error).
+- **Tests (por escribir):** `tests/firma.test.js`, mínimo 3 casos (normal, borde, error).
 
 ---
 

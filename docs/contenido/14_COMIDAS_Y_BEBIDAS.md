@@ -53,21 +53,21 @@
 
 | Comer / beber | Efecto | Límite |
 |---|---|---|
-| **Ración del día** | Evita el hambre (−5 moral/día, `../mundo/10_SUPERVIVENCIA` §1) | 1 por tropa |
+| **Ración del día** | Evita el hambre (−5 moral/día, `../mundo/10_SUPERVIVENCIA_Y_DESCANSO` §1) | 1 por tropa |
 | **Potaje caliente** | **+5 de moral** | 1ª del día |
 | **Vino / cerveza** | +5 / +3 de moral de campaña | 1 por día |
-| **Cena de posada** | Recupera **vida y moral completas** | 1 noche (`§2`) |
+| **Cena de posada** | Recupera **vida y moral completas** | 1 noche (`§5`) |
 | **Banquete** | **Funeral**: +10 de moral (`../sistemas/08_LUTO_Y_MORAL.md` §3) | 1 por luto |
 
 - **La comida no cura heridas graves:** eso es el **barbero** (`00_TROPAS.md` §3.3) o el descanso
   (`../mundo/10_SUPERVIVENCIA_Y_DESCANSO.md` §3).
-- **El hambre no mata:** debilita y baja moral, nunca acaba la partida (`../mundo/10_SUPERVIVENCIA` §3).
+- **El hambre no mata:** debilita y baja moral, nunca acaba la partida (`../mundo/10_SUPERVIVENCIA_Y_DESCANSO` §3).
 
 ---
 
 ## 4. Comer con la tropa
 
-- **Cada tropa come 1 ración/día** (el héroe, 1) — la cuenta de `../mundo/10_SUPERVIVENCIA` §1.
+- **Cada tropa come 1 ración/día** (el héroe, 1) — la cuenta de `../mundo/10_SUPERVIVENCIA_Y_DESCANSO` §1.
 - **La reserva se guarda** en la mochila/carreta (`04_ITEMS_Y_EQUIPO.md` §5, `13_MONTURAS_Y_TRANSPORTE.md` §3).
 - **Sin reserva ni oro:** la compañía pierde **−5 de moral/día** y puede desertar
   (`../sistemas/10_LEALTAD_Y_DESERCION.md` §2). La salida siempre existe: cazar, pedir fiado o
@@ -102,14 +102,14 @@
 
 ## 7. Datos, tipos y validación
 
-- **Datos:** `data/comidas.json` — `{ id, tipo (alimento/bebida), raciones, efecto, coste_base,
+- **Datos (por crear):** `data/comidas.json` — `{ id, tipo (alimento/bebida), raciones, efecto, coste_base,
   moral, se_conserva }`.
 - **Tipos:** `Comida` y `Bebida` en `js/data/game_types.js` (una sola vez, regla 4).
 - **Validación:** esquema en `js/data/schemas.js` + cruce con `data/economia.json` (precios) y con
   `data/supervivencia.json` (ración/día) en `tools/validate_data.js`.
 - **Sistema puro:** `js/systems/comida.js` — consumo, efecto y conservación; sin DOM, sin reloj
-  (día por `save.day`), RNG inyectado.
-- **Tests:** `tests/comida.test.js`, mínimo 3 casos (normal, borde, error): sin raciones la moral
+  (el día entra inyectado), RNG inyectado.
+- **Tests (por escribir):** `tests/comida.test.js`, mínimo 3 casos (normal, borde, error): sin raciones la moral
   baja; el vino no sube la moral de campo; el hambre no mata.
 
 ---
@@ -125,7 +125,7 @@
 | Potaje | +5 de moral (1ª del día) |
 | Vino / cerveza / aguardiente | +5 / +3 / +8 (−sigilo) |
 | Banquete funeral | +10 de moral |
-| Noche de posada (+ cena) | 5 (+2) oro |
+| Noche de posada (+ cena) | 5 (+7) oro |
 
 ---
 

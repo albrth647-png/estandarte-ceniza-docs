@@ -54,7 +54,7 @@ estratégica ni mapa por casillas: lo que ves es lo que hay. Entre sitios hay vi
 
 ## 5. Enfocar: «la mirada lleva» (Pilar 1)
 
-Al acercarte a algo con el que se puede tratar (menos de **3 m** y a menos de 45° del eje de
+Al acercarte a algo con el que se puede tratar (menos de **2,5 m** y a menos de 45° del eje de
 la mirada):
 
 1. La cámara **gira sola** hacia el objeto en **250 ms** (suave, nunca brusca).
@@ -71,7 +71,7 @@ la mirada):
 
 | Tipo | Ejemplo | Efecto |
 |---|---|---|
-| **Hablable** | Aldeano, posadero, escribano | Abre diálogo (`js/systems/dialogue.js`) |
+| **Hablable** | Aldeano, posadero, escribano | Abre diálogo (motor de diálogo, por construir) |
 | **Recogible** | Leña, hierro, botín | Suma al inventario |
 | **Comprable** | Mesa de mercado, estante | Abre pantalla de trato |
 | **Contenedor** | Arcón, saco, cadáver | Abre botín (`../contenido/11_TABLAS_DE_BOTIN.md`) |
@@ -79,7 +79,7 @@ la mirada):
 | **Portal** | Puerta de sitio, camino real | Cambia de nodo (viaje) |
 
 - **Radio de interacción: 2,5 m**; objetos fuera de radio se ignoran sin error.
-- Todo lo interactuable es **objetivo de 48 px** mínimo en pantalla (regla de `css/ui.css`).
+- Todo lo interactuable es **objetivo de 48 px** mínimo en pantalla (regla de la guía de UI, por escribir).
 
 ---
 
@@ -92,7 +92,7 @@ la mirada):
 | Vegetación | densidad por zona en `07_PROPS_Y_VEGETACION.md` |
 | Objetivo | **60 fps** en gama media, sin caídas al entrar en un sitio |
 
-Medido con la batería de humo (`npm run smoke`) y el presupuesto de `../arte/00_ESTILO.md`.
+A medir con la batería de humo (por implementar) y el presupuesto de `../arte/00_ESTILO.md`.
 
 ---
 
@@ -109,7 +109,7 @@ Medido con la batería de humo (`npm run smoke`) y el presupuesto de `../arte/00
 
 - Sistema puro: `js/systems/exploracion.js` (reglas de radio, enfocar y transición de nodo)
   — sin DOM, sin reloj; la escena pinta y envía gestos.
-- Gestos: `js/core/input.js` (tap / drag / long-press), ya existente.
+- Gestos: `js/core/input.js` (tap / drag / long-press), están previstoste.
 - Tests: `tests/exploracion.test.js`, mínimo 3 casos (normal, borde, error).
 
 ---

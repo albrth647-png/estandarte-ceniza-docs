@@ -135,10 +135,10 @@ Reglas duras (no se negocian, son las que hacen justa la pelea):
 
 ## 8. Determinismo y pruebas sin navegador
 
-- La IA vive en el **motor puro** `js/systems/campo.js` (y `js/systems/ia.js` si crece): sin DOM,
+- La IA vivirá en el **motor puro** `js/systems/campo.js` (y `js/systems/ia.js` si crece; por construir): sin DOM,
   sin `fetch`, sin reloj; `dt` y RNG **inyectados** (reglas 2 y 11 de `../../AGENTS.md`).
 - **Determinismo:** misma semilla + mismas decisiones = **la misma batalla**, golpe a golpe.
-- **Tests** (`tests/campo.test.js`, mínimo 3 casos):
+- **Tests (por escribir)** (`tests/campo.test.js`, mínimo 3 casos):
   - normal: dos bandos iguales, con la misma semilla, empatan igual dos veces.
   - borde: una unidad sola contra diez **huye** o **se rinde**, nunca «onewipea».
   - error: una orden imposible (reagrupar dos veces) se ignora sin romper el estado.
@@ -169,7 +169,7 @@ Reglas duras (no se negocian, son las que hacen justa la pelea):
 ## 10. Qué entra en la demo (Fase 1) — y qué sigue
 
 > **Hasta aquí la demo.** Las **3 órdenes** (Cargar / Seguirme / Defender), la IA propia a 0,5 s,
-> la huida, la rendición y la reagrupación funcionando en los **2 campos** con **4+ capitanes**
+> la huida, la rendición y la reagrupación por construir en los **3 campos** con **4+ capitanes**
 > con memoria (`../produccion/00_ALCANCE.md` §2.5). Igual que el juego completo en reglas; solo
 > cambia la **cantidad** de unidades (5-6, y 8 en el cierre).
 

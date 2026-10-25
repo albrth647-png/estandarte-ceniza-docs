@@ -97,8 +97,8 @@ espera tu permiso para defenderse — y nadie obedece si su moral está rota.
 - Si se rompe **un tercio** del bando → **pánico en cadena**: es el «**tres huyen**» que abre
   la rendición.
 - Los **capitanes** tienen moral propia y su ruptura pesa el doble en su gente.
-- Recuperación en combate: **+2/s** mientras no recibas daño y tu capitán o tú estés a menos
-  de 8 m.
+- Recuperación en combate: **+2/s** si el capitán o el héroe está a menos de 8 m, y **+2/s**
+  más mientras no recibas daño (hasta **+4/s** combinados).
 
 ---
 
@@ -107,14 +107,14 @@ espera tu permiso para defenderse — y nadie obedece si su moral está rota.
 1. Moral enemiga rota → la mitad huye, el resto se rinde.
 2. **Nadie muere «definitivamente» en el campo**: muerte de tropa = baja de campaña (se paga
    con `../sistemas/08_LUTO_Y_MORAL.md`), muerte de capitán = crónica y memoria.
-3. Pasas a las **4 salidas** con los prisioneros (`02_PRISIONEROS.md`).
+3. Pasas a las salidas con los prisioneros (`../sistemas/02_PRISIONEROS.md`).
 4. Si **caes tú**, el mundo decide y siempre hay salida (§4).
 
 ---
 
 ## 10. Motor y reglas duras
 
-- **Prototipo nuevo**: `js/systems/campo.js`, **puro** — sin DOM, sin fetch, sin reloj; `dt`
+- **Prototipo nuevo**: `js/systems/campo.js` (por construir), **puro** — sin DOM, sin fetch, sin reloj; `dt`
   y RNG **inyectados** (reglas 2 y 11 de `../../AGENTS.md`). El motor táctico antiguo no se
   resucita (`../DECISIONES.md` 2026-09-30).
 - La simulación **no** pinta: las escenas (HUD, partículas, cámara) están en
@@ -128,8 +128,8 @@ espera tu permiso para defenderse — y nadie obedece si su moral está rota.
 ## 11. Qué entra en la demo (Fase 1)
 
 - Las 5 fases, semi-tiempo real, los botones del héroe (Golpe / Guardia / Desvío) y las 3 órdenes: **todo**.
-- **5-6 por bando** (8 en la batalla de cierre), **2 campos** (llanura de camino y
-  bosque/aldea), **4+ capitanes** con memoria, **3 familias enemigas**.
+- **5-6 por bando** (8 en la batalla de cierre), **3 campos** (llanura de camino, aldea y
+  bosque), **4+ capitanes** con memoria, **3 familias enemigas**.
 - Igual que el juego completo en reglas; solo cambia la **cantidad** de unidades.
 
 ---
