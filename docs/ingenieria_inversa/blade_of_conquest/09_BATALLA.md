@@ -3,7 +3,7 @@
 > Dossier 07. El motor de batalla de BoC: formaciones, campo, compañías, órdenes y el
 > control del héroe. Combina lo visible en datos (`formation.dat`, `md.dat`) con el mapa
 > de clases nativas (`SGBattleScene`, `SGBattleField`) — las fórmulas finas se completan
-> con Ghidra (ver `11_CODIGO_NATIVO.md`).
+> con Ghidra (ver `13_CODIGO_NATIVO.md`).
 
 ## 1. El modelo de batalla en una frase
 
@@ -42,7 +42,7 @@ sin turnos.
 | Botín/XP | `drops`, `exp` por unidad | al morir suelta y otorga experiencia |
 
 **Fórmula de daño finas** (multiplicadores de crit, varianza, moral): viven compiladas en
-el `.so` — se documentan en `11_CODIGO_NATIVO.md` cuando Ghidra termine de decompilar
+el `.so` — se documentan en `13_CODIGO_NATIVO.md` cuando Ghidra termine de decompilar
 `SGBattleField`/`SGRoleObj`.
 
 ## 4. Órdenes y control (lo que hace el jugador en batalla)

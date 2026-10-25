@@ -64,3 +64,32 @@
   y datos textuales legibles (tablas/JSON) — nunca binarios del juego original.
 - Fuentes consultadas para el contexto (reseñas, historia, hash): Uptodown, AppBrain, Reddit
   r/AndroidGaming (hilo original de lanzamiento 2016), foro Easytech, Sbenny.
+
+
+---
+
+## Serie de dossiers (estado del análisis 2026-10-25)
+
+| Dossier | Contenido | Fuente |
+|---|---|---|
+| `01_ARQUITECTURA_DEL_APK.md` | paquete v1.1.1, assets, escenas, sistema de mapas | v1.1.1 |
+| `02_DATOS_DEL_JUEGO.md` | ZIP con contraseña = restos; claves de texto legibles | v1.1.1 |
+| `03_ESTADO_DEL_DESCIFRADO.md` | veredicto bkcrack y cierre del descifrado | v1.1.1 |
+| `04_MAPA_MUNDIAL.md` | cuadrícula 5×5, grafo de 209 nodos, sitios, reinos | v1.0.2 |
+| `05_POBLADOS_Y_CONSTRUCCION.md` | 88 sitios/9 tipos, prosperidad/defensa, torres | v1.0.2 |
+| `06_UNIDADES_TROPAS.md` | 23 tropas, árbol pre_unit, stats y crecimiento | v1.0.2 |
+| `07_HABILIDADES_TALENTOS.md` | 32 skills en 4 escuelas + 17 talentos | v1.0.2 |
+| `08_PERSONAJES_Y_REINOS.md` | personajes, lealtades, reparto político inicial | v1.0.2 |
+| `09_BATALLA.md` | formaciones, órdenes, héroe, auto-batalla | v1.0.2 |
+| `10_ECONOMIA_Y_COMERCIO.md` | botín, mercados, presupuesto semanal | v1.0.2 |
+| `11_ENEMIGOS_Y_RESPAWN.md` | 34 bandas errantes con respawn | v1.0.2 |
+| `12_GUARDADO.md` | puntos de guardado, claves del save | v1.0.2 + binario |
+| `13_CODIGO_NATIVO.md` | 5.750 funciones descompiladas; fórmula de daño | Ghidra 12.2 |
+| `datos/` | 21 tablas de datos decodificadas + arquitectura de clases | v1.0.2 |
+
+**Nota de versiones:** el esqueleto de sistemas es idéntico en v1.0.2 y v1.1.1. La
+v1.0.2 (copia local, SHA-256 `d2c42d5f…`) distribuye las tablas `datas/*.dat` como XML
+en claro — por eso la serie 04–13 extrae los datos completos de ella; la v1.1.1 los
+empaquetó en ZIP con contraseña que el juego nunca lee (ver `02_DATOS_DEL_JUEGO.md`).
+La descompilación completa de Ghidra (5.750 funciones, 23 clases) y el APK original
+se conservan en el espacio local `rea/blade_of_conquest/` del proyecto.

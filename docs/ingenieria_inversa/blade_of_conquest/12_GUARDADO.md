@@ -1,7 +1,7 @@
 # 10 · GUARDADO Y DATOS DEL JUGADOR — Cómo BoC guarda tu partida
 
 > Dossier 10. Lo visible del sistema de guardado antes del análisis Ghidra profundo
-> (que se recoge en `11_CODIGO_NATIVO.md`). Enlaza con el contrato de guardado v1 de
+> (que se recoge en `13_CODIGO_NATIVO.md`). Enlaza con el contrato de guardado v1 de
 > Valcoria (`docs/produccion/02_GUARDADO_Y_DATOS.md`).
 
 ## 1. Qué sabemos del guardado de BoC

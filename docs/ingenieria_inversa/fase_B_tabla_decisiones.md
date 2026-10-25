@@ -10,22 +10,22 @@
 
 | # | Sistema de BoC | Veredicto | Cómo queda en Valcoria | Dónde se decide/define |
 |---|---|---|---|---|
-| 1 | Mundo por sectores (5×5 TMX + grafo de 209 nodos) | **Revive mejorado** | misma estructura de sectores+grafo, render WebGL con paralaje/día-noche/nombres, niebla de guerra | `02_MAPA_MUNDIAL.md` §7 |
-| 2 | 88 sitios de 9 tipos, jerarquía aldea→castillo (`belong`) | **Revive igual mejorado** | misma taxonomía en JSON; vistas de sitio con vida | `03_POBLADOS_Y_CONSTRUCCION.md` §5 |
-| 3 | Prosperidad + defensa por sitio, inversión en 3 pilares | **Revive igual mejorado** | mismos dos números + memoria de eventos y liquidación explicada | `03` §5, `08_ECONOMIA` §5 |
+| 1 | Mundo por sectores (5×5 TMX + grafo de 209 nodos) | **Revive mejorado** | misma estructura de sectores+grafo, render WebGL con paralaje/día-noche/nombres, niebla de guerra | `04_MAPA_MUNDIAL.md` §7 |
+| 2 | 88 sitios de 9 tipos, jerarquía aldea→castillo (`belong`) | **Revive igual mejorado** | misma taxonomía en JSON; vistas de sitio con vida | `05_POBLADOS_Y_CONSTRUCCION.md` §5 |
+| 3 | Prosperidad + defensa por sitio, inversión en 3 pilares | **Revive igual mejorado** | mismos dos números + memoria de eventos y liquidación explicada | `05` §5, `10_ECONOMIA` §5 |
 | 4 | Construcción: solo torres en huecos (3/2) | 💬 **Decisión abierta** | (a) conservar torres como construcción ligera; (b) ampliar a capa "obra" estilo AoE-lite; (c) nada de construcción | abajo §3 |
-| 5 | 23 tropas, árbol `pre_unit`, `base + growth×nv` | **Revive igual mejorado** | mismo árbol y fórmula, JSON versionado, veteranía por actos | `04_UNIDADES_TROPAS.md` §5 |
-| 6 | 32 skills (4 escuelas, ramas 5+5+3, prerrequisitos OR) | **Revive transformado** | mismos árboles con recurso **aliento** (no mana) y desbloqueos narrativos | `05_HABILIDADES_TALENTOS.md` §4 |
+| 5 | 23 tropas, árbol `pre_unit`, `base + growth×nv` | **Revive igual mejorado** | mismo árbol y fórmula, JSON versionado, veteranía por actos | `06_UNIDADES_TROPAS.md` §5 |
+| 6 | 32 skills (4 escuelas, ramas 5+5+3, prerrequisitos OR) | **Revive transformado** | mismos árboles con recurso **aliento** (no mana) y desbloqueos narrativos | `07_HABILIDADES_TALENTOS.md` §4 |
 | 7 | 17 talentos por atributo | **Revive igual mejorado** | mismos perfiles ligados a Deuda y capitanes | `05` §2 |
-| 8 | Personajes con STR/AGI/INT, lealtad 75–100, honor | **Revive transformado** | mismos stats + **capitanes con memoria** (lazos, rencores, deudas) | `06_PERSONAJES_Y_REINOS.md` §4 |
+| 8 | Personajes con STR/AGI/INT, lealtad 75–100, honor | **Revive transformado** | mismos stats + **capitanes con memoria** (lazos, rencores, deudas) | `08_PERSONAJES_Y_REINOS.md` §4 |
 | 9 | Reinos con rey/vasallos/sitios en `init_datas` | **Revive igual mejorado** | mismo arranque declarativo JSON | `06` |
-| 10 | Batalla: formaciones 20 huecos, órdenes, héroe controlado, auto-batalla | **Revive mejorado** | idéntico esqueleto + vista 1.ª persona, pausa táctica, informe de Crónica | `07_BATALLA.md` §5 |
-| 11 | Fórmula de daño `atk_ef −2×def`, suelo 25 %, crit ×1,0–1,5, var ±10 %, bloqueo anula | **Revive con ajuste** | misma fórmula con bloqueo que mitiga y penetración explícita, constantes publicadas | `11_CODIGO_NATIVO.md` §1, §7 |
-| 12 | Bandas errantes: respawn `rs_time`, patrulla, botín anidado | **Revive igual mejorado** | igual + cabecillas con nombre y memoria | `09_ENEMIGOS_Y_RESPAWN.md` §3 |
-| 13 | Economía: botín 2 niveles, mercados por probabilidad, presupuesto semanal por personaje | **Revive mejorado** | mismos flujos + precios vivos + liquidación explicada; **sin IAP** | `08_ECONOMIA_Y_COMERCIO.md` §5 |
-| 14 | Guardado clave-valor plano + puntos de guardado | **Revive transformado** | esquema versionado `SAVE_VERSION=1`, autosave, Crónica dentro del save | `10_GUARDADO.md` §2 |
+| 10 | Batalla: formaciones 20 huecos, órdenes, héroe controlado, auto-batalla | **Revive mejorado** | idéntico esqueleto + vista 1.ª persona, pausa táctica, informe de Crónica | `09_BATALLA.md` §5 |
+| 11 | Fórmula de daño `atk_ef −2×def`, suelo 25 %, crit ×1,0–1,5, var ±10 %, bloqueo anula | **Revive con ajuste** | misma fórmula con bloqueo que mitiga y penetración explícita, constantes publicadas | `13_CODIGO_NATIVO.md` §1, §7 |
+| 12 | Bandas errantes: respawn `rs_time`, patrulla, botín anidado | **Revive igual mejorado** | igual + cabecillas con nombre y memoria | `11_ENEMIGOS_Y_RESPAWN.md` §3 |
+| 13 | Economía: botín 2 niveles, mercados por probabilidad, presupuesto semanal por personaje | **Revive mejorado** | mismos flujos + precios vivos + liquidación explicada; **sin IAP** | `10_ECONOMIA_Y_COMERCIO.md` §5 |
+| 14 | Guardado clave-valor plano + puntos de guardado | **Revive transformado** | esquema versionado `SAVE_VERSION=1`, autosave, Crónica dentro del save | `12_GUARDADO.md` §2 |
 | 15 | Prisioneros (`AEPrisonBox`), honor, mercader de esclavos | **Revive transformado** | captura y rescates con coste moral narrativo (decisión de tono del dueño) | `docs/contenido/` |
-| 16 | Monetización (IAP `sl.dat`, AdMob, Umeng, anti-cheat) | **Se sustituye** | fuera; solo tienda local de comercio y telemetría local opcional | `01_TECNOLOGIA` §7 |
+| 16 | Monetización (IAP `sl.dat`, AdMob, Umeng, anti-cheat) | **Se sustituye** | fuera; solo tienda local de comercio y telemetría local opcional | `02_DATOS_DEL_JUEGO.md` Parte 2 §7 |
 
 ## 2. Las referencias: qué tomamos de cada juego (Fase A)
 
